@@ -6,5 +6,66 @@ import { EventCard } from "@/components/rakzs/EventCard";
 import { PageHero } from "@/components/rakzs/PageHero";
 import { eventCategories, events } from "@/data/events";
 
-export const Route = createFileRoute("/events/")({ head:()=>({meta:[{title:"Events & Portfolio — RAKZS STUDIO"},{name:"description",content:"Explore wedding, family, corporate, product, fashion, and personal branding photography stories."},{property:"og:title",content:"Events & Portfolio — RAKZS STUDIO"},{property:"og:description",content:"A cinematic portfolio of illustrative celebrations, portraits, and brand stories."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}), component: EventsPage });
-function EventsPage(){const [active,setActive]=useState<(typeof eventCategories)[number]>("All Events");const filtered=active==="All Events"?events:events.filter(e=>e.category===active);return <><PageHero eyebrow="Portfolio" title="Stories in stillness, movement, and light." description="Explore illustrative sample stories across weddings, families, celebrations, and commercial work." image={editorialHero}/><section className="section-band"><div className="mx-auto max-w-7xl px-5 lg:px-8"><div className="mb-12 flex flex-wrap justify-center gap-2">{eventCategories.map(category=><Button key={category} variant={active===category?"gold":"outlineGold"} size="sm" onClick={()=>setActive(category)}>{category}</Button>)}</div><div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{filtered.map((event,index)=><div key={event.slug} className={index%5===0?"lg:col-span-2":""}><EventCard event={event} featured={index%5===0}/></div>)}</div>{filtered.length===0?<p className="py-20 text-center text-muted-foreground">No illustrative stories in this category yet.</p>:null}</div></section></>}
+export const Route = createFileRoute("/events/")({
+  head: () => ({
+    meta: [
+      { title: "Events & Portfolio — RAKZS STUDIO" },
+      {
+        name: "description",
+        content:
+          "Explore wedding, family, corporate, product, fashion, and personal branding photography stories.",
+      },
+      { property: "og:title", content: "Events & Portfolio — RAKZS STUDIO" },
+      {
+        property: "og:description",
+        content:
+          "A cinematic portfolio of illustrative celebrations, portraits, and brand stories.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: EventsPage,
+});
+function EventsPage() {
+  const [active, setActive] = useState<(typeof eventCategories)[number]>("All Events");
+  const filtered = active === "All Events" ? events : events.filter((e) => e.category === active);
+  return (
+    <>
+      <PageHero
+        eyebrow="Portfolio"
+        title="Stories in stillness, movement, and light."
+        description="Explore illustrative sample stories across weddings, families, celebrations, and commercial work."
+        image={editorialHero}
+      />
+      <section className="section-band">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="mb-12 flex flex-wrap justify-center gap-2">
+            {eventCategories.map((category) => (
+              <Button
+                key={category}
+                variant={active === category ? "gold" : "outlineGold"}
+                size="sm"
+                onClick={() => setActive(category)}
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((event, index) => (
+              <div key={event.slug} className={index % 5 === 0 ? "lg:col-span-2" : ""}>
+                <EventCard event={event} featured={index % 5 === 0} />
+              </div>
+            ))}
+          </div>
+          {filtered.length === 0 ? (
+            <p className="py-20 text-center text-muted-foreground">
+              No illustrative stories in this category yet.
+            </p>
+          ) : null}
+        </div>
+      </section>
+    </>
+  );
+}

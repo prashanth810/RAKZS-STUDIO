@@ -15,7 +15,9 @@ export const Route = createFileRoute("/events/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Story not found — RAKZS STUDIO" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [{ title: "Story not found — RAKZS STUDIO" }, { name: "robots", content: "noindex" }],
+      };
     }
     const { event } = loaderData;
     return {
@@ -40,17 +42,34 @@ function EventDetailPage() {
 
   return (
     <>
-      <section className="relative flex min-h-[80vh] items-end overflow-hidden pt-28">
-        <img src={event.image} alt={event.title} className="absolute inset-0 size-full object-cover" width={1600} height={1000} fetchPriority="high" />
+      <section className="relative flex min-h-[calc(105vh-2rem)] items-end overflow-hidden pt-28">
+        <img
+          src={event.image}
+          alt={event.title}
+          className="absolute inset-0 size-full object-cover"
+          width={1600}
+          height={1000}
+          fetchPriority="high"
+        />
         <div className="absolute inset-0 bg-hero-overlay" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 lg:px-8">
           <div className="max-w-3xl animate-hero-in">
-            <p className="text-[0.72rem] font-bold uppercase tracking-[0.22em] text-on-media-accent">{event.category}</p>
-            <h1 className="mt-5 font-display text-5xl font-semibold leading-tight text-on-media md:text-7xl">{event.title}</h1>
+            <p className="text-[0.72rem] font-bold uppercase tracking-[0.22em] text-on-media-accent">
+              {event.category}
+            </p>
+            <h1 className="mt-5 font-display text-5xl font-semibold leading-tight text-on-media md:text-7xl">
+              {event.title}
+            </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-on-media-muted">{event.summary}</p>
             <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-on-media-muted">
-              <span className="inline-flex items-center gap-2"><MapPin className="size-4 text-on-media-accent" />{event.location}</span>
-              <span className="inline-flex items-center gap-2"><CalendarDays className="size-4 text-on-media-accent" />{event.year}</span>
+              <span className="inline-flex items-center gap-2">
+                <MapPin className="size-4 text-on-media-accent" />
+                {event.location}
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <CalendarDays className="size-4 text-on-media-accent" />
+                {event.year}
+              </span>
             </div>
           </div>
         </div>
@@ -87,7 +106,9 @@ function EventDetailPage() {
               <ol className="mt-5 grid gap-4 text-sm leading-7 text-muted-foreground">
                 {event.timeline.map((item, index) => (
                   <li key={item} className="flex gap-4">
-                    <span className="font-display text-xl text-primary">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="font-display text-xl text-primary">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                     {item}
                   </li>
                 ))}
@@ -116,7 +137,11 @@ function EventDetailPage() {
 
       <section className="section-band bg-card">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeader eyebrow="Gallery" title="Frames from the collection." description="Illustrative sample gallery. Click any frame to view it enlarged." />
+          <SectionHeader
+            eyebrow="Gallery"
+            title="Frames from the collection."
+            description="Illustrative sample gallery. Click any frame to view it enlarged."
+          />
           <GalleryLightbox images={event.gallery} title={event.title} />
         </div>
       </section>
@@ -148,8 +173,12 @@ function EventNotFound() {
     <div className="flex min-h-[70vh] items-center justify-center px-5 pt-28">
       <div className="max-w-xl text-center">
         <p className="section-kicker">Story Not Found</p>
-        <h1 className="mt-4 font-display text-5xl font-semibold text-foreground">We couldn&apos;t find “{slug}”.</h1>
-        <p className="mt-5 text-base leading-8 text-muted-foreground">This story may have been renamed or removed. Explore the full portfolio instead.</p>
+        <h1 className="mt-4 font-display text-5xl font-semibold text-foreground">
+          We couldn&apos;t find “{slug}”.
+        </h1>
+        <p className="mt-5 text-base leading-8 text-muted-foreground">
+          This story may have been renamed or removed. Explore the full portfolio instead.
+        </p>
         <Button asChild variant="gold" className="mt-8">
           <Link to="/events">Explore All Events</Link>
         </Button>
@@ -163,7 +192,9 @@ function EventDetailError() {
     <div className="flex min-h-[70vh] items-center justify-center px-5 pt-28">
       <div className="max-w-xl text-center">
         <p className="section-kicker">Something went wrong</p>
-        <h1 className="mt-4 font-display text-5xl font-semibold text-foreground">This story didn&apos;t load.</h1>
+        <h1 className="mt-4 font-display text-5xl font-semibold text-foreground">
+          This story didn&apos;t load.
+        </h1>
         <Button asChild variant="gold" className="mt-8">
           <Link to="/events">Back to Portfolio</Link>
         </Button>

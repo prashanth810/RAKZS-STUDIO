@@ -46,7 +46,7 @@ export function Header() {
           <span className="grid size-11 place-items-center rounded-full border border-primary/45 bg-secondary text-primary shadow-gold">
             <Camera className="size-5" />
           </span>
-          <span className="leading-none">
+          <span className="hidden leading-none lg:block">
             <span
               className={cn(
                 "block font-display text-xl font-semibold tracking-normal",
@@ -91,13 +91,20 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="flex items-center gap-1 lg:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle
-            className={overHomeVideo ? "text-on-media-accent hover:text-on-media" : undefined}
+            className={cn(
+              "size-11",
+              overHomeVideo ? "text-on-media hover:bg-white/10 hover:text-on-media" : undefined,
+            )}
           />
           <Button
             variant="ghostGold"
             size="icon"
+            className={cn(
+              "size-11",
+              overHomeVideo ? "text-on-media hover:bg-white/10 hover:text-on-media" : undefined,
+            )}
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
             onClick={() => setOpen((current) => !current)}
@@ -109,8 +116,8 @@ export function Header() {
 
       <div
         className={cn(
-          "overflow-hidden border-t border-border/40 bg-card transition-all duration-300 lg:hidden",
-          open ? "max-h-96" : "max-h-0 border-transparent",
+          "overflow-hidden border-0 bg-card transition-all duration-300 lg:hidden",
+          open ? "max-h-96" : "max-h-0",
         )}
       >
         <nav className="mx-auto grid max-w-7xl gap-1 px-5 py-4">
