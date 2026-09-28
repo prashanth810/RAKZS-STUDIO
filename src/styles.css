@@ -98,37 +98,168 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; background: var(--color-background); }
-  body { margin: 0; overflow-x: hidden; background: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); }
-  ::selection { background: color-mix(in oklab, var(--primary) 35%, transparent); color: var(--foreground); }
-  button, a { -webkit-tap-highlight-color: transparent; }
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--color-background);
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 35%, transparent);
+    color: var(--foreground);
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
-@utility section-band { padding-block: clamp(5rem, 8vw, 8rem); }
-@utility section-kicker { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--primary); }
-@utility shadow-cinematic { box-shadow: var(--shadow-cinematic); }
-@utility shadow-gold { box-shadow: var(--shadow-gold); }
-@utility bg-hero-overlay { background: var(--hero-overlay); }
-@utility bg-backdrop { background: var(--backdrop); }
-@utility image-zoom { transition: transform 900ms cubic-bezier(.2,.75,.2,1); &:hover { transform: scale(1.045); } }
-@utility nav-underline { position: relative; &::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -0.6rem; height: 1px; background: var(--primary); transition: right 300ms ease; } &:hover::after, &.is-active::after { right: 0; } }
-@utility reveal { animation: reveal-up 800ms cubic-bezier(.2,.7,.2,1) both; animation-timeline: view(); animation-range: entry 0% cover 28%; }
-@utility animate-hero-in { animation: hero-in 1s cubic-bezier(.2,.7,.2,1) both; }
-@utility animate-fade-in { animation: fade-in 260ms ease both; }
-@utility mountain-silhouette { background: linear-gradient(155deg, transparent 47%, oklch(0.78 0.06 83 / 5%) 47.5%, transparent 49%), linear-gradient(205deg, transparent 51%, oklch(0.78 0.06 83 / 6%) 51.5%, transparent 53%); background-size: 420px 180px, 520px 220px; }
-@utility bg-film-strip { background: radial-gradient(circle at 72% 20%, oklch(0.78 0.105 83 / 28%), transparent 24%), linear-gradient(130deg, transparent 20%, oklch(0.78 0.105 83 / 8%) 50%, transparent 80%); }
+@utility section-band {
+  padding-block: clamp(5rem, 8vw, 8rem);
+}
 
-@keyframes hero-in { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes reveal-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@utility section-kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+@utility shadow-cinematic {
+  box-shadow: var(--shadow-cinematic);
+}
+
+@utility shadow-gold {
+  box-shadow: var(--shadow-gold);
+}
+
+@utility bg-hero-overlay {
+  background: var(--hero-overlay);
+}
+
+@utility bg-backdrop {
+  background: var(--backdrop);
+}
+
+@utility image-zoom {
+  transition: transform 900ms cubic-bezier(.2, .75, .2, 1);
+
+  &:hover {
+    transform: scale(1.045);
+  }
+}
+
+@utility nav-underline {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -0.6rem;
+    height: 1px;
+    background: var(--primary);
+    transition: right 300ms ease;
+  }
+
+  &:hover::after,
+  &.is-active::after {
+    right: 0;
+  }
+}
+
+@utility reveal {
+  animation: reveal-up 800ms cubic-bezier(.2, .7, .2, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 28%;
+}
+
+@utility animate-hero-in {
+  animation: hero-in 1s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+@utility animate-fade-in {
+  animation: fade-in 260ms ease both;
+}
+
+@utility mountain-silhouette {
+  background: linear-gradient(155deg, transparent 47%, oklch(0.78 0.06 83 / 5%) 47.5%, transparent 49%), linear-gradient(205deg, transparent 51%, oklch(0.78 0.06 83 / 6%) 51.5%, transparent 53%);
+  background-size: 420px 180px, 520px 220px;
+}
+
+@utility bg-film-strip {
+  background: radial-gradient(circle at 72% 20%, oklch(0.78 0.105 83 / 28%), transparent 24%), linear-gradient(130deg, transparent 20%, oklch(0.78 0.105 83 / 8%) 50%, transparent 80%);
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 @media (max-width: 767px) {
-  :root { --hero-overlay: linear-gradient(0deg, oklch(0.06 0.01 55 / 93%) 0%, oklch(0.06 0.01 55 / 42%) 100%); }
+  :root {
+    --hero-overlay: linear-gradient(0deg, oklch(0.06 0.01 55 / 93%) 0%, oklch(0.06 0.01 55 / 42%) 100%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-  .reveal { animation: none; }
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    animation: none;
+  }
 }

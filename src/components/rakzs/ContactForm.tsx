@@ -13,8 +13,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { events } from "@/data/events";
-import { services } from "@/data/site";
 import { sendEnquiry } from "@/lib/enquiry.functions";
 
 type FormState = {
@@ -24,10 +22,6 @@ type FormState = {
   type: string;
   date: string;
   location: string;
-  photography: boolean;
-  videography: boolean;
-  photoEditing: boolean;
-  videoEditing: boolean;
   budget: string;
   requirements: string;
   contactMethod: string;
@@ -45,18 +39,22 @@ const budgetOptions = [
 ];
 const contactMethods = ["Phone", "Email", "WhatsApp", "Instagram"];
 
+const typeOptions = [
+  "Wedding & Engagement",
+  "Family Function",
+  "Pre-Wedding / Couple",
+  "Corporate / Business",
+  "Commercial / Creative",
+];
+
 function initialState(prefillType: string): FormState {
   return {
     fullName: "",
     email: "",
     phone: "",
-    type: prefillType,
+    type: typeOptions.includes(prefillType) ? prefillType : "",
     date: "",
     location: "",
-    photography: false,
-    videography: false,
-    photoEditing: false,
-    videoEditing: false,
     budget: "Request a Custom Quote",
     requirements: prefillType ? `I am interested in ${prefillType}.` : "",
     contactMethod: "Phone",
@@ -93,17 +91,6 @@ export function ContactForm({
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  const typeOptions = useMemo(() => {
-    const eventTitles = events.map((event) => event.title);
-    const serviceTitles = services.map((service) => service.title);
-    return [
-      ...serviceTitles,
-      ...eventTitles,
-      "Photography + Videography + Editing",
-      "Other Celebration",
-    ];
-  }, []);
-
   const update = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm((current) => ({ ...current, [key]: value }));
     setErrors((current) => ({ ...current, [key]: undefined }));
@@ -138,12 +125,6 @@ export function ContactForm({
           type: form.type,
           date: form.date,
           location: form.location,
-          services: [
-            form.photography ? "Photography" : "",
-            form.videography ? "Videography" : "",
-            form.photoEditing ? "Photo Editing" : "",
-            form.videoEditing ? "Video Editing" : "",
-          ].filter(Boolean),
           budget: form.budget,
           requirements: form.requirements,
           contactMethod: form.contactMethod,
@@ -163,21 +144,28 @@ export function ContactForm({
 
   if (submitted) {
     return (
-      <div className="reveal rounded-lg border border-primary/40 bg-card p-8 shadow-cinematic">
-        <CheckCircle2 className="size-12 text-primary" />
+      <div className="reveal rounded-lg border border-primary/40 bg-card p-8 text-center shadow-cinematic">
+        <CheckCircle2 className="mx-auto size-12 text-primary" />
         <h2 className="mt-5 font-display text-4xl font-semibold text-foreground">
           Thank You for Your Enquiry!
         </h2>
-        <p className="mt-4 text-base leading-8 text-muted-foreground">
+        <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-muted-foreground">
           Your enquiry has been sent to RAKZS STUDIO. We’ll contact you using your preferred method
           to discuss the next steps.
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+
+        <div className="mx-auto mt-6 max-w-xl rounded-md border border-primary/40 bg-secondary p-4 text-sm leading-7 text-muted-foreground">
+          <span className="font-semibold text-primary">Note:</span> Before confirming your booking,
+          an advance payment of <span className="font-semibold text-foreground">30% – 40%</span> of
+          the total amount is required.
+        </div>
+
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button variant="gold" onClick={reset}>
             <RotateCcw className="size-4" /> Reset Form
           </Button>
           <Button variant="outlineGold" asChild>
-            <a href="tel:+919876543210">Contact Studio Directly</a>
+            <a href="tel:+918522059034">Contact Studio Directly</a>
           </Button>
         </div>
       </div>
@@ -247,32 +235,6 @@ export function ContactForm({
             placeholder="City / venue"
           />
         </Field>
-      </div>
-
-      <div>
-        <p className="text-sm font-medium text-foreground">Services Needed</p>
-        <div className="mt-3 grid grid-cols-2 gap-3">
-          <CheckItem
-            label="Photography"
-            checked={form.photography}
-            onCheckedChange={(checked) => update("photography", checked)}
-          />
-          <CheckItem
-            label="Videography"
-            checked={form.videography}
-            onCheckedChange={(checked) => update("videography", checked)}
-          />
-          <CheckItem
-            label="Photo Editing"
-            checked={form.photoEditing}
-            onCheckedChange={(checked) => update("photoEditing", checked)}
-          />
-          <CheckItem
-            label="Video Editing"
-            checked={form.videoEditing}
-            onCheckedChange={(checked) => update("videoEditing", checked)}
-          />
-        </div>
       </div>
 
       <div className="grid gap-5 md:grid-cols-2">

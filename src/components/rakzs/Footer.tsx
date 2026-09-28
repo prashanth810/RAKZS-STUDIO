@@ -13,7 +13,13 @@ const quickLinks = [
   { label: "Privacy Policy", to: "/privacy-policy" },
 ] as const;
 
-const serviceLinks = ["Photography", "Videography", "Photo Editing", "Video Editing"];
+const serviceLinks = [
+  "Wedding & Engagement",
+  "Family Function",
+  "Pre-Wedding / Couple",
+  "Corporate / Business",
+  "Commercial / Creative",
+];
 
 const socialLinks = [
   { label: "Instagram", icon: Instagram, href: "https://instagram.com/rakzsstudio" },

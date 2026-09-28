@@ -15,6 +15,7 @@ import { Header } from "@/components/rakzs/Header";
 import { themeInitScript } from "@/components/rakzs/ThemeToggle";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { WhatsAppFloat } from "@/components/ui/Whatsappfloat";
 
 function NotFoundComponent() {
   return (
@@ -123,6 +124,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </QueryClientProvider>
   );
 }

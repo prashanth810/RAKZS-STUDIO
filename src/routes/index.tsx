@@ -98,7 +98,7 @@ function HomePage() {
 
   return (
     <>
-      <section className="relative flex min-h-[96vh] items-end overflow-hidden pt-24">
+      <section className="relative flex min-h-screen items-end overflow-hidden pt-24">
         <video
           className="absolute inset-0 size-full object-cover"
           autoPlay

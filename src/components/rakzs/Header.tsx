@@ -9,9 +9,10 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
-  { label: "Events", to: "/events" },
-  { label: "Services", to: "/services" },
-  { label: "Contact", to: "/contact" },
+  { label: "Services", to: "/events" },
+  // { label: "Services", to: "/services" },
+  { label: "Packages", to: "/packages" },
+  // { label: "Contact", to: "/contact" },
 ] as const;
 
 function isActive(pathname: string, to: string) {
@@ -86,7 +87,7 @@ export function Header() {
           />
           <Button asChild variant="gold" size="lg">
             <Link to="/contact" search={{ service: undefined, event: undefined }}>
-              Let&apos;s Talk
+              Contact
             </Link>
           </Button>
         </div>
@@ -140,7 +141,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               search={{ service: undefined, event: undefined }}
             >
-              Let&apos;s Talk
+              Contact
             </Link>
           </Button>
         </nav>

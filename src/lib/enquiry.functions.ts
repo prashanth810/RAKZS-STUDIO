@@ -8,7 +8,6 @@ const enquirySchema = z.object({
   type: z.string().trim().min(1).max(150),
   date: z.string().trim().min(1).max(30),
   location: z.string().trim().max(200),
-  services: z.array(z.string().trim().max(50)).max(4),
   budget: z.string().trim().max(100),
   requirements: z.string().trim().max(4000),
   contactMethod: z.string().trim().max(50),
@@ -64,18 +63,12 @@ export const sendEnquiry = createServerFn({ method: "POST" })
       throw new Error("Enquiry email service is not configured.");
     }
 
-    const servicesHtml = servicePills(data.services);
-    const serviceValue = servicesHtml
-      ? `${escapeHtml(data.type)}<br/><span style="display:inline-block;margin-top:6px">${servicesHtml}</span>`
-      : escapeHtml(data.type);
-
     const rows = [
       detailRow("&#128100;", "Name", data.fullName, false),
       detailRow("&#9993;", "Email", data.email, false),
       detailRow("&#128222;", "Phone", data.phone, false),
       detailRow("&#128197;", "Event date", data.date, false),
       detailRow("&#128205;", "Location", data.location, false),
-      detailRow("&#127909;", "Service interested in", serviceValue, false, true),
       detailRow("&#128176;", "Expected budget", data.budget, false),
       detailRow("&#9742;", "Preferred contact", data.contactMethod, false),
       detailRow("&#128172;", "Message", data.requirements, true),
