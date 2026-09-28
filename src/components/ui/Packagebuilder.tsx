@@ -8,6 +8,21 @@ import { Textarea } from "@/components/ui/textarea";
 import { SectionHeader } from "@/components/rakzs/SectionHeader";
 import { studioContact } from "@/data/site";
 import { addOnItems, crewItems, type AddOnItem, type CrewItem } from "@/data/Packages";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+const typeOptions = [
+  "Wedding & Engagement",
+  "Family Function",
+  "Pre-Wedding / Couple",
+  "Corporate / Business",
+  "Commercial / Creative",
+];
 
 const formatINR = (value: number) => `₹${value.toLocaleString("en-IN")}`;
 
@@ -18,6 +33,7 @@ function toWhatsAppNumber(phone: string) {
 export function PackageBuilder() {
   const [counts, setCounts] = useState<Record<string, number>>({});
   const [checked, setChecked] = useState<Record<string, boolean>>({});
+  const [eventType, setEventType] = useState("");
 
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
@@ -76,6 +92,10 @@ export function PackageBuilder() {
       alert("Please Enter Valid phone number.");
     }
 
+    if (eventType === "") {
+      alert("Please select an event / service type.");
+    }
+
     if (!hasSelection) {
       alert("Please select at least one item for your package.");
       return;
@@ -91,6 +111,7 @@ export function PackageBuilder() {
     message += `━━━━━━━━━━━━━━━━━━\n\n`;
     message += `Name: ${customerName}\n`;
     message += `Phone: ${customerPhone}\n`;
+    message += `Event: ${eventType}\n`;
     if (eventDate) message += `Date: ${eventDate}\n`;
     if (eventLocation) message += `Location: ${eventLocation}\n`;
     message += `\n`;
@@ -128,54 +149,59 @@ export function PackageBuilder() {
 
   return (
     <section className="pb-10 bg-card">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8">
         <SectionHeader
           eyebrow="Make Your Own"
           title="Build Your Coverage."
           description="Select the coverage you need. Multiple photographers and videographers can be added."
         />
 
-        <div className="grid gap-7 lg:grid-cols-[1.5fr_1fr]">
+        <div className="grid gap-5 lg:grid-cols-[1.5fr_1fr] lg:gap-7">
           {/* CREW + ADD-ONS */}
-          <div className="reveal rounded-lg border border-border bg-background p-7 shadow-cinematic">
-            <h3 className="font-display text-2xl font-semibold text-foreground">Team & Coverage</h3>
+          <div className="reveal rounded-lg border border-border bg-background p-4 shadow-cinematic sm:p-6 lg:p-7">
+            <h3 className="font-display text-xl font-semibold text-foreground sm:text-2xl">
+              Team & Coverage
+            </h3>
 
             <div className="mt-2 divide-y divide-border">
               {crewItems.map((item: CrewItem) => {
                 const quantity = counts[item.id] ?? 0;
                 return (
-                  <div key={item.id} className="flex items-center justify-between gap-4 py-5">
-                    <div className="flex items-center gap-4">
-                      <span className="grid size-11 shrink-0 place-items-center rounded-md bg-secondary text-xl">
+                  <div
+                    key={item.id}
+                    className="flex items-center justify-between gap-3 py-4 sm:gap-4 sm:py-5"
+                  >
+                    <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
+                      <span className="grid size-10 shrink-0 place-items-center rounded-md bg-secondary text-xl sm:size-11">
                         <item.icon />
                       </span>
-                      <div>
-                        <p className="text-sm font-semibold text-foreground md:text-base">
+                      <div className="min-w-0">
+                        <p className="break-words text-[13px] font-semibold text-foreground sm:text-sm md:text-base">
                           {item.name}
                         </p>
-                        <p className="mt-1 text-xs text-muted-foreground md:text-sm">
+                        <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
                           {formatINR(item.price)} / person
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex shrink-0 items-center gap-1 md:gap-3">
                       <button
                         type="button"
                         onClick={() => decrease(item.id)}
                         aria-label={`Decrease ${item.name}`}
-                        className="grid size-8 place-items-center rounded-md bg-foreground text-background transition-colors hover:bg-foreground/80"
+                        className="grid size-9 place-items-center rounded-md bg-foreground text-background transition-colors hover:bg-foreground/80 md:size-8"
                       >
                         <Minus className="size-4" />
                       </button>
-                      <span className="w-5 text-center text-sm font-bold text-foreground">
+                      <span className="w-5 shrink-0 text-center text-sm font-bold text-foreground">
                         {quantity}
                       </span>
                       <button
                         type="button"
                         onClick={() => increase(item.id)}
                         aria-label={`Increase ${item.name}`}
-                        className="grid size-8 place-items-center rounded-md bg-primary text-primary-foreground transition-colors hover:bg-primary/88"
+                        className="grid size-9 place-items-center rounded-md bg-primary text-primary-foreground transition-colors hover:bg-primary/88 md:size-8"
                       >
                         <Plus className="size-4" />
                       </button>
@@ -185,20 +211,22 @@ export function PackageBuilder() {
               })}
             </div>
 
-            <h3 className="mt-8 font-display text-2xl font-semibold text-foreground">Add-ons</h3>
+            <h3 className="mt-8 font-display text-xl font-semibold text-foreground sm:text-2xl">
+              Add-ons
+            </h3>
             <div className="mt-2 divide-y divide-border">
               {addOnItems.map((item: AddOnItem) => (
                 <label
                   key={item.id}
                   htmlFor={item.id}
-                  className="flex cursor-pointer items-center justify-between gap-4 py-5"
+                  className="flex cursor-pointer items-center justify-between gap-3 py-4 sm:gap-4 sm:py-5"
                 >
-                  <div className="flex items-center gap-4">
-                    <span className="grid size-11 shrink-0 place-items-center rounded-md bg-secondary text-xl">
+                  <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
+                    <span className="grid size-10 shrink-0 place-items-center rounded-md bg-secondary text-xl sm:size-11">
                       <item.icon />
                     </span>
-                    <div>
-                      <p className="text-sm font-semibold text-foreground md:text-base">
+                    <div className="min-w-0">
+                      <p className="break-words text-[13px] font-semibold text-foreground sm:text-sm md:text-base">
                         {item.name}
                       </p>
                       <p className="mt-1 text-xs text-muted-foreground md:text-sm">
@@ -212,7 +240,7 @@ export function PackageBuilder() {
                     type="checkbox"
                     checked={Boolean(checked[item.id])}
                     onChange={() => toggleAddOn(item.id)}
-                    className="size-5 accent-primary"
+                    className="size-6 shrink-0 accent-primary sm:size-5"
                   />
                 </label>
               ))}
@@ -220,9 +248,9 @@ export function PackageBuilder() {
           </div>
 
           {/* SUMMARY / CUSTOM REQUEST */}
-          <div className="reveal h-fit rounded-lg border border-border bg-background p-7 shadow-cinematic lg:sticky lg:top-28">
+          <div className="reveal h-fit rounded-lg border border-border bg-background p-4 shadow-cinematic sm:p-6 lg:sticky lg:top-28 lg:p-7">
             <span className="section-kicker">Custom Request</span>
-            <h3 className="mt-3 font-display text-3xl font-semibold text-foreground">
+            <h3 className="mt-3 font-display text-2xl font-semibold text-foreground sm:text-3xl">
               Your Package
             </h3>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">
@@ -232,19 +260,23 @@ export function PackageBuilder() {
             {hasSelection ? (
               <div className="mt-6 space-y-2">
                 {selectedCrew.map((item) => (
-                  <div key={item.id} className="flex justify-between text-sm">
-                    <span className="text-muted-foreground flex items-center gap-2 font-semibold">
+                  <div key={item.id} className="flex justify-between gap-3 text-sm">
+                    <span className="flex min-w-0 flex-1 items-center gap-2 break-words font-semibold text-muted-foreground">
                       <item.icon /> {item.name} × {item.quantity}
                     </span>
-                    <span className="font-semibold text-foreground">{formatINR(item.total)}</span>
+                    <span className="shrink-0 whitespace-nowrap font-semibold text-foreground">
+                      {formatINR(item.total)}
+                    </span>
                   </div>
                 ))}
                 {selectedAddOns.map((item) => (
-                  <div key={item.id} className="flex justify-between text-sm">
-                    <span className="text-muted-foreground flex items-center gap-2">
+                  <div key={item.id} className="flex justify-between gap-3 text-sm">
+                    <span className="flex min-w-0 flex-1 items-center gap-2 break-words font-semibold text-muted-foreground">
                       <item.icon /> {item.name}
                     </span>
-                    <span className="font-semibold text-foreground">{formatINR(item.price)}</span>
+                    <span className="shrink-0 whitespace-nowrap font-semibold text-foreground">
+                      {formatINR(item.price)}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -256,11 +288,11 @@ export function PackageBuilder() {
               </p>
             )}
 
-            <div className="mt-5 flex items-center justify-between border-t border-dashed border-foreground pt-4">
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-dashed border-foreground pt-4">
               <span className="font-display text-xl font-semibold text-foreground">
                 Estimated Total
               </span>
-              <span className="font-display text-2xl font-bold text-primary">
+              <span className="shrink-0 whitespace-nowrap font-display text-2xl font-bold text-primary">
                 {formatINR(grandTotal)}
               </span>
             </div>
@@ -291,7 +323,23 @@ export function PackageBuilder() {
                 />
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <Label htmlFor="eventType">Event / Service Type *</Label>
+                <Select value={eventType} onValueChange={setEventType}>
+                  <SelectTrigger id="eventType" className="mt-2">
+                    <SelectValue placeholder="Select a type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {typeOptions.map((option) => (
+                      <SelectItem key={option} value={option}>
+                        {option}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
                 <div>
                   <Label htmlFor="eventDate">Event Date</Label>
                   <Input
@@ -328,7 +376,7 @@ export function PackageBuilder() {
 
             <Button
               onClick={sendToWhatsApp}
-              className="mt-7 py-5 w-full border border-[#9E7232] bg-transparent text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white duration-300"
+              className="mt-7 min-h-12 w-full whitespace-normal border border-[#9E7232] bg-transparent px-3 py-3 text-center text-sm leading-tight text-primary transition-colors duration-300 hover:border-primary hover:bg-primary hover:text-white sm:text-base"
             >
               <MessageCircle className="size-4" />
               Send Requirements on WhatsApp

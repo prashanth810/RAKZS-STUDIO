@@ -224,7 +224,7 @@ function HomePage() {
             description="Illustrative portfolio stories spanning celebrations, families, and brand worlds."
           />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {events.slice(0, 6).map((event) => (
+            {events.slice(0, 5).map((event) => (
               <EventCard key={event.slug} event={event} />
             ))}
           </div>

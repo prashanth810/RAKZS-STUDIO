@@ -60,12 +60,12 @@ export function PricingTiers() {
           description="Pick a ready-made package, or scroll down to build your own coverage."
         />
 
-        <div className="grid gap-7 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-3 md:gap-7">
           {pricingTiers.map((tier) => (
             <div
               key={tier.name}
               className={cn(
-                "reveal relative flex flex-col rounded-lg border bg-card p-8 shadow-cinematic",
+                "reveal relative flex flex-col rounded-lg border bg-card p-5 shadow-cinematic md:p-8",
                 tier.highlighted ? "border-primary shadow-gold md:-translate-y-3" : "border-border",
               )}
             >
@@ -75,15 +75,18 @@ export function PricingTiers() {
                 </span>
               ) : null}
 
-              <p className="inline-flex w-fit rounded-full bg-[#F3E0C2] px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.12em] text-[#8A5A20]">
+              <p className="inline-flex w-fit rounded-full bg-[#F3E0C2] px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.12em] text-[#8A5A20]">
                 {tier.name}
               </p>
+              <h3 className="mt-3 font-display text-3xl font-medium leading-tight text-foreground">
+                {tier.title}
+              </h3>
               <div className="mt-4 flex items-baseline gap-2">
                 <span className="font-display text-3xl font-semibold text-foreground">
                   {tier.price}
                 </span>
               </div>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">{tier.description}</p>
+              {/* <p className="mt-4 text-sm leading-7 text-muted-foreground">{tier.description}</p> */}
 
               <ul className="mt-6 flex-1 space-y-3">
                 {tier.features.map((feature) => (

@@ -2,6 +2,7 @@
 export const pricingTiers = [
   {
     name: "PER DAY",
+    title: "The Essentials",
     price: "₹25K–₹35K",
     period: "per event",
     description: "A focused single-photographer coverage for intimate occasions.",
@@ -16,6 +17,7 @@ export const pricingTiers = [
   },
   {
     name: "WEDDING COVERAGE",
+    title: "The Family Favourite",
     price: "₹80K–₹1.80L",
     period: "per event",
     description:
@@ -33,6 +35,7 @@ export const pricingTiers = [
   },
   {
     name: "LUXURY",
+    title: "The Grand Celebration",
     price: "₹2L–₹3.50L",
     period: "per event",
     description: "Complete multi-day production for large weddings and destination events.",
@@ -92,6 +95,7 @@ export const crewItems = [
 ] as const;
 
 export const addOnItems = [
+  { id: "prewedding", name: "Pre Wedding", price: 50000, icon: FaCameraRetro, emoji: "\u{1F4F7}" },
   { id: "led-screen", name: "LED Screen", price: 15000, icon: IoMdTv, emoji: "\u{1F5A5}\u{FE0F}" }, // 🖥️
   {
     id: "live-streaming",
@@ -100,8 +104,7 @@ export const addOnItems = [
     icon: MdOutlineScreenShare,
     emoji: "\u{1F4E1}",
   }, // 📡
-  { id: "album", name: "Album", price: 12000, icon: BsJournalAlbum, emoji: "\u{1F4D6}" }, // 📖
-  { id: "album", name: "Album", price: 12000, icon: BsJournalAlbum, emoji: "📖" },
+  { id: "album", name: "Album", price: "0", icon: BsJournalAlbum, emoji: "\u{1F4D6}" }, // 📖
 ] as const;
 
 export type CrewItem = (typeof crewItems)[number];
