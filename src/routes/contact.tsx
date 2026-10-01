@@ -58,18 +58,18 @@ function ContactPage() {
       />
 
       <section className="section-band">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8">
           <SectionHeader
             eyebrow="Start an Enquiry"
             title="Every commission begins with a conversation."
             description="Send your details to the studio, and we’ll contact you personally to discuss availability, coverage, and your custom quote."
           />
-          <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="grid min-w-0 gap-5 sm:gap-8 lg:grid-cols-[1.15fr_0.85fr]">
             <ContactForm prefillEvent={event} prefillService={service} />
 
-            <aside className="reveal grid content-start gap-4">
+            <aside className="reveal grid min-w-0 content-start gap-3 sm:gap-4">
               <div className="overflow-hidden rounded-lg border border-primary/40 bg-secondary">
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <MapPin className="size-6 text-primary" />
                   <p className="section-kicker">Studio Location</p>
                   <p className="mt-3 text-sm leading-7 text-muted-foreground">
@@ -79,7 +79,7 @@ function ContactPage() {
                 <iframe
                   title="RAKZS STUDIO office at Cyber Towers"
                   src={studioContact.maps}
-                  className="h-80 w-full border-0"
+                  className="h-56 w-full border-0 sm:h-80"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   allowFullScreen
@@ -89,7 +89,7 @@ function ContactPage() {
               {details.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-lg border border-border bg-card p-6 shadow-cinematic"
+                  className="min-w-0 rounded-lg border border-border bg-card p-4 shadow-cinematic sm:p-6"
                 >
                   <item.icon className="size-6 text-primary" />
                   <p className="mt-4 text-xs uppercase tracking-[0.22em] text-primary">
@@ -98,12 +98,14 @@ function ContactPage() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="mt-2 block font-display text-2xl text-foreground hover:text-primary"
+                      className="mt-2 block break-all font-display text-xl text-foreground hover:text-primary sm:break-normal sm:text-2xl"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <p className="mt-2 text-base leading-7 text-muted-foreground">{item.value}</p>
+                    <p className="mt-2 break-all text-sm leading-7 text-muted-foreground sm:break-normal sm:text-base">
+                      {item.value}
+                    </p>
                   )}
                 </div>
               ))}

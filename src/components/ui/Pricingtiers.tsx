@@ -45,7 +45,7 @@ function buildPackageMessage(tier: PricingTier) {
 }
 
 function openWhatsApp(tier: PricingTier) {
-  const number = studioContact.phone.replace(/\D/g, "");
+  const number = studioContact.whatsappPhone.replace(/\D/g, "");
   const url = `https://wa.me/${number}?text=${encodeURIComponent(buildPackageMessage(tier))}`;
   window.open(url, "_blank");
 }

@@ -104,7 +104,7 @@ export const addOnItems = [
     icon: MdOutlineScreenShare,
     emoji: "\u{1F4E1}",
   }, // 📡
-  { id: "album", name: "Album", price: "0", icon: BsJournalAlbum, emoji: "\u{1F4D6}" }, // 📖
+  { id: "album", name: "Album", price: 0, icon: BsJournalAlbum, emoji: "\u{1F4D6}" }, // 📖
 ] as const;
 
 export type CrewItem = (typeof crewItems)[number];

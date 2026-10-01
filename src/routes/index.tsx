@@ -238,7 +238,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="section-band">
+      {/* <section className="section-band">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeader eyebrow="What We Create" title="From first frame to final cut." />
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -266,7 +266,7 @@ function HomePage() {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="section-band bg-card">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">

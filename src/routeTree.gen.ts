@@ -18,6 +18,7 @@ import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as EventsIndexRouteImport } from './routes/events.index'
 import { Route as EventsSlugRouteImport } from './routes/events.$slug'
+import { Route as EventsCategoryCategoryRouteImport } from './routes/events.category.$category'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -64,6 +65,11 @@ const EventsSlugRoute = EventsSlugRouteImport.update({
   path: '/events/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventsCategoryCategoryRoute = EventsCategoryCategoryRouteImport.update({
+  id: '/events/category/$category',
+  path: '/events/category/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/events/$slug': typeof EventsSlugRoute
   '/events/': typeof EventsIndexRoute
+  '/events/category/$category': typeof EventsCategoryCategoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/events/$slug': typeof EventsSlugRoute
   '/events': typeof EventsIndexRoute
+  '/events/category/$category': typeof EventsCategoryCategoryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/events/$slug': typeof EventsSlugRoute
   '/events/': typeof EventsIndexRoute
+  '/events/category/$category': typeof EventsCategoryCategoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/events/$slug'
     | '/events/'
+    | '/events/category/$category'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/events/$slug'
     | '/events'
+    | '/events/category/$category'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/events/$slug'
     | '/events/'
+    | '/events/category/$category'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +157,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   EventsSlugRoute: typeof EventsSlugRoute
   EventsIndexRoute: typeof EventsIndexRoute
+  EventsCategoryCategoryRoute: typeof EventsCategoryCategoryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/events/category/$category': {
+      id: '/events/category/$category'
+      path: '/events/category/$category'
+      fullPath: '/events/category/$category'
+      preLoaderRoute: typeof EventsCategoryCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   EventsSlugRoute: EventsSlugRoute,
   EventsIndexRoute: EventsIndexRoute,
+  EventsCategoryCategoryRoute: EventsCategoryCategoryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -97,7 +97,7 @@ export function PackageEnquiryDialog({
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    const number = studioContact.phone.replace(/\D/g, "");
+    const number = studioContact.whatsappPhone.replace(/\D/g, "");
     const url = `https://wa.me/${number}?text=${encodeURIComponent(buildMessage(tier))}`;
     window.open(url, "_blank");
     onClose();

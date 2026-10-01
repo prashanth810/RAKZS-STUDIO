@@ -18,8 +18,8 @@ import {
 
 const typeOptions = [
   "Wedding & Engagement",
-  "Family Function",
   "Pre-Wedding / Couple",
+  "Family Function",
   "Corporate / Business",
   "Commercial / Creative",
 ];
@@ -129,12 +129,13 @@ export function PackageBuilder() {
 
     selectedAddOns.forEach((item) => {
       message += `${item.emoji} *${item.name}*\n`;
-      message += `   Total: ${formatINR(item.price)}\n\n`;
+      if (item.id !== "album") message += `   Total: ${formatINR(item.price)}\n`;
+      message += "\n";
     });
 
     message += `━━━━━━━━━━━━━━━━━━\n`;
     if (totalMembers > 0) message += `\u{1F465} *TOTAL TEAM MEMBERS:* ${totalMembers}\n`;
-    message += `\u{1F4B0} *ESTIMATED TOTAL: ${formatINR(grandTotal)}*\n`;
+    if (grandTotal > 0) message += `\u{1F4B0} *ESTIMATED TOTAL: ${formatINR(grandTotal)}*\n`;
     message += `━━━━━━━━━━━━━━━━━━\n\n`;
 
     if (additionalMessage.trim()) {
@@ -143,7 +144,7 @@ export function PackageBuilder() {
 
     message += `Please contact me regarding availability and final quotation.\n\nThank you. \u{1F4F8}`;
 
-    const whatsappURL = `https://api.whatsapp.com/send?phone=${toWhatsAppNumber(studioContact.phone)}&text=${encodeURIComponent(message)}`;
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${toWhatsAppNumber(studioContact.whatsappPhone)}&text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, "_blank");
   };
 
@@ -229,9 +230,11 @@ export function PackageBuilder() {
                       <p className="break-words text-[13px] font-semibold text-foreground sm:text-sm md:text-base">
                         {item.name}
                       </p>
-                      <p className="mt-1 text-xs text-muted-foreground md:text-sm">
-                        {formatINR(item.price)}
-                      </p>
+                      {item.id !== "album" ? (
+                        <p className="mt-1 text-xs text-muted-foreground md:text-sm">
+                          {formatINR(item.price)}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
 
@@ -274,9 +277,11 @@ export function PackageBuilder() {
                     <span className="flex min-w-0 flex-1 items-center gap-2 break-words font-semibold text-muted-foreground">
                       <item.icon /> {item.name}
                     </span>
-                    <span className="shrink-0 whitespace-nowrap font-semibold text-foreground">
-                      {formatINR(item.price)}
-                    </span>
+                    {item.id !== "album" ? (
+                      <span className="shrink-0 whitespace-nowrap font-semibold text-foreground">
+                        {formatINR(item.price)}
+                      </span>
+                    ) : null}
                   </div>
                 ))}
               </div>
@@ -288,14 +293,16 @@ export function PackageBuilder() {
               </p>
             )}
 
-            <div className="mt-5 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-dashed border-foreground pt-4">
-              <span className="font-display text-xl font-semibold text-foreground">
-                Estimated Total
-              </span>
-              <span className="shrink-0 whitespace-nowrap font-display text-2xl font-bold text-primary">
-                {formatINR(grandTotal)}
-              </span>
-            </div>
+            {grandTotal > 0 ? (
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-dashed border-foreground pt-4">
+                <span className="font-display text-xl font-semibold text-foreground">
+                  Estimated Total
+                </span>
+                <span className="shrink-0 whitespace-nowrap font-display text-2xl font-bold text-primary">
+                  {formatINR(grandTotal)}
+                </span>
+              </div>
+            ) : null}
 
             <div className="mt-7 space-y-4">
               <div>

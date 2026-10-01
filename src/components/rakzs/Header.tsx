@@ -1,10 +1,10 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Camera, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/rakzs/ThemeToggle";
 import { cn } from "@/lib/utils";
+import RAKZS_Logo from "../../assets/RAKZS_Logo.png";
 
 const navItems = [
   { label: "Home", to: "/" },
@@ -44,19 +44,23 @@ export function Header() {
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
         <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="grid size-11 place-items-center rounded-full border border-primary/45 bg-secondary text-primary shadow-gold">
-            <Camera className="size-5" />
-          </span>
+          <img
+            src={RAKZS_Logo}
+            alt="RAKZS STUDIO"
+            width={56}
+            height={56}
+            className="size-12 rounded bg-white object-cover shadow-gold ring-2 ring-primary/50 transition-transform duration-300 group-hover:scale-105 sm:size-14"
+          />
           <span className="hidden leading-none lg:block">
             <span
               className={cn(
-                "block font-display text-xl font-semibold tracking-normal",
+                "block font-display text-xl font-semibold tracking-wide",
                 overHomeVideo ? "text-on-media" : "text-foreground",
               )}
             >
               RAKZS STUDIO
             </span>
-            <span className="mt-1 block text-[0.62rem] uppercase tracking-[0.32em] text-primary">
+            <span className="mt-1.5 block text-[0.62rem] uppercase tracking-[0.32em] text-primary">
               Cinema & Still Life
             </span>
           </span>

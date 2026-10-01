@@ -5,7 +5,7 @@ import { studioContact } from "@/data/site";
 const DEFAULT_MESSAGE = "Hi, I want to know more information about your photography services.";
 
 export function WhatsAppFloat() {
-  const number = studioContact.phone.replace(/\D/g, "");
+  const number = studioContact.whatsappPhone.replace(/\D/g, "");
   const href = `https://wa.me/${number}?text=${encodeURIComponent(DEFAULT_MESSAGE)}`;
 
   return (

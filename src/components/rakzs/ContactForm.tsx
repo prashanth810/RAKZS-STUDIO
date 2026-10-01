@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { studioContact } from "@/data/site";
 import { sendEnquiry } from "@/lib/enquiry.functions";
 
 type FormState = {
@@ -41,8 +42,8 @@ const contactMethods = ["Phone", "Email", "WhatsApp", "Instagram"];
 
 const typeOptions = [
   "Wedding & Engagement",
-  "Family Function",
   "Pre-Wedding / Couple",
+  "Family Function",
   "Corporate / Business",
   "Commercial / Creative",
 ];
@@ -144,9 +145,9 @@ export function ContactForm({
 
   if (submitted) {
     return (
-      <div className="reveal rounded-lg border border-primary/40 bg-card p-8 text-center shadow-cinematic">
+      <div className="reveal rounded-lg border border-primary/40 bg-card p-5 text-center shadow-cinematic sm:p-8">
         <CheckCircle2 className="mx-auto size-12 text-primary" />
-        <h2 className="mt-5 font-display text-4xl font-semibold text-foreground">
+        <h2 className="mt-5 font-display text-3xl font-semibold text-foreground sm:text-4xl">
           Thank You for Your Enquiry!
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-muted-foreground">
@@ -165,7 +166,7 @@ export function ContactForm({
             <RotateCcw className="size-4" /> Reset Form
           </Button>
           <Button variant="outlineGold" asChild>
-            <a href="tel:+918522059034">Contact Studio Directly</a>
+            <a href={`tel:${studioContact.phone.replace(/\s/g, "")}`}>Contact Studio Directly</a>
           </Button>
         </div>
       </div>
@@ -175,7 +176,7 @@ export function ContactForm({
   return (
     <form
       onSubmit={onSubmit}
-      className="reveal grid gap-6 rounded-lg border border-border bg-card p-6 shadow-cinematic md:p-8"
+      className="reveal grid gap-5 rounded-lg border border-border bg-card p-4 shadow-cinematic sm:gap-6 sm:p-6 md:p-8"
       noValidate
     >
       <div className="grid gap-5 md:grid-cols-2">

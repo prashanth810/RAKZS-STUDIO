@@ -4,11 +4,13 @@ import familyHero from "@/assets/rakzs-family-maternity.jpg";
 import editorialHero from "@/assets/rakzs-commercial-fashion.jpg";
 
 export const studioContact = {
-  phone: "+91 8522059034",
-  email: "hello@rakzsstudio.com",
-  location: "Cyber Towers, HITEC City, Hyderabad, Telangana",
-  instagram: "@rakzsstudio",
-  maps: "https://www.google.com/maps?q=Cyber+Towers+HITEC+City+Hyderabad&output=embed",
+  phone: "+91 8374355198",
+  whatsappPhone: "+91 8522059034",
+  email: "bookings.rakzsstudio@gmail.com",
+  location:
+    "Rakzs studio, 29-1505, Sainik Vihar Rd No.1, AS Rao Nagar, Secunderabad, Telangana 500056",
+  instagram: "https://www.instagram.com/rakzsstudio/",
+  maps: "https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d121740.22616496589!2d78.5713622!3d17.5369871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3bcb9b000bb50ff7%3A0x769cf166c130871e!2sRakzs%20studio%2C%2029-1505%2C%2029-1505%2C%20Sainik%20Vihar%20Rd%20No.%201%2C%20Sainik%20Viahar%2C%20AS%20Rao%20Nagar%2C%20Secunderabad%2C%20Telangana%20500056!3m2!1d17.4760697!2d78.539177!5e0!3m2!1sen!2sin!4v1790826771506!5m2!1sen!2sin",
 };
 
 export const testimonials = [

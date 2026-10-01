@@ -1,10 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import editorialHero from "@/assets/rakzs-commercial-fashion.jpg";
-import { Button } from "@/components/ui/button";
-import { EventCard } from "@/components/rakzs/EventCard";
 import { PageHero } from "@/components/rakzs/PageHero";
-import { eventCategories, events } from "@/data/events";
+import { getEventsByServiceCategory, serviceCategories } from "@/data/events";
+import { CategoryCard } from "@/components/ui/Categorycard";
 
 export const Route = createFileRoute("/events/")({
   head: () => ({
@@ -28,8 +26,6 @@ export const Route = createFileRoute("/events/")({
   component: EventsPage,
 });
 function EventsPage() {
-  const [active, setActive] = useState<(typeof eventCategories)[number]>("All Events");
-  const filtered = active === "All Events" ? events : events.filter((e) => e.category === active);
   return (
     <>
       <PageHero
@@ -40,30 +36,17 @@ function EventsPage() {
       />
       <section className="section-band">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="mb-12 flex flex-wrap justify-center gap-2">
-            {eventCategories.map((category) => (
-              <Button
-                key={category}
-                variant={active === category ? "gold" : "outlineGold"}
-                size="sm"
-                onClick={() => setActive(category)}
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((event, index) => (
-              <div key={event.slug} className={index % 5 === 0 ? "lg:col-span-2" : ""}>
-                <EventCard event={event} featured={index % 5 === 0} />
+            {serviceCategories.map((category, index) => (
+              <div key={category.slug} className={index % 5 === 0 ? "lg:col-span-2" : ""}>
+                <CategoryCard
+                  category={category}
+                  count={getEventsByServiceCategory(category).length}
+                  featured={index % 5 === 0}
+                />
               </div>
             ))}
           </div>
-          {filtered.length === 0 ? (
-            <p className="py-20 text-center text-muted-foreground">
-              No illustrative stories in this category yet.
-            </p>
-          ) : null}
         </div>
       </section>
     </>

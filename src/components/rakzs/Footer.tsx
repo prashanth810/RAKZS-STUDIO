@@ -1,7 +1,10 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { Camera, Facebook, Instagram, Mail, MapPin, Phone, PinIcon, Youtube } from "lucide-react";
-
 import { studioContact } from "@/data/site";
+import GMB_QR from "../../data/GMB_QR.png";
+import RAKZS_Logo from "../../assets/RAKZS_Logo.png";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 const quickLinks = [
   { label: "Home", to: "/" },
@@ -15,8 +18,8 @@ const quickLinks = [
 
 const serviceLinks = [
   "Wedding & Engagement",
-  "Family Function",
   "Pre-Wedding / Couple",
+  "Family Function",
   "Corporate / Business",
   "Commercial / Creative",
 ];
@@ -29,24 +32,40 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const overHomeVideo = pathname === "/" && !scrolled && !open;
+
   return (
     <footer className="relative overflow-hidden border-t border-border bg-card text-card-foreground">
       <div className="mountain-silhouette pointer-events-none absolute inset-x-0 bottom-0 h-56 opacity-60" />
       <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.25fr_0.8fr_0.8fr_1fr] lg:px-8">
         <div>
-          <Link to="/" className="flex items-center gap-3">
-            <span className="grid size-12 place-items-center rounded-full border border-primary/45 bg-secondary text-primary shadow-gold">
-              <Camera className="size-5" />
-            </span>
-            <span>
-              <span className="block font-display text-2xl font-semibold text-foreground">
+          <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
+            <img
+              src={RAKZS_Logo}
+              alt="RAKZS STUDIO"
+              width={56}
+              height={56}
+              className="size-12 rounded bg-white object-cover shadow-gold ring-2 ring-primary/50 transition-transform duration-300 group-hover:scale-105 sm:size-14"
+            />
+            <span className="hidden leading-none lg:block">
+              <span
+                className={cn(
+                  "block font-display text-xl font-semibold tracking-wide",
+                  overHomeVideo ? "text-on-media" : "text-foreground",
+                )}
+              >
                 RAKZS STUDIO
               </span>
-              <span className="mt-1 block text-xs uppercase tracking-[0.28em] text-primary">
-                Your Story | Our Lens | A Brighter Tomorrow
+              <span className="mt-1.5 block text-[0.62rem] uppercase tracking-[0.32em] text-primary">
+                Cinema & Still Life
               </span>
             </span>
           </Link>
+
           <p className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground">
             Luxury photography, videography, and editing for celebrations, families, brands, and
             stories that deserve a cinematic memory.
@@ -113,10 +132,8 @@ export function Footer() {
               {studioContact.location}
             </span>
           </div>
-          <div className="mt-6 max-w-32">
-            <div className="aspect-square rounded-md border border-border bg-secondary p-3 text-center text-xs uppercase tracking-[0.16em] text-muted-foreground">
-              Instagram QR
-            </div>
+          <div className="mt-6">
+            <img src={GMB_QR} className="w-20 h-20 rounded" />
           </div>
         </div>
       </div>

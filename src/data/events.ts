@@ -403,6 +403,199 @@ export const events: EventItem[] = [
     ],
     equipment: sharedEquipment,
   },
+  {
+    slug: "royal-palace-wedding",
+    title: "Royal Palace Wedding",
+    category: "Weddings",
+    location: "Jodhpur, Rajasthan",
+    year: "2026",
+    summary:
+      "A grand palace celebration with processions, heritage courtyards, and lantern-lit evenings.",
+    story:
+      "This illustrative sample story follows a destination palace wedding from the baraat procession to the late-night celebration.",
+    vision:
+      "The represented vision is regal and warm: sandstone textures, brocade details, and portraits that feel like heirlooms.",
+    approach:
+      "We would combine wide architectural frames with intimate candids so the scale of the venue never overshadows the emotion.",
+    image: weddingHero,
+    gallery: gallerySet,
+    accent: "wedding",
+    deliverables: [
+      "Edited ceremony photographs",
+      "Cinematic highlight film",
+      "Palace detail frames",
+      "Family formals",
+      "Album-ready selections",
+    ],
+    timeline: [
+      "Venue walkthrough",
+      "Baraat and arrival",
+      "Ceremony coverage",
+      "Couple portraits",
+      "Reception highlights",
+    ],
+    equipment: sharedEquipment,
+  },
+  {
+    slug: "engagement-ceremony",
+    title: "Engagement Ceremony",
+    category: "Weddings",
+    location: "Hyderabad, Telangana",
+    year: "2026",
+    summary: "A ring-exchange evening of soft florals, shared glances, and family blessings.",
+    story:
+      "This illustrative sample story captures an engagement ceremony built around quiet emotion, ring details, and joyful family moments.",
+    vision:
+      "The vision is elegant and intimate, with pastel decor, warm light, and portraits that feel relaxed and sincere.",
+    approach:
+      "Coverage would focus on candid reactions, ring and decor details, and a short couple portrait session.",
+    image: preWeddingHero,
+    gallery: warmGallery,
+    accent: "wedding",
+    deliverables: [
+      "Edited engagement photographs",
+      "Ring and detail frames",
+      "Couple portraits",
+      "Short highlight reel",
+      "Private gallery selection",
+    ],
+    timeline: [
+      "Decor and detail coverage",
+      "Guest arrivals",
+      "Ring ceremony",
+      "Couple portraits",
+      "Family moments",
+    ],
+    equipment: sharedEquipment,
+  },
+  {
+    slug: "beach-pre-wedding",
+    title: "Beach Pre-Wedding",
+    category: "Pre-Weddings",
+    location: "Goa",
+    year: "2026",
+    summary: "Breezy coastal portraits with flowing fabrics, sea light, and effortless chemistry.",
+    story:
+      "This illustrative sample story follows a couple through a relaxed morning-to-sunset shoot along the coast.",
+    vision:
+      "The represented vision is airy and romantic, with movement, laughter, and soft golden edges.",
+    approach:
+      "We would plan around tides and light, using gentle direction so the couple stays natural.",
+    image: preWeddingHero,
+    gallery: warmGallery,
+    accent: "prewedding",
+    deliverables: [
+      "Edited couple portraits",
+      "Short romantic reel",
+      "Location story frames",
+      "Retouched hero images",
+      "Social media crops",
+    ],
+    timeline: [
+      "Moodboard planning",
+      "Wardrobe and tide timing",
+      "Golden-hour portraits",
+      "Movement clips",
+      "Retouch and grading",
+    ],
+    equipment: sharedEquipment,
+  },
+  {
+    slug: "heritage-fort-couple-shoot",
+    title: "Heritage Fort Couple Shoot",
+    category: "Pre-Weddings",
+    location: "Hyderabad, Telangana",
+    year: "2026",
+    summary: "Timeless couple portraits against ancient stone arches and warm evening light.",
+    story:
+      "This illustrative sample story explores a couple session framed by heritage architecture and dramatic skies.",
+    vision:
+      "The vision is classic and cinematic, pairing rich textures with graceful, unforced posing.",
+    approach:
+      "We would use archways and corridors for layered compositions and finish with sunset silhouettes.",
+    image: weddingHero,
+    gallery: gallerySet,
+    accent: "prewedding",
+    deliverables: [
+      "Edited couple portraits",
+      "Cinematic teaser",
+      "Architecture frames",
+      "Retouched hero images",
+      "Save-the-date crops",
+    ],
+    timeline: [
+      "Location recce",
+      "Styling and outfit plan",
+      "Golden-hour portraits",
+      "Silhouette frames",
+      "Final grading",
+    ],
+    equipment: sharedEquipment,
+  },
+  {
+    slug: "corporate-headshots",
+    title: "Corporate Team Headshots",
+    category: "Corporate",
+    location: "Office Studio",
+    year: "2026",
+    summary: "Clean, confident team portraits for websites, LinkedIn, and company profiles.",
+    story:
+      "This illustrative sample story covers an on-site headshot day for a growing team, designed to be fast and consistent.",
+    vision:
+      "The represented vision is approachable and professional, with consistent lighting across every team member.",
+    approach:
+      "A compact lighting setup, quick posing guidance, and same-day selects keep the day smooth for busy teams.",
+    image: corporateHero,
+    gallery: [corporateHero, brandingHero, editorialHero, corporateHero, productHero],
+    accent: "editorial",
+    deliverables: [
+      "Retouched headshots",
+      "Team group photographs",
+      "Website-ready crops",
+      "LinkedIn-ready files",
+      "Private review gallery",
+    ],
+    timeline: [
+      "Brand colour briefing",
+      "Lighting setup",
+      "Individual portraits",
+      "Group photographs",
+      "Retouch and delivery",
+    ],
+    equipment: sharedEquipment,
+  },
+  {
+    slug: "jewellery-campaign",
+    title: "Jewellery Campaign",
+    category: "Products",
+    location: "Studio Tabletop",
+    year: "2026",
+    summary: "Sparkling macro detail and sculpted light for catalogue and campaign visuals.",
+    story:
+      "This illustrative sample story presents a jewellery shoot focused on brilliance, texture, and luxurious presentation.",
+    vision:
+      "The vision is rich and refined, with deep shadows, controlled reflections, and tactile detail.",
+    approach:
+      "We would build each frame around the piece, using macro lenses and diffused lighting to protect fine detail.",
+    image: productHero,
+    gallery: [productHero, editorialHero, brandingHero, productHero, corporateHero],
+    accent: "editorial",
+    deliverables: [
+      "Edited product images",
+      "Macro detail frames",
+      "Catalogue crops",
+      "Campaign visuals",
+      "Social media variants",
+    ],
+    timeline: [
+      "Styling plan",
+      "Lighting tests",
+      "Hero compositions",
+      "Macro details",
+      "Retouch and export",
+    ],
+    equipment: sharedEquipment,
+  },
 ];
 
 export function getEventBySlug(slug: string) {
@@ -413,4 +606,60 @@ export function getRelatedEvents(slug: string, category: EventCategory) {
   const same = events.filter((event) => event.slug !== slug && event.category === category);
   const others = events.filter((event) => event.slug !== slug && event.category !== category);
   return [...same, ...others].slice(0, 3);
+}
+
+export type ServiceCategory = {
+  slug: string;
+  /** Must match the `service` value used by the contact form / footer links */
+  label: string;
+  description: string;
+  image: string;
+  /** Which event categories (above) belong to this main category */
+  eventCategories: EventCategory[];
+};
+
+export const serviceCategories: ServiceCategory[] = [
+  {
+    slug: "wedding-engagement",
+    label: "Wedding & Engagement",
+    description: "Rituals, rings, and royal celebrations told with cinematic warmth.",
+    image: weddingHero,
+    eventCategories: ["Weddings"],
+  },
+  {
+    slug: "pre-wedding-couple",
+    label: "Pre-Wedding / Couple",
+    description: "Romantic couple stories shaped by golden light and real chemistry.",
+    image: preWeddingHero,
+    eventCategories: ["Pre-Weddings"],
+  },
+  {
+    slug: "family-function",
+    label: "Family Function",
+    description: "Maternity, newborn, birthdays, and family portraits full of heart.",
+    image: familyHero,
+    eventCategories: ["Maternity", "Newborn", "Birthdays", "Family"],
+  },
+  {
+    slug: "corporate-business",
+    label: "Corporate / Business",
+    description: "Conferences, team portraits, and personal branding with polish.",
+    image: corporateHero,
+    eventCategories: ["Corporate", "Personal Branding", "Events & Celebrations"],
+  },
+  {
+    slug: "commercial-creative",
+    label: "Commercial / Creative",
+    description: "Product, fashion, and campaign imagery with editorial attitude.",
+    image: editorialHero,
+    eventCategories: ["Products", "Fashion"],
+  },
+];
+
+export function getServiceCategoryBySlug(slug: string) {
+  return serviceCategories.find((category) => category.slug === slug);
+}
+
+export function getEventsByServiceCategory(category: ServiceCategory) {
+  return events.filter((event) => category.eventCategories.includes(event.category));
 }
