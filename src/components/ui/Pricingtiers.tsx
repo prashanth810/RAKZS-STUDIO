@@ -82,7 +82,9 @@ export function PricingTiers() {
                 {tier.title}
               </h3>
               <div className="mt-4 flex items-baseline gap-2">
-                <span className="text-3xl font-semibold text-foreground">{tier.price}</span>
+                <span className="text-3xl font-mono font-semibold text-foreground">
+                  {tier.price}
+                </span>
               </div>
               {/* <p className="mt-4 text-sm leading-7 text-muted-foreground">{tier.description}</p> */}
 

@@ -121,18 +121,18 @@ export function Footer() {
           <div className="mt-5 grid gap-4 text-sm text-muted-foreground">
             <span className="flex gap-3">
               <Phone className="mt-1 size-4 text-primary" />
-              {studioContact.phone}
+              {studioContact.phone}, {studioContact.whatsappPhone}
             </span>
             <span className="flex gap-3">
               <Mail className="mt-1 size-4 text-primary" />
               {studioContact.email}
             </span>
-            <span className="flex gap-3">
-              <MapPin className="mt-1 size-4 text-primary" />
-              {studioContact.location}
+            <span className="flex items-start gap-3">
+              <MapPin className="mt-1 size-4 shrink-0 text-primary" />
+              <span className="min-w-0 leading-6">{studioContact.location}</span>
             </span>
           </div>
-          <div className="mt-6">
+          <div className="mt-3">
             <img src={GMB_QR} className="w-20 h-20 rounded" />
           </div>
         </div>

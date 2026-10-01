@@ -9,8 +9,9 @@ import { Button } from "@/components/ui/button";
 import { EventCard } from "@/components/rakzs/EventCard";
 import { SectionHeader } from "@/components/rakzs/SectionHeader";
 import { VideoModal } from "@/components/rakzs/VideoModal";
-import { events } from "@/data/events";
+import { events, getEventsByServiceCategory, serviceCategories } from "@/data/events";
 import { services, testimonials } from "@/data/site";
+import { CategoryCard } from "@/components/ui/Categorycard";
 
 const heroSlides = [
   {
@@ -224,8 +225,12 @@ function HomePage() {
             description="Illustrative portfolio stories spanning celebrations, families, and brand worlds."
           />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {events.slice(0, 5).map((event) => (
-              <EventCard key={event.slug} event={event} />
+            {serviceCategories.map((category) => (
+              <CategoryCard
+                key={category.slug}
+                category={category}
+                count={getEventsByServiceCategory(category).length}
+              />
             ))}
           </div>
           <div className="mt-12 text-center">
