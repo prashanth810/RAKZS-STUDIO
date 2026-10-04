@@ -133,7 +133,7 @@ export function Footer() {
             </span>
           </div>
           <div className="mt-3">
-            <img src={GMB_QR} className="w-20 h-20 rounded" />
+            <img src={GMB_QR} className="w-[9rem] h-[9rem] rounded" />
           </div>
         </div>
       </div>
