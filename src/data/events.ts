@@ -608,51 +608,240 @@ export function getRelatedEvents(slug: string, category: EventCategory) {
   return [...same, ...others].slice(0, 3);
 }
 
+export type CategoryChild = {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  cta: string;
+  image: string;
+};
+
 export type ServiceCategory = {
   slug: string;
   /** Must match the `service` value used by the contact form / footer links */
   label: string;
-  description: string;
-  image: string;
   /** Which event categories (above) belong to this main category */
   eventCategories: EventCategory[];
+  image: string;
+  /** Grand parent / services card (events index + home page) */
+  kicker: string;
+  cardTitle: string;
+  description: string;
+  cardCta: string;
+  /** Parent page hero */
+  heroEyebrow: string;
+  heroTitle: string;
+  heroDescription: string;
+  /** Child sections shown on the parent page */
+  children: CategoryChild[];
+  /** Optional SEO / context section (under the child cards) */
+  seo?: { title: string; paragraphs: string[]; note?: string; cta: string };
+  /** Optional bottom CTA */
+  bottomCta?: { title: string; description: string; primary: string; secondary: string };
 };
 
 export const serviceCategories: ServiceCategory[] = [
   {
     slug: "wedding-engagement",
     label: "Wedding & Engagement",
-    description: "Rituals, rings, and royal celebrations told with cinematic warmth.",
-    image: weddingHero,
     eventCategories: ["Weddings"],
-  },
-  {
-    slug: "pre-wedding-couple",
-    label: "Pre-Wedding / Couple",
-    description: "Romantic couple stories shaped by golden light and real chemistry.",
-    image: preWeddingHero,
-    eventCategories: ["Pre-Weddings"],
+    image: weddingHero,
+    kicker: "The Big Day",
+    cardTitle: "Weddings & Engagements",
+    description:
+      "From the first celebration to the final goodbye, we capture the people, traditions and emotions that make your wedding yours.",
+    cardCta: "Explore Events",
+    heroEyebrow: "The Big Day",
+    heroTitle: "Every celebration has its moments. We make sure they stay.",
+    heroDescription:
+      "From the excitement before the wedding to the emotions of the big day, RAKZS Studio captures the traditions, people and unscripted moments that turn your celebration into a story worth remembering.",
+    children: [
+      {
+        eyebrow: "Event Type · 01",
+        title: "Wedding",
+        description:
+          "One day filled with a lifetime of emotions. From the quiet moments before the ceremony to the rituals, laughter, tears and celebrations around you — we preserve your wedding as it truly felt.",
+        cta: "Explore Wedding",
+        image: weddingHero,
+      },
+      {
+        eyebrow: "Event Type · 02",
+        title: "Engagement & Reception",
+        description:
+          "The beginning. The celebration. Everything in between. From exchanging rings to celebrating with everyone you love, we capture the people, emotions and energy that make these occasions unforgettable.",
+        cta: "Explore Events",
+        image: preWeddingHero,
+      },
+      {
+        eyebrow: "Event Type · 03",
+        title: "Wedding Celebrations",
+        description:
+          "Different traditions. One unforgettable story. Haldi, Mehendi, Sangeet and the celebrations surrounding your wedding — captured with all their colour, laughter, movement and emotion.",
+        cta: "Explore Celebrations",
+        image: familyHero,
+      },
+    ],
+    seo: {
+      title: "Every celebration deserves to be remembered its own way.",
+      paragraphs: [
+        "No two weddings unfold the same way. Some are intimate and quiet; others bring entire families together across days of traditions and celebrations.",
+        "From wedding photography and candid moments to traditional video and cinematic films, RAKZS Studio creates coverage around the way your celebration happens.",
+      ],
+      note: "Wedding & engagement coverage available in Hyderabad and across Telangana.",
+      cta: "Explore Packages",
+    },
+    bottomCta: {
+      title: "Your date. Your people. Your story.",
+      description:
+        "Tell us what you're celebrating and we'll help you find the right coverage for your day.",
+      primary: "Check Your Date",
+      secondary: "Explore Packages",
+    },
   },
   {
     slug: "family-function",
     label: "Family Function",
-    description: "Maternity, newborn, birthdays, and family portraits full of heart.",
-    image: familyHero,
     eventCategories: ["Maternity", "Newborn", "Birthdays", "Family"],
+    image: familyHero,
+    kicker: "Family Milestones",
+    cardTitle: "Family Functions & Celebrations",
+    description: "The traditions, celebrations and people that become part of your family's story.",
+    cardCta: "Explore Events",
+    heroEyebrow: "Family Milestones",
+    heroTitle: "The moments your family will talk about for years.",
+    heroDescription:
+      "From meaningful traditions to joyful celebrations, we capture the people, emotions and little moments that make every family occasion worth remembering.",
+    children: [
+      {
+        eyebrow: "Traditional Ceremonies",
+        title: "Traditions change with time. The memories shouldn't.",
+        description:
+          "Half Saree ceremonies, Dhoti ceremonies, Housewarmings and other meaningful family traditions — documented with attention to the rituals and the people at the heart of them.",
+        cta: "Explore Ceremonies",
+        image: familyPortrait,
+      },
+      {
+        eyebrow: "Birthdays & Anniversaries",
+        title: "Another year. Another reason to celebrate together.",
+        description:
+          "From first birthdays to milestone years and anniversaries, we capture the laughter, surprises and people who make the celebration yours.",
+        cta: "Explore Celebrations",
+        image: birthdayHero,
+      },
+      {
+        eyebrow: "Baby & Family Celebrations",
+        title: "Little beginnings. Big memories.",
+        description:
+          "Baby Showers, Cradle Ceremonies, Naming Ceremonies and the beautiful family moments surrounding a new beginning.",
+        cta: "Explore Celebrations",
+        image: newbornHero,
+      },
+    ],
+  },
+  {
+    slug: "pre-wedding-couple",
+    label: "Pre-Wedding / Couple",
+    eventCategories: ["Pre-Weddings"],
+    image: preWeddingHero,
+    kicker: "Before Forever",
+    cardTitle: "Pre-Wedding & Couples",
+    description: "Before the wedding day arrives, create something that's completely yours.",
+    cardCta: "Explore Shoots",
+    heroEyebrow: "Before Forever",
+    heroTitle: "Before the vows, there's your story.",
+    heroDescription:
+      "Away from the wedding schedule, rituals and crowds, this is time for just the two of you — captured through photographs and films that feel personal, relaxed and true to your relationship.",
+    children: [
+      {
+        eyebrow: "Pre-Wedding",
+        title: "Your story, before the big day.",
+        description:
+          "A thoughtfully planned photo and film experience built around the two of you — your personalities, your connection and the way you want your story to feel.",
+        cta: "Explore Pre-Wedding",
+        image: preWeddingHero,
+      },
+      {
+        eyebrow: "Couple & Save-the-Date",
+        title: "One date worth remembering before the date everyone remembers.",
+        description:
+          "From relaxed couple portraits to creative Save-the-Date photographs and films, create something personal to share before your celebration begins.",
+        cta: "Explore Couple Shoots",
+        image: weddingHero,
+      },
+    ],
   },
   {
     slug: "corporate-business",
     label: "Corporate / Business",
-    description: "Conferences, team portraits, and personal branding with polish.",
+    eventCategories: ["Corporate", "Events & Celebrations"],
     image: corporateHero,
-    eventCategories: ["Corporate", "Personal Branding", "Events & Celebrations"],
+    kicker: "The Professional Frame",
+    cardTitle: "Corporate & Business Events",
+    description:
+      "Professional coverage for the moments, people and events that represent your business.",
+    cardCta: "Explore Business Events",
+    heroEyebrow: "The Professional Frame",
+    heroTitle: "Your business has important moments too.",
+    heroDescription:
+      "From conferences and meetings to launches, celebrations and professional gatherings, RAKZS creates polished photo and video coverage designed around your event and your brand.",
+    children: [
+      {
+        eyebrow: "Corporate Events",
+        title: "The people behind the business. The moments that bring them together.",
+        description:
+          "Professional photography and video coverage for office events, award ceremonies, launches, team celebrations and other corporate occasions.",
+        cta: "Explore Corporate Events",
+        image: corporateHero,
+      },
+      {
+        eyebrow: "Conferences & Business Events",
+        title: "When the room matters, every moment does too.",
+        description:
+          "From speakers and presentations to audience interactions, networking and key moments, we document conferences, seminars and professional gatherings with clean, purposeful coverage.",
+        cta: "Explore Business Events",
+        image: editorialHero,
+      },
+    ],
   },
   {
     slug: "commercial-creative",
     label: "Commercial / Creative",
-    description: "Product, fashion, and campaign imagery with editorial attitude.",
-    image: editorialHero,
-    eventCategories: ["Products", "Fashion"],
+    eventCategories: ["Products", "Fashion", "Personal Branding"],
+    image: brandingHero,
+    kicker: "Brand in Focus",
+    cardTitle: "Commercial & Creative",
+    description: "Photography and films created to show people what your brand is all about.",
+    cardCta: "Explore Creative Work",
+    heroEyebrow: "Brand in Focus",
+    heroTitle: "Make your business worth looking at.",
+    heroDescription:
+      "From people and products to spaces, services and campaigns, we create photographs and films that help businesses present themselves clearly, professionally and creatively.",
+    children: [
+      {
+        eyebrow: "Brand & Business",
+        title: "Show the people behind the name.",
+        description:
+          "Brand portraits, team photographs, workplaces, services and business-focused visual content created around how you want customers to see your brand.",
+        cta: "Explore Brand Content",
+        image: brandingHero,
+      },
+      {
+        eyebrow: "Product & Promotional",
+        title: "Make the product the reason they stop scrolling.",
+        description:
+          "Clean product photography and promotional visual content designed to present what you sell with clarity, detail and personality.",
+        cta: "Explore Commercial Work",
+        image: productHero,
+      },
+      {
+        eyebrow: "Social Media Content",
+        title: "Made for the screen your customers use every day.",
+        description:
+          "Photography, short-form videos, reels and campaign content created for businesses that need a consistent visual presence online.",
+        cta: "Explore Social Content",
+        image: editorialHero,
+      },
+    ],
   },
 ];
 

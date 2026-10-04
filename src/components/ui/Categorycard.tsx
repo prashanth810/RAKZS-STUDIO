@@ -22,7 +22,7 @@ export function CategoryCard({
       >
         <img
           src={category.image}
-          alt={category.label}
+          alt={category.cardTitle}
           loading="lazy"
           width={1400}
           height={1000}
@@ -35,18 +35,18 @@ export function CategoryCard({
       </Link>
       <div className="p-6">
         <div className="flex flex-wrap items-center justify-between gap-3 text-xs uppercase tracking-[0.18em] text-primary">
-          <span>Category</span>
+          <span>{category.kicker}</span>
           <span>
             {count} {count === 1 ? "Story" : "Stories"}
           </span>
         </div>
         <h3 className="mt-4 font-display text-2xl font-semibold text-foreground">
-          {category.label}
+          {category.cardTitle}
         </h3>
         <p className="mt-3 text-sm leading-7 text-muted-foreground">{category.description}</p>
         <Button asChild variant="outlineGold" className="mt-6">
           <Link to="/events/category/$category" params={{ category: category.slug }}>
-            View Events <ArrowUpRight className="size-4" />
+            {category.cardCta} <ArrowUpRight className="size-4" />
           </Link>
         </Button>
       </div>

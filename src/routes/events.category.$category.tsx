@@ -1,8 +1,9 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { EventCard } from "@/components/rakzs/EventCard";
 import { PageHero } from "@/components/rakzs/PageHero";
+import { SectionHeader } from "@/components/rakzs/SectionHeader";
 import { Button } from "@/components/ui/button";
 import { getEventsByServiceCategory, getServiceCategoryBySlug } from "@/data/events";
 
@@ -24,10 +25,10 @@ export const Route = createFileRoute("/events/category/$category")({
     const { category } = loaderData;
     return {
       meta: [
-        { title: `${category.label} — RAKZS STUDIO` },
-        { name: "description", content: category.description },
-        { property: "og:title", content: `${category.label} — RAKZS STUDIO` },
-        { property: "og:description", content: category.description },
+        { title: `${category.cardTitle} — RAKZS STUDIO` },
+        { name: "description", content: category.heroDescription },
+        { property: "og:title", content: `${category.cardTitle} — RAKZS STUDIO` },
+        { property: "og:description", content: category.heroDescription },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
@@ -44,34 +45,130 @@ function EventCategoryPage() {
   return (
     <>
       <PageHero
-        eyebrow="Portfolio"
-        title={category.label}
-        description={category.description}
+        eyebrow={category.heroEyebrow}
+        title={category.heroTitle}
+        description={category.heroDescription}
         image={category.image}
       />
+
+      {/* Child sections */}
       <section className="section-band">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {categoryEvents.map((event, index) => (
-              <div key={event.slug} className={index % 5 === 0 ? "lg:col-span-2" : ""}>
-                <EventCard event={event} featured={index % 5 === 0} />
-              </div>
+            {category.children.map((child) => (
+              <article
+                key={child.title}
+                className="group reveal overflow-hidden rounded-lg border border-border bg-card shadow-cinematic"
+              >
+                <div className="overflow-hidden">
+                  <img
+                    src={child.image}
+                    alt={child.title}
+                    loading="lazy"
+                    width={1400}
+                    height={1000}
+                    className="h-80 w-full object-cover image-zoom"
+                  />
+                </div>
+                <div className="p-6">
+                  {child.eyebrow ? (
+                    <p className="text-xs uppercase tracking-[0.18em] text-primary">
+                      {child.eyebrow}
+                    </p>
+                  ) : null}
+                  <h3 className="mt-4 font-display text-2xl font-semibold text-foreground">
+                    {child.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                    {child.description}
+                  </p>
+                  <Button asChild variant="outlineGold" className="mt-6">
+                    <Link to="/contact" search={{ service: category.label, event: child.title }}>
+                      {child.cta} <ArrowRight className="size-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </article>
             ))}
-          </div>
-          {categoryEvents.length === 0 ? (
-            <p className="py-20 text-center text-muted-foreground">
-              No illustrative stories in this category yet.
-            </p>
-          ) : null}
-          <div className="mt-12 text-center">
-            <Button asChild variant="outlineGold">
-              <Link to="/events">
-                <ArrowLeft className="size-4" /> Back to All Categories
-              </Link>
-            </Button>
           </div>
         </div>
       </section>
+
+      {/* Optional SEO / context section */}
+      {category.seo ? (
+        <section className="section-band bg-card">
+          <div className="mx-auto max-w-3xl px-5 text-center lg:px-8">
+            <h2 className="reveal font-display text-4xl font-semibold leading-tight text-foreground md:text-5xl">
+              {category.seo.title}
+            </h2>
+            {category.seo.paragraphs.map((text) => (
+              <p key={text} className="mt-6 text-base leading-8 text-muted-foreground">
+                {text}
+              </p>
+            ))}
+            {category.seo.note ? (
+              <p className="mt-6 text-sm font-semibold text-primary">{category.seo.note}</p>
+            ) : null}
+            <Button asChild variant="outlineGold" className="mt-8">
+              <Link to="/packages">
+                {category.seo.cta} <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+          </div>
+        </section>
+      ) : null}
+
+      {/* Sample stories */}
+      {categoryEvents.length > 0 ? (
+        <section className="section-band">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <SectionHeader
+              eyebrow="Portfolio"
+              title="Stories from this collection."
+              description="Illustrative sample stories to show how we approach this kind of work."
+            />
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {categoryEvents.map((event, index) => (
+                <div key={event.slug} className={index % 5 === 0 ? "lg:col-span-2" : ""}>
+                  <EventCard event={event} featured={index % 5 === 0} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {/* Optional bottom CTA */}
+      {category.bottomCta ? (
+        <section className="section-band bg-card">
+          <div className="mx-auto max-w-3xl px-5 text-center lg:px-8">
+            <h2 className="reveal font-display text-4xl font-semibold leading-tight text-foreground md:text-6xl">
+              {category.bottomCta.title}
+            </h2>
+            <p className="mt-6 text-base leading-8 text-muted-foreground">
+              {category.bottomCta.description}
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <Button asChild variant="gold" size="lg">
+                <Link to="/contact" search={{ service: category.label, event: undefined }}>
+                  {category.bottomCta.primary} <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outlineGold" size="lg">
+                <Link to="/packages">{category.bottomCta.secondary}</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <div className="pb-20 text-center">
+        <Button asChild variant="outlineGold">
+          <Link to="/events">
+            <ArrowLeft className="size-4" /> Back to All Categories
+          </Link>
+        </Button>
+      </div>
     </>
   );
 }
