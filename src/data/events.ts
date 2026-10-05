@@ -614,6 +614,7 @@ export type CategoryChild = {
   description: string;
   cta: string;
   image: string;
+  eventSlug?: string;
 };
 
 export type ServiceCategory = {
@@ -663,6 +664,7 @@ export const serviceCategories: ServiceCategory[] = [
           "One day filled with a lifetime of emotions. From the quiet moments before the ceremony to the rituals, laughter, tears and celebrations around you — we preserve your wedding as it truly felt.",
         cta: "Explore Wedding",
         image: weddingHero,
+        eventSlug: "traditional-indian-wedding",
       },
       {
         eyebrow: "Event Type · 02",

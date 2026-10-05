@@ -96,6 +96,7 @@ export const crewItems = [
 
 export const addOnItems = [
   { id: "prewedding", name: "Pre Wedding", price: 50000, icon: FaCameraRetro, emoji: "\u{1F4F7}" },
+  { id: "reels", name: "Trending Reel's", price: 15000, icon: IoVideocam, emoji: "\u{1F4F7}" },
   { id: "led-screen", name: "LED Screen", price: 15000, icon: IoMdTv, emoji: "\u{1F5A5}\u{FE0F}" }, // 🖥️
   {
     id: "live-streaming",

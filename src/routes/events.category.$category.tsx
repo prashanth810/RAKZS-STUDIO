@@ -83,9 +83,15 @@ function EventCategoryPage() {
                     {child.description}
                   </p>
                   <Button asChild variant="outlineGold" className="mt-6">
-                    <Link to="/contact" search={{ service: category.label, event: child.title }}>
-                      {child.cta} <ArrowRight className="size-4" />
-                    </Link>
+                    {child.eventSlug ? (
+                      <Link to="/events/$slug" params={{ slug: child.eventSlug }}>
+                        {child.cta} <ArrowRight className="size-4" />
+                      </Link>
+                    ) : (
+                      <Link to="/contact" search={{ service: category.label, event: child.title }}>
+                        {child.cta} <ArrowRight className="size-4" />
+                      </Link>
+                    )}
                   </Button>
                 </div>
               </article>
