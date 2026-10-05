@@ -1,11 +1,13 @@
+import { useState } from "react";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Camera, CalendarDays, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowRight, Camera, CalendarDays, ChevronDown, MapPin } from "lucide-react";
 
 import { GalleryLightbox } from "@/components/rakzs/GalleryLightbox";
 import { SectionHeader } from "@/components/rakzs/SectionHeader";
 import { EventCard } from "@/components/rakzs/EventCard";
 import { Button } from "@/components/ui/button";
 import { events } from "@/data/events";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/events/$slug")({
   loader: ({ params }) => {
@@ -39,6 +41,7 @@ export const Route = createFileRoute("/events/$slug")({
 function EventDetailPage() {
   const { event } = Route.useLoaderData();
   const related = events.filter((item) => item.slug !== event.slug).slice(0, 3);
+  const [openFaq, setOpenFaq] = useState<number>(0);
 
   return (
     <>
@@ -77,16 +80,52 @@ function EventDetailPage() {
 
       <section className="section-band">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
-          <div className="reveal">
-            <p className="section-kicker">The Story</p>
-            <h2 className="mt-4 font-display text-4xl font-semibold leading-tight text-foreground md:text-5xl">
-              How this story would be told.
-            </h2>
-            <p className="mt-6 text-base leading-8 text-muted-foreground">{event.story}</p>
-            <h3 className="mt-10 font-display text-3xl text-foreground">Creative Vision</h3>
-            <p className="mt-4 text-base leading-8 text-muted-foreground">{event.vision}</p>
-            <h3 className="mt-10 font-display text-3xl text-foreground">Our Approach</h3>
-            <p className="mt-4 text-base leading-8 text-muted-foreground">{event.approach}</p>
+          <div className="reveal space-y-10">
+            <div>
+              <p className="section-kicker">The Story</p>
+              <h2 className="mt-4 font-display text-4xl font-semibold leading-tight text-foreground md:text-5xl">
+                How this story would be told.
+              </h2>
+              <p className="mt-6 text-base leading-8 text-muted-foreground whitespace-pre-line">{event.story}</p>
+            </div>
+
+            <div>
+              <h3 className="font-display text-3xl text-foreground">Creative Vision</h3>
+              <p className="mt-4 text-base leading-8 text-muted-foreground">{event.vision}</p>
+            </div>
+
+            <div>
+              <h3 className="font-display text-3xl text-foreground">Our Approach</h3>
+              <p className="mt-4 text-base leading-8 text-muted-foreground">{event.approach}</p>
+            </div>
+
+            {event.sections?.map((sec) => (
+              <div key={sec.title} className="border-t border-border/60 pt-8">
+                <h3 className="font-display text-3xl text-foreground">{sec.title}</h3>
+                {sec.content ? (
+                  <p className="mt-4 text-base leading-8 text-muted-foreground whitespace-pre-line">
+                    {sec.content}
+                  </p>
+                ) : null}
+                {sec.items && sec.items.length > 0 ? (
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {sec.items.map((item) => (
+                      <div
+                        key={item.title}
+                        className="rounded-lg border border-border/80 bg-card p-5 shadow-xs transition hover:border-primary/40"
+                      >
+                        <h4 className="font-display text-base font-semibold text-primary">
+                          {item.title}
+                        </h4>
+                        <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                          {item.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ))}
           </div>
 
           <aside className="reveal grid content-start gap-4">
@@ -126,6 +165,58 @@ function EventDetailPage() {
                 ))}
               </ul>
             </div>
+
+            {event.faqs && event.faqs.length > 0 ? (
+              <div className="rounded-lg border border-border bg-card p-6 shadow-cinematic">
+                <p className="section-kicker">Questions & Answers</p>
+                <h3 className="mt-2 font-display text-xl font-semibold text-foreground">
+                  Frequently Asked Questions
+                </h3>
+                <div className="mt-5 divide-y divide-border/60">
+                  {event.faqs.map((faq, index) => {
+                    const isOpen = openFaq === index;
+                    return (
+                      <div key={faq.question} className="py-3.5 first:pt-0 last:pb-0">
+                        <button
+                          type="button"
+                          onClick={() => setOpenFaq(isOpen ? -1 : index)}
+                          className="group flex w-full items-start justify-between gap-3 text-left transition hover:text-primary"
+                          aria-expanded={isOpen}
+                        >
+                          <div className="flex items-start gap-3">
+                            <span className="font-display text-xs font-semibold text-primary/80 mt-0.5 shrink-0">
+                              {String(index + 1).padStart(2, "0")}
+                            </span>
+                            <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-snug">
+                              {faq.question}
+                            </span>
+                          </div>
+                          <ChevronDown
+                            className={cn(
+                              "size-4 shrink-0 text-primary transition-transform duration-300 mt-0.5",
+                              isOpen && "rotate-180"
+                            )}
+                          />
+                        </button>
+                        <div
+                          className={cn(
+                            "grid transition-all duration-300 ease-in-out",
+                            isOpen ? "grid-rows-[1fr] mt-2.5 opacity-100" : "grid-rows-[0fr] opacity-0"
+                          )}
+                        >
+                          <div className="overflow-hidden">
+                            <p className="pl-7 text-xs leading-6 text-muted-foreground whitespace-pre-line">
+                              {faq.answer}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : null}
+
             <Button asChild variant="gold" size="lg">
               <Link to="/contact" search={{ event: event.title, service: undefined }}>
                 Enquire About This Story <ArrowRight />

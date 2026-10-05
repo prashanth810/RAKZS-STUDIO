@@ -83,7 +83,7 @@ const process = [
 
 function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0);
-  const slide = heroSlides[activeSlide];
+  const slide = heroSlides[activeSlide] ?? heroSlides[0];
 
   const goToSlide = (index: number) => {
     const total = heroSlides.length;

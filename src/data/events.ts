@@ -53,6 +53,12 @@ export type EventItem = {
   deliverables: string[];
   timeline: string[];
   equipment: { title: string; note: string }[];
+  sections?: {
+    title: string;
+    content?: string;
+    items?: { title: string; description: string }[];
+  }[];
+  faqs?: { question: string; answer: string }[];
 };
 
 const gallerySet = [weddingHero, preWeddingHero, familyHero, editorialHero, weddingHero];
@@ -80,33 +86,164 @@ export const events: EventItem[] = [
     slug: "traditional-indian-wedding",
     title: "Traditional Indian Wedding",
     category: "Weddings",
-    location: "Jaipur, Rajasthan",
+    location: "Hyderabad, Telangana",
     year: "2026",
-    summary: "A regal celebration shaped by rituals, family emotion, and golden mandap light.",
+    summary:
+      "Some days pass. This one stays with you. We make sure you can return to the rituals, the nervous smiles, and the quiet moments nobody else noticed.",
     story:
-      "This illustrative sample story follows a wedding day from quiet preparation to the final celebration, focusing on rituals, family blessings, and emotional portraits.",
+      "You won't remember everything. That's why we do.\n\nOn your wedding day, hundreds of moments are happening around you. While you're in the middle of a ritual, your parents may be sharing a look across the room. Your friends may be laughing somewhere behind you. Someone may be wiping away a tear before anyone notices.\n\nYou can't be everywhere. Our cameras can. At RAKZS Studio, wedding photography isn't only about making beautiful photographs. It's about preserving the people, traditions and emotions that made the day yours.\n\nSo years later, you don't only remember how your wedding looked. You remember how it felt.",
     vision:
-      "The client vision is represented as timeless Indian grandeur: ornate details, warm candlelight, and portraits that feel cinematic without losing sincerity.",
+      "Beautiful when it needs to be. Honest when it matters more. Traditional photography makes sure the important rituals, family portraits and must-have moments are properly documented. Candid wedding photography preserves the expressions, relationships and unexpected moments happening naturally around you. We bring the two together so your final wedding collection doesn't become hundreds of poses — and it doesn't miss the photographs your family expects to have.",
     approach:
-      "The creative approach blends documentary moments with directed editorial portraits, using warm contrast and soft motion to preserve the feeling of the day.",
+      "Start with what matters to you. We'll build around it. Some weddings need straightforward photography and video coverage. Others unfold across several functions, hundreds of guests and countless moments — and need a larger team. Tell us about your wedding, your functions and what matters most to you. We'll help you choose coverage that makes sense for your celebration and your requirements.",
     image: weddingHero,
     gallery: gallerySet,
     accent: "wedding",
     deliverables: [
-      "Edited ceremony photographs",
-      "Cinematic highlight film",
-      "Retouched couple portraits",
-      "Family formals",
-      "Album-ready selections",
+      "Traditional & Candid Photography",
+      "Cinematic Wedding Films & Teasers",
+      "Traditional Full-Length Videography",
+      "Drone Coverage (Venue Permitted)",
+      "Handcrafted Fine-Art Wedding Albums",
     ],
     timeline: [
-      "Ritual and decor recce",
-      "Getting-ready portraits",
-      "Ceremony coverage",
-      "Couple editorial session",
-      "Reception and family moments",
+      "01 — Enquire: Tell us your date, location, functions and what you're planning",
+      "02 — Understand: We discuss your priorities, schedule and coverage required",
+      "03 — Plan: Custom team, equipment and timeline built around your wedding",
+      "04 — Capture: We cover key rituals and stay alert for unscripted moments",
+      "05 — Refine & Deliver: Your photographs, films and deliverables carefully prepared",
     ],
-    equipment: sharedEquipment,
+    equipment: [
+      {
+        title: "Full-frame camera bodies",
+        note: "High-resolution, low-light cameras for dependable detail and clarity during both bright outdoor and intimate indoor rituals.",
+      },
+      {
+        title: "Prime portrait lenses",
+        note: "Fast aperture lenses ensuring natural skin tones, soft background separation, and intimate emotional framing.",
+      },
+      {
+        title: "Cinematic lighting kit",
+        note: "Balanced ambient and wireless lighting setups for controlled highlights, warm separation, and graceful depth.",
+      },
+    ],
+    sections: [
+      {
+        title: "Beyond the Obvious",
+        content: "The photograph isn't always where everyone is looking.",
+        items: [
+          {
+            title: "The Two of You",
+            description:
+              "The anticipation before you see each other. The smiles between rituals. The few quiet seconds you find in the middle of everything. We create portraits worth framing without losing the moments happening naturally around them.",
+          },
+          {
+            title: "The People Who Made the Day",
+            description:
+              "Parents watching from a distance. Grandparents giving their blessings. Siblings creating chaos. Friends who came just to stand beside you. Years from now, some of these photographs may mean even more than they do today.",
+          },
+          {
+            title: "The Traditions",
+            description:
+              "Every family celebrates differently. We document the rituals, details and traditions that make your wedding personal while staying alert to everything happening around them.",
+          },
+          {
+            title: "The Unplanned",
+            description:
+              "The laugh that wasn't posed. The tear someone tried to hide. The child running through the ceremony. The friends who forgot the camera was there. Some of the best photographs are the ones nobody planned.",
+          },
+        ],
+      },
+      {
+        title: "Wedding Films",
+        content:
+          "Some memories need movement. Some need a voice. A photograph can hold an expression forever. But some memories live in the sound of a parent's voice, the music surrounding a ritual, your friends laughing, and the way the room changes when you walk in. That's where film takes over. From traditional wedding videography to cinematic wedding films, we preserve the movement, voices and atmosphere that photographs alone cannot.",
+      },
+      {
+        title: "Available Coverage When You Need Them",
+        content: "Choose them individually, start with a package, or create your own combination.",
+        items: [
+          {
+            title: "Traditional & Candid Photography",
+            description: "Coverage for planned rituals, family formals, and spontaneous expressions.",
+          },
+          {
+            title: "Traditional Videography & Cinematography",
+            description: "Full-length ceremony documentation and music-driven cinematic films.",
+          },
+          {
+            title: "Drone Coverage & Live Streaming",
+            description: "Aerial perspective and live broadcast for family attending remotely.",
+          },
+          {
+            title: "Albums, Teasers & Reels",
+            description: "Handcrafted physical keepsake albums and short-form video edits.",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How much does wedding photography cost in Hyderabad?",
+        answer:
+          "Wedding photography pricing depends on the number of functions, duration, team size and the type of photography and film coverage you choose. RAKZS Studio offers different starting packages as well as customizable coverage, so you can choose what suits your celebration instead of paying for services you don't need.",
+      },
+      {
+        question: "What is the difference between candid and traditional wedding photography?",
+        answer:
+          "Traditional photography focuses on important rituals, family groups and planned photographs. Candid photography focuses more on natural expressions and moments as they happen. For many weddings, combining both creates a more complete story — the important photographs your family expects, along with the moments nobody planned.",
+      },
+      {
+        question: "Do you provide both wedding photography and videography?",
+        answer:
+          "Yes. RAKZS Studio provides both photography and film coverage, including traditional photography, candid photography, traditional videography and cinematography. Your final team depends on the coverage you choose.",
+      },
+      {
+        question: "Can we customize our wedding photography package?",
+        answer:
+          "Yes. You can begin with one of our wedding packages and adjust your coverage, or build a combination around your wedding requirements.",
+      },
+      {
+        question: "Can we book photography and videography for only one function?",
+        answer:
+          "Yes. Coverage can be planned according to the functions you need photographed or filmed. Tell us which event you're planning and we'll help you work out the suitable coverage.",
+      },
+      {
+        question: "How many photographers and videographers will cover our wedding?",
+        answer:
+          "The team depends on your wedding schedule, number of functions, venue setup, guest scale and selected coverage. Once we understand your celebration, we'll recommend a team appropriate for the moments that need to be covered.",
+      },
+      {
+        question: "Do you provide RAW wedding photos and videos?",
+        answer:
+          "RAW files can be provided based on your selected coverage and final requirements. We'll confirm exactly what will be delivered before the booking is finalized.",
+      },
+      {
+        question: "How long does it take to receive our wedding photos and videos?",
+        answer:
+          "Delivery depends on the type and amount of work involved — for example photographs, cinematic films, full videos, reels or albums. Once your final deliverables are confirmed, we'll provide a clear delivery timeline for your booking.",
+      },
+      {
+        question: "Do you provide drone coverage for weddings?",
+        answer:
+          "Yes, drone coverage is available as an additional option where the venue, location and applicable permissions or restrictions allow it.",
+      },
+      {
+        question: "Do you provide wedding albums?",
+        answer:
+          "Yes. Albums can be included depending on your selected package or added according to your requirements.",
+      },
+      {
+        question: "Do you cover weddings outside Hyderabad?",
+        answer:
+          "Hyderabad is our primary service area, and we also cover weddings across Telangana. Share your wedding location while enquiring and we'll discuss the coverage requirements with you.",
+      },
+      {
+        question: "How do we book RAKZS Studio for our wedding?",
+        answer:
+          "Start by sharing your wedding date, location, functions and coverage requirements. Once the requirements, availability and booking details are finalized, we'll share the advance amount required to confirm your date.",
+      },
+    ],
   },
   {
     slug: "sunset-pre-wedding",
@@ -438,35 +575,667 @@ export const events: EventItem[] = [
   },
   {
     slug: "engagement-ceremony",
-    title: "Engagement Ceremony",
+    title: "Engagement & Reception",
     category: "Weddings",
     location: "Hyderabad, Telangana",
     year: "2026",
-    summary: "A ring-exchange evening of soft florals, shared glances, and family blessings.",
+    summary:
+      "It starts with a yes. Then everyone celebrates it. From ring exchange to portraits, candid moments and cinematic films.",
     story:
-      "This illustrative sample story captures an engagement ceremony built around quiet emotion, ring details, and joyful family moments.",
+      "Two occasions. Two completely different feelings.\n\nAn engagement carries the excitement of everything that's about to begin. A reception feels different: the formalities are behind you, everyone you love is finally in one place, with introductions, conversations, laughter, and celebrations everywhere around you.\n\nWe don't want your photographs to show only who attended — we want them to remind you what it felt like having everyone there.",
     vision:
-      "The vision is elegant and intimate, with pastel decor, warm light, and portraits that feel relaxed and sincere.",
+      "Portraits for the frame. Moments for everything else. Formal couple portraits and family groups captured alongside candid interactions, speeches, dancing, and stage celebrations without making the entire evening feel like a photoshoot.",
     approach:
-      "Coverage would focus on candid reactions, ring and decor details, and a short couple portrait session.",
+      "Start with the moments you want remembered. A smaller engagement doesn't need the same setup as a large reception. Tell us about your venue, guest scale, schedule and what matters to you. We'll help you choose coverage around your event, rather than adding services simply because they're available.",
     image: preWeddingHero,
     gallery: warmGallery,
     accent: "wedding",
     deliverables: [
-      "Edited engagement photographs",
-      "Ring and detail frames",
-      "Couple portraits",
-      "Short highlight reel",
-      "Private gallery selection",
+      "Traditional & Candid Photography",
+      "Cinematic Highlight Films & Teasers",
+      "Stage Formals & Family Group Portraits",
+      "Vertical Reels for Social Sharing",
+      "Premium Keepsake Album",
     ],
     timeline: [
-      "Decor and detail coverage",
-      "Guest arrivals",
-      "Ring ceremony",
-      "Couple portraits",
-      "Family moments",
+      "01 — Enquire: Share your date, venue and event details",
+      "02 — Understand: We discuss the schedule, guest scale and coverage you're looking for",
+      "03 — Plan: We recommend a suitable team and coverage",
+      "04 — Capture: We document the planned moments while watching for everything happening around them",
+      "05 — Refine & Deliver: Your selected photographs, films and deliverables prepared with care",
     ],
     equipment: sharedEquipment,
+    sections: [
+      {
+        title: "What We Capture",
+        content: "More than the stage. The important photograph might be happening beside you.",
+        items: [
+          {
+            title: "The Two of You",
+            description:
+              "From exchanging rings to the portraits you'll keep for years, we create photographs of you together without making the entire celebration feel like a photoshoot.",
+          },
+          {
+            title: "Your Families",
+            description:
+              "Parents, grandparents, siblings and relatives coming together are a huge part of these occasions. We make sure the people closest to you become part of the story.",
+          },
+          {
+            title: "Your Guests",
+            description:
+              "Some will pose. Some will laugh the second before we photograph them. Some haven't seen each other in years. We capture both the photographs everyone expects and the interactions nobody planned.",
+          },
+          {
+            title: "The Celebration",
+            description:
+              "Entrances. Ring exchange. Stage moments. Speeches. Performances. Dancing. Laughter. The evening doesn't happen only on the stage — neither should the coverage.",
+          },
+        ],
+      },
+      {
+        title: "Engagement & Reception Films",
+        content:
+          "Photographs freeze the moment. Film brings the room back. The music during your entrance. The applause when you exchange rings. A speech you didn't expect. Your friends taking over the dance floor. Film lets you return to the sound, movement and atmosphere surrounding the celebration.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How much does engagement photography cost in Hyderabad?",
+        answer:
+          "Pricing depends on the event duration, team size, photography and video requirements, venue and final deliverables. You can start with a RAKZS package or customize the coverage according to your event.",
+      },
+      {
+        question: "Can we book photography only for our engagement?",
+        answer:
+          "Yes. Coverage can be built according to what your event needs. Photography, video and additional services don't all have to be selected together.",
+      },
+      {
+        question: "Do you provide both candid and traditional photography?",
+        answer:
+          "Yes. Traditional photography covers the important formal photographs and key moments, while candid photography focuses on natural expressions and interactions throughout the event.",
+      },
+      {
+        question: "Do you provide engagement and reception videography?",
+        answer:
+          "Yes. Traditional videography and cinematic coverage are available depending on your requirements.",
+      },
+      {
+        question: "Can engagement and reception be covered as part of our wedding package?",
+        answer:
+          "Yes. If you're planning multiple functions, tell us your complete schedule when enquiring. We can discuss suitable coverage across the celebrations instead of treating every event separately.",
+      },
+      {
+        question: "How many photographers do we need for a reception?",
+        answer:
+          "It depends on the venue, guest scale, schedule and the type of coverage you want. Once we understand the event, we'll recommend an appropriate team.",
+      },
+      {
+        question: "Do you provide stage and family photographs?",
+        answer:
+          "Yes. Formal couple photographs, family groups and important guest photographs can be included alongside candid coverage.",
+      },
+      {
+        question: "Can we customize our engagement or reception package?",
+        answer:
+          "Yes. You can start with an existing package or build coverage around the services your celebration actually requires.",
+      },
+      {
+        question: "Do you cover engagement and reception events outside Hyderabad?",
+        answer:
+          "Hyderabad is our primary service area, and we also cover events across Telangana. Share the location while enquiring so we can discuss the requirements.",
+      },
+      {
+        question: "How do we confirm our date?",
+        answer:
+          "Share your event date, venue and requirements. Once availability and coverage are finalized, we'll provide the booking details and advance required to confirm the date.",
+      },
+    ],
+  },
+  {
+    slug: "wedding-celebrations",
+    title: "Wedding Celebrations (Haldi, Mehendi & Sangeet)",
+    category: "Weddings",
+    location: "Hyderabad, Telangana",
+    year: "2026",
+    summary:
+      "Before the wedding comes everything that makes it unforgettable. Colour, laughter, music, and energy captured in motion.",
+    story:
+      "Sometimes the best memories happen before the main event.\n\nThe wedding may be the date printed on the invitation. But ask a family what they remember and you'll hear about everything around it: the Haldi that became a colour fight, the Mehendi where everyone finally had time to sit together, the Sangeet performance somebody secretly practised for weeks, the relatives arriving, the late-night laughter, and the house suddenly feeling full.\n\nThese are not side events to us. They're the moments that make the wedding feel like a wedding.",
+    vision:
+      "Colour, movement, sound. Some celebrations refuse to stand still. Photography preserves the expressions, details, colours and interactions happening throughout them. Film brings back the music, voices, performances and energy surrounding those moments. Depending on your celebration, RAKZS can provide traditional photography, candid photography, traditional videography and cinematic coverage as one coordinated team.",
+    approach:
+      "One function or five. Start with what you're actually planning. You may want complete coverage across every wedding celebration or only for selected functions. Tell us which celebrations you're planning, where they're happening and what matters most to you. We'll help you build coverage around the actual schedule.",
+    image: familyHero,
+    gallery: gallerySet,
+    accent: "wedding",
+    deliverables: [
+      "Haldi, Mehendi & Sangeet Photography",
+      "Cinematic Sangeet & Celebration Highlights",
+      "High-Energy Vertical Reels",
+      "Candid Family & Ritual Coverage",
+      "Curated Celebration Gallery",
+    ],
+    timeline: [
+      "01 — Tell Us Your Functions: Haldi, Mehendi, Sangeet or any other celebrations you're planning",
+      "02 — Share the Schedule: Dates, locations, approximate timings and important moments",
+      "03 — Build the Coverage: We plan the team according to the functions and coverage selected",
+      "04 — Celebrate: We cover the rituals, people, details and everything happening around them",
+      "05 — Receive Your Story: Selected photographs, films and deliverables prepared with care",
+    ],
+    equipment: sharedEquipment,
+    sections: [
+      {
+        title: "The Celebrations We Cover",
+        content: "Every family celebrates differently. Your traditions don't need to fit fixed labels.",
+        items: [
+          {
+            title: "Haldi",
+            description:
+              "It starts as a ritual. It rarely stays one. We capture the ritual, the family traditions and portraits — but also the laughter, colour and chaos once everyone stops worrying about staying clean.",
+          },
+          {
+            title: "Mehendi",
+            description:
+              "In the middle of everything, time to sit together. Friends gathering around the bride, parents checking preparations, and conversations happening away from the hustle.",
+          },
+          {
+            title: "Sangeet",
+            description:
+              "Weeks of practice. A few minutes on stage. Stories you'll hear forever. Performances, reactions, backstage nervousness, and everyone joining the dance floor.",
+          },
+          {
+            title: "Other Family Traditions",
+            description:
+              "Pre-wedding poojas, welcoming ceremonies, and family-specific traditions across Hyderabad and Telangana captured with equal care and cultural reverence.",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do you provide Haldi photography in Hyderabad?",
+        answer:
+          "Yes. RAKZS Studio provides photography and video coverage for Haldi ceremonies in Hyderabad, with coverage also available across Telangana.",
+      },
+      {
+        question: "Do you cover Mehendi and Sangeet functions?",
+        answer:
+          "Yes. Mehendi, Sangeet and other wedding celebrations can be covered individually or together as part of your wider wedding coverage.",
+      },
+      {
+        question: "Can we book only Haldi or Sangeet photography?",
+        answer:
+          "Yes. You don't have to book every wedding function. Tell us which celebration you need covered and we'll plan accordingly.",
+      },
+      {
+        question: "Can you cover Haldi, Mehendi, Sangeet and the wedding together?",
+        answer:
+          "Yes. Multiple wedding functions can be planned together. Share your complete schedule with us so the team and coverage can be organized around the overall celebration.",
+      },
+      {
+        question: "Do we need candid photography for Haldi and Mehendi?",
+        answer:
+          "Traditional photography ensures rituals and important family photographs are documented, while candid photography focuses on natural expressions, interactions and spontaneous moments.",
+      },
+      {
+        question: "Do you provide cinematic videos for Haldi and Sangeet?",
+        answer:
+          "Yes. Cinematic coverage is available and can be included according to your selected requirements.",
+      },
+      {
+        question: "Do you create reels or short videos from wedding functions?",
+        answer:
+          "Wedding teasers and reels are available as coverage options. The exact deliverables can be finalized according to your selected package or customized requirements.",
+      },
+      {
+        question: "How many photographers are needed for multiple wedding functions?",
+        answer:
+          "That depends on whether functions happen on the same or different days, their locations, guest scale, schedules and selected coverage. We will recommend the appropriate team.",
+      },
+      {
+        question: "Can different functions happen at different locations?",
+        answer:
+          "Yes. Share all locations and timings when enquiring so we can plan the coverage and team requirements properly.",
+      },
+      {
+        question: "Can we customize coverage for each wedding function?",
+        answer:
+          "Yes. One function may need simple coverage while another may need a larger photo and film team. Your requirements can be planned accordingly.",
+      },
+      {
+        question: "Do you cover traditional Telugu wedding functions?",
+        answer:
+          "We cover wedding ceremonies and celebrations in Hyderabad and across Telangana. Tell us about the rituals and important moments in advance so we can plan coverage around your celebration.",
+      },
+      {
+        question: "How do we book coverage for our wedding celebrations?",
+        answer:
+          "Send us your dates, locations and list of functions. Once availability and requirements are finalized, we'll share the booking details and advance required to confirm the dates.",
+      },
+    ],
+  },
+  {
+    slug: "traditional-ceremonies",
+    title: "Traditional Ceremonies",
+    category: "Family",
+    location: "Hyderabad, Telangana",
+    year: "2026",
+    summary:
+      "Some traditions last a day. Their meaning travels generations. Half Saree, Dhoti, Housewarming, and Naming Ceremonies preserved forever.",
+    story:
+      "It's more than a function when it means something to your family.\n\nA traditional ceremony rarely begins when the photographer arrives. Someone has been planning it for weeks. Parents are making sure every detail is right. Grandparents know exactly how the rituals should happen. Relatives are arriving. Children are running around. Everyone is getting ready for a moment the family may have been waiting years to celebrate.\n\nThen suddenly, it begins. And while everyone is watching the ceremony, there are moments happening everywhere around it — a parent's pride, a grandparent's blessing, a sibling trying to make you laugh, and three generations standing together. We preserve the tradition — and the family living it.",
+    vision:
+      "The photographs everyone expects. And the ones nobody expected. Traditional ceremonies need proper documentation — rituals, family groups, and portraits matter. But photographing only those moments can leave half the story behind. Candid photography allows us to preserve the expressions, relationships and little interactions happening naturally throughout the function.",
+    approach:
+      "Keep it simple. Add only what matters to you. A small ceremony at home doesn't need the same coverage as a larger family celebration at a venue. Tell us about the function, approximate guest count, location and what you want to remember. We'll help you choose suitable coverage.",
+    image: familyPortrait,
+    gallery: intimateGallery,
+    accent: "family",
+    deliverables: [
+      "Ritual & Ceremony Documentation",
+      "Multi-Generational Family Portraits",
+      "Candid Emotion & Blessing Moments",
+      "Cinematic Highlights & Event Video",
+      "Family Keepsake Album",
+    ],
+    timeline: [
+      "01 — Tell Us the Ceremony: Share what you're celebrating, your date and location",
+      "02 — Help Us Understand: Tell us about the rituals, schedule and family priorities",
+      "03 — Plan the Coverage: We recommend coverage according to the size of your function",
+      "04 — Celebrate: You stay with your family while we document rituals and candids",
+      "05 — Receive Your Memories: Carefully edited photos, films and deliverables confirmed with a clear timeline",
+    ],
+    equipment: sharedEquipment,
+    sections: [
+      {
+        title: "The Ceremonies We Cover",
+        content: "Different ceremonies. The same reason to remember them.",
+        items: [
+          {
+            title: "Half Saree Ceremony",
+            description:
+              "A new chapter, surrounded by family. We capture the rituals and portraits, but also the pride in parents' faces, grandparents' blessings and candid moments.",
+          },
+          {
+            title: "Dhoti Ceremony",
+            description:
+              "A tradition passed from one generation to another. Rituals, blessings, family portraits, and natural moments between generations.",
+          },
+          {
+            title: "Housewarming (Gruhapravesam)",
+            description:
+              "A new home begins with the people who fill it. Prayers in new rooms, relatives arriving early, rituals, and the first family photographs inside.",
+          },
+          {
+            title: "Naming & Family Ceremonies",
+            description:
+              "A small name. A very big place in the family. The rituals, the baby's smallest expressions, parents, grandparents, and the family surrounding the moment.",
+          },
+        ],
+      },
+      {
+        title: "What We Look For Beyond the Ritual",
+        content: "The ceremony is important. So is everything happening around it.",
+        items: [
+          {
+            title: "The Tradition",
+            description: "The rituals, details and important moments your family expects to have documented properly.",
+          },
+          {
+            title: "The Blessings",
+            description: "Parents and grandparents often create some of the most meaningful photographs of a traditional ceremony.",
+          },
+          {
+            title: "The Generations",
+            description: "One of the rare occasions when multiple generations are together at once in one frame.",
+          },
+          {
+            title: "The Unscripted",
+            description: "Children getting distracted, cousins laughing, someone fixing an outfit, and parents quietly watching.",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do you provide traditional function photography in Hyderabad?",
+        answer:
+          "Yes. RAKZS Studio provides photography and videography for traditional and family ceremonies in Hyderabad, with coverage also available across Telangana.",
+      },
+      {
+        question: "What traditional ceremonies do you cover?",
+        answer:
+          "Coverage can include Half Saree ceremonies, Dhoti ceremonies, Housewarmings, Naming Ceremonies and other family traditions. Tell us about your rituals and we will plan accordingly.",
+      },
+      {
+        question: "Do you provide Half Saree function photography in Hyderabad?",
+        answer:
+          "Yes. Photography and videography can be arranged for Half Saree ceremonies, including rituals, portraits, family photographs and candid moments.",
+      },
+      {
+        question: "Do you provide Dhoti Ceremony photography and videography?",
+        answer:
+          "Yes. Dhoti Ceremony coverage can include photography, candid moments, family portraits and video according to your requirements.",
+      },
+      {
+        question: "Do you cover Housewarming ceremonies?",
+        answer:
+          "Yes. Housewarming coverage includes traditional rituals, details of the new home, family photographs, guests and candid moments.",
+      },
+      {
+        question: "Do you provide Naming Ceremony photography?",
+        answer:
+          "Yes. Naming Ceremonies and similar baby/family traditions can be covered through photography and video depending on your requirements.",
+      },
+      {
+        question: "Can we book only a photographer for our function?",
+        answer:
+          "Yes. You don't have to select photography and video together. Coverage can be kept simple and built around what your particular ceremony needs.",
+      },
+      {
+        question: "Do we need both traditional and candid photography?",
+        answer:
+          "Traditional photography is important for rituals and family groups. Candid photography adds natural expressions and interactions between those moments.",
+      },
+      {
+        question: "How many photographers do we need for a traditional function?",
+        answer:
+          "That depends on the number of guests, venue, schedule, rituals and selected coverage. We'll recommend an appropriate team once we understand your celebration.",
+      },
+      {
+        question: "Do you provide video and reels for traditional functions?",
+        answer:
+          "Yes. Videography, cinematic highlights and short-form reels can be included depending on your selected coverage.",
+      },
+      {
+        question: "Can we get an album?",
+        answer: "Yes. Albums can be added according to your requirements.",
+      },
+      {
+        question: "How much does traditional ceremony photography cost in Hyderabad?",
+        answer:
+          "The cost depends on the duration of the function, team required, photography or video coverage and final deliverables. We help you choose suitable coverage without unnecessary add-ons.",
+      },
+      {
+        question: "How long will it take to receive our photos and videos?",
+        answer:
+          "Delivery depends on the amount of coverage and final deliverables. A clear delivery timeline is provided once requirements are confirmed.",
+      },
+      {
+        question: "How do we book RAKZS Studio?",
+        answer:
+          "Share your ceremony, date, location and requirements. Once availability and coverage are finalized, we'll share the booking details and advance required to confirm your date.",
+      },
+    ],
+  },
+  {
+    slug: "birthdays-anniversaries",
+    title: "Birthdays & Anniversaries",
+    category: "Birthdays",
+    location: "Hyderabad, Telangana",
+    year: "2026",
+    summary:
+      "Another year passes. This one doesn't have to. First birthdays, milestone years, and anniversaries remembered with those who were there.",
+    story:
+      "Today they're this little. They won't be for long.\n\nA first birthday feels like it's about the child. And of course, it is. But look around the room: parents are remembering the year that changed everything, grandparents can't stop holding them, family members are trying to make them smile, someone is fixing the outfit, and someone else is protecting the cake.\n\nAnd the birthday child? They're usually doing whatever they want. That's what makes it real. We preserve the celebration — but more importantly, the people experiencing it together.",
+    vision:
+      "Get the family photograph. Don't miss the family being itself. There are photographs every birthday needs: birthday child, parents, grandparents, family groups, cake cutting, décor and guests. But between them are the moments that make the final collection personal. Candid photography allows us to capture what the celebration actually felt like.",
+    approach:
+      "You don't need a huge setup to keep a beautiful memory. A small first birthday at home and a large celebration at a venue don't need the same team. Tell us your event size, location, approximate schedule and what you want from the celebration. We'll help you choose coverage accordingly.",
+    image: birthdayHero,
+    gallery: [birthdayHero, weddingHero, familyPortrait, preWeddingHero, birthdayHero],
+    accent: "wedding",
+    deliverables: [
+      "Birthday & Milestone Portraits",
+      "Family Groups & Cake-Cutting Coverage",
+      "Candid Moments & Guest Interactions",
+      "Celebration Highlights & Social Reels",
+      "Custom Keepsake Album",
+    ],
+    timeline: [
+      "01 — Tell Us About the Event: Birthday or anniversary, date, location and approximate guest count",
+      "02 — Tell Us What Matters: Family photographs, candid moments, video, reels, or album preferences",
+      "03 — Plan the Coverage: We recommend a suitable setup based on your event",
+      "04 — Celebrate: You stay present with your family and guests while we document everything",
+      "05 — Receive Your Memories: Prepared deliverables confirmed with a clear delivery timeline",
+    ],
+    equipment: sharedEquipment,
+    sections: [
+      {
+        title: "The Celebrations We Cover",
+        content: "Different years. Different stories worth keeping.",
+        items: [
+          {
+            title: "First Birthdays",
+            description:
+              "One year old. The first smile, first steps, first words. Portraits, cake cutting, tiny expressions, parents' reactions, and grandparents' joy.",
+          },
+          {
+            title: "Kids' Birthdays",
+            description:
+              "Let them be children. Running around, laughing with friends, and giving spontaneous expressions without making it feel like a stiff photoshoot.",
+          },
+          {
+            title: "Milestone Birthdays",
+            description:
+              "50th, 60th, 75th or any special milestone. Bringing together family, friends, children and generations to celebrate a lifetime of relationships.",
+          },
+          {
+            title: "Anniversaries",
+            description:
+              "Another year together. The couple at the centre, the family that grew around them, speeches, laughter, and candid moments celebrating your journey.",
+          },
+        ],
+      },
+      {
+        title: "Beyond the Cake",
+        content: "The cake gets cut once. The moments happen everywhere.",
+        items: [
+          {
+            title: "The Birthday Star",
+            description: "Expressions, excitement, portraits and personality at the centre of the celebration.",
+          },
+          {
+            title: "The Parents",
+            description: "Some of the strongest photographs are the parents watching their child throughout the day.",
+          },
+          {
+            title: "The Grandparents",
+            description: "Generational photographs that grow more valuable with every passing year.",
+          },
+          {
+            title: "The Unplanned",
+            description: "A child reaching for cake early, a parent fixing an outfit, and friends laughing away from the stage.",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do you provide birthday photography in Hyderabad?",
+        answer:
+          "Yes. RAKZS Studio provides birthday photography and videography in Hyderabad, including first birthdays, children's birthdays, milestone birthdays and family celebrations.",
+      },
+      {
+        question: "Do you provide first birthday photography in Hyderabad?",
+        answer:
+          "Yes. First-birthday coverage can include the child, parents, grandparents, family portraits, décor, cake cutting, guests and candid moments.",
+      },
+      {
+        question: "Do you provide both candid and traditional birthday photography?",
+        answer:
+          "Yes. Traditional coverage captures family groups and cake cutting, while candid photography focuses on natural expressions throughout the event.",
+      },
+      {
+        question: "Can we book only a photographer for a birthday?",
+        answer:
+          "Yes. You don't have to book video or additional services if you only need photography.",
+      },
+      {
+        question: "Do you provide birthday videography and reels?",
+        answer:
+          "Yes. Videography, short-form reels and cinematic highlights can be included depending on your selected coverage.",
+      },
+      {
+        question: "Do you provide anniversary photography in Hyderabad?",
+        answer:
+          "Yes. RAKZS Studio covers anniversary celebrations, including couple portraits, family photographs, guests and candid moments.",
+      },
+      {
+        question: "Can you photograph a small birthday at home?",
+        answer:
+          "Yes. Coverage can be customized for intimate home celebrations as well as larger banquet venues.",
+      },
+      {
+        question: "How many photographers do we need for a birthday party?",
+        answer:
+          "It depends on the event size, venue, guest count and schedule. We'll recommend a suitable team without unnecessary extras.",
+      },
+      {
+        question: "How much does birthday photography cost in Hyderabad?",
+        answer:
+          "Pricing depends on duration, team required, photography or video coverage and final deliverables. Contact us for a tailored quote.",
+      },
+      {
+        question: "Do you provide birthday albums?",
+        answer: "Yes. Premium albums can be added to any birthday booking.",
+      },
+      {
+        question: "How do we book RAKZS Studio for a birthday or anniversary?",
+        answer:
+          "Share your event type, date, location and requirements. We'll confirm availability and share booking details to reserve your date.",
+      },
+    ],
+  },
+  {
+    slug: "baby-family-celebrations",
+    title: "Baby & Family Celebrations",
+    category: "Family",
+    location: "Hyderabad, Telangana",
+    year: "2026",
+    summary:
+      "The smallest moments become the biggest memories. Baby Showers, Cradle Ceremonies, Naming Celebrations, and intimate family milestones.",
+    story:
+      "Before they remember you, you'll remember everything.\n\nThe tiny hands. The way everyone wants to hold them. Grandparents smiling differently when the baby is in their arms. Parents noticing expressions nobody else understands yet. A house suddenly filled with new routines, new sounds and more photographs than anyone planned.\n\nThese moments feel ordinary while you're living them. Then the child grows. And suddenly they aren't ordinary at all. We preserve the beginning — and the family beginning it together.",
+    vision:
+      "Give us the smiles. Give us the chaos too. Of course we'll make the family portraits — parents with the baby, grandparents, siblings, relatives. But a family celebration shouldn't become an endless line of people looking into a camera. Between those photographs are the moments that make the gallery personal: a parent calming the baby, grandparents playing with them, a sibling getting curious.",
+    approach:
+      "Keep the setup comfortable. Keep the memories complete. Baby and family celebrations don't always need large production teams. Sometimes one simple photography setup is exactly right. Tell us about your occasion, venue, family and what you'd like to remember. We'll help you choose coverage without adding things you don't need.",
+    image: newbornHero,
+    gallery: intimateGallery,
+    accent: "family",
+    deliverables: [
+      "Baby Shower / Cradle / Naming Ceremony Coverage",
+      "Parent, Grandparent & Multi-Gen Portraits",
+      "Candid Family Interactions & Ritual Details",
+      "Cinematic Family Highlight Film & Reels",
+      "Handcrafted Family Keepsake Album",
+    ],
+    timeline: [
+      "01 — Tell Us the Occasion: Baby Shower, Cradle Ceremony, Naming Celebration or family milestone",
+      "02 — Share the Details: Date, location, schedule, guest count and important rituals",
+      "03 — Plan the Coverage: We recommend a comfortable setup tailored to your family",
+      "04 — Be With Your Family: Enjoy the occasion while we document the moments",
+      "05 — Receive Your Memories: Beautifully prepared photos, films and deliverables with clear delivery dates",
+    ],
+    equipment: sharedEquipment,
+    sections: [
+      {
+        title: "The Celebrations We Cover",
+        content: "Different beginnings. One family growing around them.",
+        items: [
+          {
+            title: "Baby Shower (Seemantham / Godh Bharai)",
+            description:
+              "Before you meet them, everyone is already celebrating them. Anticipation, blessings, family portraits, and quiet moments surrounding the parents-to-be.",
+          },
+          {
+            title: "Cradle Ceremony (Uyyala / Barasala)",
+            description:
+              "Tiny moments. An entire family watching. Parents keeping everything calm, grandparents waiting for their turn, and rituals captured in motion.",
+          },
+          {
+            title: "Naming Celebrations",
+            description:
+              "A name they'll carry forever. A day your family will remember. Documenting rituals, blessings, and natural candid moments.",
+          },
+          {
+            title: "Family Celebrations & Get-Togethers",
+            description:
+              "Not every memory needs a big occasion. A growing child, visiting grandparents, and generations together in one place.",
+          },
+        ],
+      },
+      {
+        title: "What We Look For Beyond the Ceremony",
+        content: "The baby may be the reason. The family becomes the story.",
+        items: [
+          {
+            title: "The Little Expressions",
+            description: "The sleepy look, the unexpected smile, the curiosity that changes faster than anyone expects.",
+          },
+          {
+            title: "The Parents",
+            description: "Some of the strongest photographs are of parents looking at their child with quiet tenderness.",
+          },
+          {
+            title: "The Grandparents",
+            description: "A photograph of a baby in a grandparent's arms becomes a family heirloom for decades.",
+          },
+          {
+            title: "The Generations",
+            description: "One frame holding a brand new beginning alongside decades of family history.",
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do you provide Baby Shower photography in Hyderabad?",
+        answer:
+          "Yes. RAKZS Studio provides photography and videography for Baby Showers in Hyderabad, with coverage also available across Telangana. We cover parents-to-be, family portraits, traditions, décor and candid moments.",
+      },
+      {
+        question: "Do you cover Cradle Ceremonies in Hyderabad?",
+        answer:
+          "Yes. Photography and video coverage can be arranged for Cradle Ceremonies, including rituals, baby portraits, grandparents, family groups and candids.",
+      },
+      {
+        question: "Do you provide Naming Ceremony photography?",
+        answer:
+          "Yes. Naming celebrations and related family ceremonies can be covered through photography and videography according to your requirements.",
+      },
+      {
+        question: "Do you provide family photography along with the ceremony?",
+        answer:
+          "Yes. Multi-generational family portraits are an essential part of our coverage and can include parents, grandparents, siblings and relatives.",
+      },
+      {
+        question: "Can we book only photography?",
+        answer:
+          "Yes. You don't need to select video, reels or albums if you only want photography. Coverage can be kept as simple as your celebration requires.",
+      },
+      {
+        question: "Can you cover a small ceremony at home?",
+        answer:
+          "Yes. Coverage can be planned for intimate celebrations at home as well as larger functions at banquet halls.",
+      },
+      {
+        question: "Do you create reels or highlight videos for baby functions?",
+        answer:
+          "Yes. Short-form reels and cinematic highlights can be included depending on your selected coverage.",
+      },
+      {
+        question: "How long does delivery take?",
+        answer:
+          "Delivery depends on the amount of coverage and final deliverables you select. We provide a clear delivery timeline once requirements are confirmed.",
+      },
+      {
+        question: "How do we book RAKZS Studio?",
+        answer:
+          "Share the occasion, date, location and requirements with us. We'll provide booking details and advance required to confirm the date.",
+      },
+    ],
   },
   {
     slug: "beach-pre-wedding",
@@ -673,6 +1442,7 @@ export const serviceCategories: ServiceCategory[] = [
           "The beginning. The celebration. Everything in between. From exchanging rings to celebrating with everyone you love, we capture the people, emotions and energy that make these occasions unforgettable.",
         cta: "Explore Events",
         image: preWeddingHero,
+        eventSlug: "engagement-ceremony",
       },
       {
         eyebrow: "Event Type · 03",
@@ -681,6 +1451,7 @@ export const serviceCategories: ServiceCategory[] = [
           "Different traditions. One unforgettable story. Haldi, Mehendi, Sangeet and the celebrations surrounding your wedding — captured with all their colour, laughter, movement and emotion.",
         cta: "Explore Celebrations",
         image: familyHero,
+        eventSlug: "wedding-celebrations",
       },
     ],
     seo: {
@@ -700,46 +1471,7 @@ export const serviceCategories: ServiceCategory[] = [
       secondary: "Explore Packages",
     },
   },
-  {
-    slug: "family-function",
-    label: "Family Function",
-    eventCategories: ["Maternity", "Newborn", "Birthdays", "Family"],
-    image: familyHero,
-    kicker: "Family Milestones",
-    cardTitle: "Family Functions & Celebrations",
-    description: "The traditions, celebrations and people that become part of your family's story.",
-    cardCta: "Explore Events",
-    heroEyebrow: "Family Milestones",
-    heroTitle: "The moments your family will talk about for years.",
-    heroDescription:
-      "From meaningful traditions to joyful celebrations, we capture the people, emotions and little moments that make every family occasion worth remembering.",
-    children: [
-      {
-        eyebrow: "Traditional Ceremonies",
-        title: "Traditions change with time. The memories shouldn't.",
-        description:
-          "Half Saree ceremonies, Dhoti ceremonies, Housewarmings and other meaningful family traditions — documented with attention to the rituals and the people at the heart of them.",
-        cta: "Explore Ceremonies",
-        image: familyPortrait,
-      },
-      {
-        eyebrow: "Birthdays & Anniversaries",
-        title: "Another year. Another reason to celebrate together.",
-        description:
-          "From first birthdays to milestone years and anniversaries, we capture the laughter, surprises and people who make the celebration yours.",
-        cta: "Explore Celebrations",
-        image: birthdayHero,
-      },
-      {
-        eyebrow: "Baby & Family Celebrations",
-        title: "Little beginnings. Big memories.",
-        description:
-          "Baby Showers, Cradle Ceremonies, Naming Ceremonies and the beautiful family moments surrounding a new beginning.",
-        cta: "Explore Celebrations",
-        image: newbornHero,
-      },
-    ],
-  },
+
   {
     slug: "pre-wedding-couple",
     label: "Pre-Wedding / Couple",
@@ -761,6 +1493,7 @@ export const serviceCategories: ServiceCategory[] = [
           "A thoughtfully planned photo and film experience built around the two of you — your personalities, your connection and the way you want your story to feel.",
         cta: "Explore Pre-Wedding",
         image: preWeddingHero,
+        eventSlug: "sunset-pre-wedding",
       },
       {
         eyebrow: "Couple & Save-the-Date",
@@ -769,8 +1502,69 @@ export const serviceCategories: ServiceCategory[] = [
           "From relaxed couple portraits to creative Save-the-Date photographs and films, create something personal to share before your celebration begins.",
         cta: "Explore Couple Shoots",
         image: weddingHero,
+        eventSlug: "heritage-fort-couple-shoot",
       },
     ],
+  },
+  {
+    slug: "family-function",
+    label: "Family Function",
+    eventCategories: ["Maternity", "Newborn", "Birthdays", "Family"],
+    image: familyHero,
+    kicker: "Family Milestones",
+    cardTitle: "Family Functions & Celebrations",
+    description: "The traditions, celebrations and people that become part of your family's story.",
+    cardCta: "Explore Events",
+    heroEyebrow: "Family Milestones",
+    heroTitle: "Every family celebrates differently. Every memory deserves its own story.",
+    heroDescription:
+      "From meaningful traditions to joyful celebrations, we capture the people, emotions and little moments that make every family occasion worth remembering across Hyderabad and Telangana.",
+    children: [
+      {
+        eyebrow: "Event Type · 01",
+        title: "Traditional Ceremonies",
+        description:
+          "Traditions that connect generations. From Half Saree and Dhoti ceremonies to Housewarmings, Naming Ceremonies and other family traditions — we preserve the rituals, people and emotions that make them meaningful.",
+        cta: "Explore Ceremonies",
+        image: familyPortrait,
+        eventSlug: "traditional-ceremonies",
+      },
+      {
+        eyebrow: "Event Type · 02",
+        title: "Birthdays & Anniversaries",
+        description:
+          "Another year. Another chapter worth keeping. From a child's first birthday to milestone celebrations and anniversaries, we capture the laughter, family and little moments happening around the occasion.",
+        cta: "Explore Celebrations",
+        image: birthdayHero,
+        eventSlug: "birthdays-anniversaries",
+      },
+      {
+        eyebrow: "Event Type · 03",
+        title: "Baby & Family Celebrations",
+        description:
+          "Little beginnings. Big memories. From Baby Showers and Cradle Ceremonies to celebrations welcoming a new member of the family — captured through the details, emotions and people surrounding them.",
+        cta: "Explore Family Celebrations",
+        image: newbornHero,
+        eventSlug: "baby-family-celebrations",
+      },
+    ],
+    seo: {
+      title: "Every family celebrates differently. Every memory deserves its own story.",
+      paragraphs: [
+        "Some celebrations are built around traditions. Others are simply about bringing everyone you love into one place.",
+        "Whatever the occasion, the photographs that matter later are often more than the planned ones — a grandparent's expression, a child being themselves, parents watching from across the room, or generations together in one frame.",
+        "From family function photography in Hyderabad and candid moments to professional videography and cinematic highlights, RAKZS Studio creates coverage around the way your celebration happens.",
+      ],
+      note: "We photograph traditional ceremonies, birthdays, anniversaries, baby celebrations and family events across Hyderabad and Telangana, with coverage planned around the occasion and the moments that matter to your family.",
+      cta: "Explore Packages",
+    },
+    bottomCta: {
+      title: "Your family. Your moments. Your story.",
+      description:
+        "Tell us what you're celebrating and we'll help you find the right coverage for your occasion.",
+      primary: "Check Your Date",
+      secondary: "Explore Packages",
+    },
   },
   {
     slug: "corporate-business",
@@ -794,6 +1588,7 @@ export const serviceCategories: ServiceCategory[] = [
           "Professional photography and video coverage for office events, award ceremonies, launches, team celebrations and other corporate occasions.",
         cta: "Explore Corporate Events",
         image: corporateHero,
+        eventSlug: "corporate-conference",
       },
       {
         eyebrow: "Conferences & Business Events",
@@ -802,6 +1597,7 @@ export const serviceCategories: ServiceCategory[] = [
           "From speakers and presentations to audience interactions, networking and key moments, we document conferences, seminars and professional gatherings with clean, purposeful coverage.",
         cta: "Explore Business Events",
         image: editorialHero,
+        eventSlug: "corporate-headshots",
       },
     ],
   },
@@ -826,6 +1622,7 @@ export const serviceCategories: ServiceCategory[] = [
           "Brand portraits, team photographs, workplaces, services and business-focused visual content created around how you want customers to see your brand.",
         cta: "Explore Brand Content",
         image: brandingHero,
+        eventSlug: "personal-branding",
       },
       {
         eyebrow: "Product & Promotional",
@@ -834,6 +1631,7 @@ export const serviceCategories: ServiceCategory[] = [
           "Clean product photography and promotional visual content designed to present what you sell with clarity, detail and personality.",
         cta: "Explore Commercial Work",
         image: productHero,
+        eventSlug: "product-photography",
       },
       {
         eyebrow: "Social Media Content",
@@ -842,6 +1640,7 @@ export const serviceCategories: ServiceCategory[] = [
           "Photography, short-form videos, reels and campaign content created for businesses that need a consistent visual presence online.",
         cta: "Explore Social Content",
         image: editorialHero,
+        eventSlug: "fashion-editorial",
       },
     ],
   },
