@@ -91,12 +91,12 @@ function EventDetailPage() {
 
             <div>
               <h3 className="font-display text-3xl text-foreground">Creative Vision</h3>
-              <p className="mt-4 text-base leading-8 text-muted-foreground">{event.vision}</p>
+              <p className="mt-4 text-base leading-8 text-muted-foreground whitespace-pre-line">{event.vision}</p>
             </div>
 
             <div>
               <h3 className="font-display text-3xl text-foreground">Our Approach</h3>
-              <p className="mt-4 text-base leading-8 text-muted-foreground">{event.approach}</p>
+              <p className="mt-4 text-base leading-8 text-muted-foreground whitespace-pre-line">{event.approach}</p>
             </div>
 
             {event.sections?.map((sec) => (
@@ -129,42 +129,48 @@ function EventDetailPage() {
           </div>
 
           <aside className="reveal grid content-start gap-4">
-            <div className="rounded-lg border border-border bg-card p-7 shadow-cinematic">
-              <p className="section-kicker">Deliverables</p>
-              <ul className="mt-5 grid gap-3 text-sm leading-7 text-muted-foreground">
-                {event.deliverables.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-lg border border-border bg-card p-7 shadow-cinematic">
-              <p className="section-kicker">Shoot Timeline</p>
-              <ol className="mt-5 grid gap-4 text-sm leading-7 text-muted-foreground">
-                {event.timeline.map((item, index) => (
-                  <li key={item} className="flex gap-4">
-                    <span className="font-display text-xl text-primary">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div className="rounded-lg border border-primary/40 bg-secondary p-7">
-              <Camera className="size-6 text-primary" />
-              <p className="section-kicker mt-4">Equipment Notes</p>
-              <ul className="mt-4 grid gap-4 text-sm leading-7 text-muted-foreground">
-                {event.equipment.map((item) => (
-                  <li key={item.title}>
-                    <strong className="block text-foreground">{item.title}</strong>
-                    {item.note}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {event.deliverables && event.deliverables.length > 0 ? (
+              <div className="rounded-lg border border-border bg-card p-7 shadow-cinematic">
+                <p className="section-kicker">Deliverables</p>
+                <ul className="mt-5 grid gap-3 text-sm leading-7 text-muted-foreground">
+                  {event.deliverables.map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {event.timeline && event.timeline.length > 0 ? (
+              <div className="rounded-lg border border-border bg-card p-7 shadow-cinematic">
+                <p className="section-kicker">Shoot Timeline</p>
+                <ol className="mt-5 grid gap-4 text-sm leading-7 text-muted-foreground">
+                  {event.timeline.map((item, index) => (
+                    <li key={item} className="flex gap-4">
+                      <span className="font-display text-xl text-primary">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ) : null}
+            {event.equipment && event.equipment.length > 0 ? (
+              <div className="rounded-lg border border-primary/40 bg-secondary p-7">
+                <Camera className="size-6 text-primary" />
+                <p className="section-kicker mt-4">Equipment Notes</p>
+                <ul className="mt-4 grid gap-4 text-sm leading-7 text-muted-foreground">
+                  {event.equipment.map((item) => (
+                    <li key={item.title}>
+                      <strong className="block text-foreground">{item.title}</strong>
+                      {item.note}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
 
             {event.faqs && event.faqs.length > 0 ? (
               <div className="rounded-lg border border-border bg-card p-6 shadow-cinematic">
@@ -231,7 +237,7 @@ function EventDetailPage() {
           <SectionHeader
             eyebrow="Gallery"
             title="Frames from the collection."
-            description="Illustrative sample gallery. Click any frame to view it enlarged."
+            description="Click any frame to view it enlarged."
           />
           <GalleryLightbox images={event.gallery} title={event.title} />
         </div>

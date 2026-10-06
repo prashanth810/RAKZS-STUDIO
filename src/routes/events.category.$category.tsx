@@ -131,7 +131,7 @@ function EventCategoryPage() {
             <SectionHeader
               eyebrow="Portfolio"
               title="Stories from this collection."
-              description="Illustrative sample stories to show how we approach this kind of work."
+              description="Stories from our collection."
             />
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {categoryEvents.map((event, index) => (

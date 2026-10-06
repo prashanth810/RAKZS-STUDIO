@@ -50,9 +50,9 @@ export type EventItem = {
   image: string;
   gallery: string[];
   accent: "wedding" | "prewedding" | "family" | "editorial";
-  deliverables: string[];
-  timeline: string[];
-  equipment: { title: string; note: string }[];
+  deliverables?: string[];
+  timeline?: string[];
+  equipment?: { title: string; note: string }[];
   sections?: {
     title: string;
     content?: string;
@@ -69,15 +69,15 @@ const commercialGallery = [editorialHero, preWeddingHero, weddingHero, familyHer
 const sharedEquipment = [
   {
     title: "Full-frame camera bodies",
-    note: "Illustrative examples for dependable detail, low-light confidence, and editorial clarity.",
+    note: "High-resolution camera sensors for dependable detail, dynamic range, and low-light confidence.",
   },
   {
     title: "Prime portrait lenses",
-    note: "Used as a planning example for soft backgrounds, natural skin tones, and intimate framing.",
+    note: "Fast aperture optics ensuring natural skin tone rendering, sharp focus, and gentle background separation.",
   },
   {
     title: "Cinematic lighting kit",
-    note: "An illustrative setup for controlled highlights, warm separation, and graceful depth.",
+    note: "Professional continuous and wireless flash lighting for controlled ambient highlights and atmospheric depth.",
   },
 ];
 
@@ -254,11 +254,11 @@ export const events: EventItem[] = [
     summary:
       "A lakeside portrait story with palace silhouettes, flowing outfits, and sunset romance.",
     story:
-      "This illustrative sample story explores a relaxed pre-wedding session planned around soft light, architecture, and natural chemistry.",
+      "A romantic pre-wedding session planned around soft evening light, heritage architecture, and natural chemistry.",
     vision:
-      "The represented vision is graceful and cinematic, with space for candid laughter, quiet closeness, and dramatic wide frames.",
+      "The vision is graceful and cinematic, with space for candid laughter, quiet closeness, and dramatic wide frames.",
     approach:
-      "We would plan around blue hour, golden edges, and gentle posing so the couple feels present rather than staged.",
+      "We plan around blue hour, golden edges, and gentle direction so the couple feels present rather than staged.",
     image: preWeddingHero,
     gallery: warmGallery,
     accent: "prewedding",
@@ -287,7 +287,7 @@ export const events: EventItem[] = [
     summary:
       "Soft, intimate portraits celebrating anticipation, family connection, and gentle light.",
     story:
-      "This illustrative sample story celebrates a maternity session built around warmth, comfort, and natural family affection.",
+      "A quiet maternity session built around warmth, comfort, and natural family affection.",
     vision:
       "The vision is airy yet luxurious: cream styling, floral details, and portraits that feel calm, intimate, and heirloom-worthy.",
     approach:
@@ -319,7 +319,7 @@ export const events: EventItem[] = [
     year: "2026",
     summary: "Tender newborn frames with natural textures, soft hands, and quiet family moments.",
     story:
-      "This illustrative sample story imagines a peaceful newborn session designed around safety, patience, and emotionally honest details.",
+      "A peaceful newborn session designed around baby safety, patience, and emotionally honest details.",
     vision:
       "The vision is minimal and warm, preserving tiny gestures, soft expressions, and the feeling of a new chapter at home.",
     approach:
@@ -352,11 +352,11 @@ export const events: EventItem[] = [
     summary:
       "A warm celebration story with decor details, laughter, cake moments, and family portraits.",
     story:
-      "This illustrative sample story follows a milestone birthday through candid arrivals, decor, stage moments, and joyful portraits.",
+      "A milestone birthday documented through candid arrivals, decor details, stage moments, and joyful family portraits.",
     vision:
-      "The represented vision keeps the event bright and refined while preserving spontaneous laughter and family energy.",
+      "The vision keeps the event bright and refined while preserving spontaneous laughter and family energy.",
     approach:
-      "Coverage would combine fast documentary timing with polished portraits and edited reels for sharing.",
+      "Coverage combines fast documentary timing with polished portraits and edited reels for sharing.",
     image: birthdayHero,
     gallery: [birthdayHero, weddingHero, familyPortrait, preWeddingHero, birthdayHero],
     accent: "wedding",
@@ -384,11 +384,11 @@ export const events: EventItem[] = [
     year: "2026",
     summary: "Editorial yet heartfelt family portraits designed for albums, walls, and memories.",
     story:
-      "This illustrative sample story frames a family session as a relaxed portrait experience where comfort creates the best expressions.",
+      "A relaxed family portrait session where comfort and connection create the best expressions.",
     vision:
       "The vision is elevated and personal, making every generation feel seen without making the session feel formal or stiff.",
     approach:
-      "We would mix guided portraits, candid movement, and detail frames to create a complete family narrative.",
+      "We mix guided portraits, candid movement, and detail frames to create a complete family narrative.",
     image: familyPortrait,
     gallery: [familyPortrait, familyHero, weddingHero, preWeddingHero, familyPortrait],
     accent: "family",
@@ -417,11 +417,11 @@ export const events: EventItem[] = [
     summary:
       "Professional event coverage with speakers, audience moments, branding, and highlights.",
     story:
-      "This illustrative sample story covers a conference with emphasis on brand presence, speaker clarity, networking, and post-event assets.",
+      "Polished corporate event coverage with emphasis on brand presence, speaker clarity, networking, and post-event media assets.",
     vision:
-      "The represented vision is polished and credible, balancing warm human moments with clean business storytelling.",
+      "The vision is polished and credible, balancing warm human moments with clean business storytelling.",
     approach:
-      "Coverage would prioritize keynotes, panels, sponsor details, portraits, and quick-turnaround edited selections.",
+      "Coverage prioritizes keynotes, panels, sponsor details, portraits, and quick-turnaround edited selections.",
     image: corporateHero,
     gallery: [corporateHero, editorialHero, productHero, corporateHero, brandingHero],
     accent: "editorial",
@@ -450,11 +450,11 @@ export const events: EventItem[] = [
     summary:
       "Premium product imagery with sculpted light, texture, detail, and campaign-ready polish.",
     story:
-      "This illustrative sample story presents a product shoot shaped for online catalogs, campaign visuals, and social media assets.",
+      "High-impact product photography shaped for e-commerce catalogs, campaign visuals, and digital brand presence.",
     vision:
       "The vision is sophisticated and tactile, giving products premium presence through contrast, reflections, and precise styling.",
     approach:
-      "We would design light, surface, and composition around the product’s material qualities and intended platform.",
+      "We design light, surface, and composition around the product’s material qualities and intended platform.",
     image: productHero,
     gallery: [productHero, editorialHero, brandingHero, productHero, corporateHero],
     accent: "editorial",
@@ -483,11 +483,11 @@ export const events: EventItem[] = [
     summary:
       "High-fashion portraits with dramatic gold light, refined styling, and editorial attitude.",
     story:
-      "This illustrative sample story imagines a fashion editorial focused on silhouette, styling, expression, and luxury campaign energy.",
+      "A fashion editorial shoot focused on silhouette, styling, expression, and luxury campaign aesthetics.",
     vision:
-      "The represented vision is bold, elegant, and cinematic, with a strong visual rhythm across portrait and detail frames.",
+      "The vision is bold, elegant, and cinematic, with a strong visual rhythm across portrait and detail frames.",
     approach:
-      "Lighting, pose direction, and color grading are planned to make every frame feel ready for a magazine spread.",
+      "Lighting, pose direction, and color grading are planned to make every frame feel ready for publication.",
     image: editorialHero,
     gallery: commercialGallery,
     accent: "editorial",
@@ -516,11 +516,11 @@ export const events: EventItem[] = [
     summary:
       "Confident portraits and content assets for founders, creators, professionals, and artists.",
     story:
-      "This illustrative sample story frames a personal branding session around presence, trust, and a cohesive content library.",
+      "A personal branding session framed around presence, authority, and a cohesive executive content library.",
     vision:
-      "The vision is premium but approachable, creating portraits that can live across websites, social media, and press profiles.",
+      "The vision is premium but approachable, creating portraits that live across websites, social media, and press profiles.",
     approach:
-      "We would plan wardrobe, backgrounds, expressions, and delivery formats around the client’s brand personality.",
+      "We plan wardrobe, backgrounds, expressions, and delivery formats around the client’s brand personality.",
     image: brandingHero,
     gallery: [brandingHero, editorialHero, corporateHero, preWeddingHero, brandingHero],
     accent: "editorial",
@@ -549,11 +549,11 @@ export const events: EventItem[] = [
     summary:
       "A grand palace celebration with processions, heritage courtyards, and lantern-lit evenings.",
     story:
-      "This illustrative sample story follows a destination palace wedding from the baraat procession to the late-night celebration.",
+      "A grand destination palace wedding captured from the baraat procession to the late-night celebration.",
     vision:
-      "The represented vision is regal and warm: sandstone textures, brocade details, and portraits that feel like heirlooms.",
+      "The vision is regal and warm: sandstone textures, brocade details, and portraits that feel like heirlooms.",
     approach:
-      "We would combine wide architectural frames with intimate candids so the scale of the venue never overshadows the emotion.",
+      "We combine wide architectural frames with intimate candids so the scale of the venue never overshadows the emotion.",
     image: weddingHero,
     gallery: gallerySet,
     accent: "wedding",
@@ -716,11 +716,11 @@ export const events: EventItem[] = [
       "Curated Celebration Gallery",
     ],
     timeline: [
-      "01 — Tell Us Your Functions: Haldi, Mehendi, Sangeet or any other celebrations you're planning",
-      "02 — Share the Schedule: Dates, locations, approximate timings and important moments",
-      "03 — Build the Coverage: We plan the team according to the functions and coverage selected",
-      "04 — Celebrate: We cover the rituals, people, details and everything happening around them",
-      "05 — Receive Your Story: Selected photographs, films and deliverables prepared with care",
+      "Tell Us Your Functions: Haldi, Mehendi, Sangeet or any other celebrations you're planning",
+      "Share the Schedule: Dates, locations, approximate timings and important moments",
+      "Build the Coverage: We plan the team according to the functions and coverage selected",
+      "Celebrate: We cover the rituals, people, details and everything happening around them",
+      "Receive Your Story: Selected photographs, films and deliverables prepared with care",
     ],
     equipment: sharedEquipment,
     sections: [
@@ -821,13 +821,13 @@ export const events: EventItem[] = [
     location: "Hyderabad, Telangana",
     year: "2026",
     summary:
-      "Some traditions last a day. Their meaning travels generations. Half Saree, Dhoti, Housewarming, and Naming Ceremonies preserved forever.",
+      "Some traditions last a day. Their meaning travels generations. The rituals. The blessings. The people who came together. The moments your family has waited to celebrate. Some photographs don't simply remind you of an occasion. They become part of your family's story.",
     story:
-      "It's more than a function when it means something to your family.\n\nA traditional ceremony rarely begins when the photographer arrives. Someone has been planning it for weeks. Parents are making sure every detail is right. Grandparents know exactly how the rituals should happen. Relatives are arriving. Children are running around. Everyone is getting ready for a moment the family may have been waiting years to celebrate.\n\nThen suddenly, it begins. And while everyone is watching the ceremony, there are moments happening everywhere around it — a parent's pride, a grandparent's blessing, a sibling trying to make you laugh, and three generations standing together. We preserve the tradition — and the family living it.",
+      "It's more than a function when it means something to your family.\n\nA traditional ceremony rarely begins when the photographer arrives. Someone has been planning it for weeks. Parents are making sure every detail is right. Grandparents know exactly how the rituals should happen. Relatives are arriving. Children are running around. Everyone is getting ready for a moment the family may have been waiting years to celebrate.\n\nThen suddenly, it begins.\nAnd while everyone is watching the ceremony, there are moments happening everywhere around it — a parent's pride, a grandparent's blessing, a sibling trying to make you laugh, and three generations standing together.\n\nWe preserve the tradition — and the family living it.",
     vision:
-      "The photographs everyone expects. And the ones nobody expected. Traditional ceremonies need proper documentation — rituals, family groups, and portraits matter. But photographing only those moments can leave half the story behind. Candid photography allows us to preserve the expressions, relationships and little interactions happening naturally throughout the function.",
+      "The photographs everyone expects. And the ones nobody expected.\n\nTraditional ceremonies need proper documentation. The rituals have to be captured. Family groups matter. Details matter. Portraits matter.\n\nBut photographing only those moments can leave half the story behind. Candid photography allows us to preserve the expressions, relationships and little interactions happening naturally throughout the function.\n\nRAKZS Studio combines both approaches so your final photographs preserve the ceremony and the people experiencing it.",
     approach:
-      "Keep it simple. Add only what matters to you. A small ceremony at home doesn't need the same coverage as a larger family celebration at a venue. Tell us about the function, approximate guest count, location and what you want to remember. We'll help you choose suitable coverage.",
+      "Keep it simple. Add only what matters to you.\n\nA small ceremony at home doesn't need the same coverage as a larger family celebration at a venue. That's why we don't expect every family to choose the same setup.\n\nTell us about the function, approximate guest count, location and what you want to remember. We'll help you choose suitable coverage.",
     image: familyPortrait,
     gallery: intimateGallery,
     accent: "family",
@@ -836,16 +836,29 @@ export const events: EventItem[] = [
       "Multi-Generational Family Portraits",
       "Candid Emotion & Blessing Moments",
       "Cinematic Highlights & Event Video",
-      "Family Keepsake Album",
+      "Handcrafted Family Keepsake Album",
     ],
     timeline: [
       "01 — Tell Us the Ceremony: Share what you're celebrating, your date and location",
-      "02 — Help Us Understand: Tell us about the rituals, schedule and family priorities",
-      "03 — Plan the Coverage: We recommend coverage according to the size of your function",
-      "04 — Celebrate: You stay with your family while we document rituals and candids",
-      "05 — Receive Your Memories: Carefully edited photos, films and deliverables confirmed with a clear timeline",
+      "02 — Help Us Understand It: Tell us about the rituals, schedule, family priorities and key moments",
+      "03 — Plan the Coverage: We recommend coverage according to the size and requirements of your function",
+      "04 — Celebrate: You stay with your family while we stay ready for rituals, portraits, and candid moments",
+      "05 — Receive Your Memories: Selected photos, films and deliverables prepared with a clear delivery timeline",
     ],
-    equipment: sharedEquipment,
+    equipment: [
+      {
+        title: "Full-frame camera bodies",
+        note: "High-resolution sensors for rich color rendition, capturing intricate ritual details and traditional silk textures in low light.",
+      },
+      {
+        title: "Prime portrait lenses",
+        note: "Fast aperture optics ensuring natural skin tones, soft background separation, and emotional framing during intimate pujas.",
+      },
+      {
+        title: "Cinematic lighting kit",
+        note: "Balanced wireless lighting for controlled ambient highlights and natural depth in home and venue ceremonies.",
+      },
+    ],
     sections: [
       {
         title: "The Ceremonies We Cover",
@@ -854,22 +867,22 @@ export const events: EventItem[] = [
           {
             title: "Half Saree Ceremony",
             description:
-              "A new chapter, surrounded by family. We capture the rituals and portraits, but also the pride in parents' faces, grandparents' blessings and candid moments.",
+              "A new chapter, surrounded by family. A Half Saree Ceremony marks a meaningful transition — celebrated through traditions, blessings, family and photographs that stay with her for years. We capture rituals and portraits alongside the pride in parents' faces and grandparents' blessings.",
           },
           {
             title: "Dhoti Ceremony",
             description:
-              "A tradition passed from one generation to another. Rituals, blessings, family portraits, and natural moments between generations.",
+              "A tradition passed from one generation to another. The ceremony may centre around one person, but the story belongs to the whole family. From rituals and blessings to family portraits and natural moments between generations.",
           },
           {
             title: "Housewarming (Gruhapravesam)",
             description:
-              "A new home begins with the people who fill it. Prayers in new rooms, relatives arriving early, rituals, and the first family photographs inside.",
+              "A new home begins with the people who fill it. Prayers in rooms that will soon become familiar, relatives arriving early, traditions being followed, and the first family photographs inside a place where many memories will be made.",
           },
           {
             title: "Naming & Family Ceremonies",
             description:
-              "A small name. A very big place in the family. The rituals, the baby's smallest expressions, parents, grandparents, and the family surrounding the moment.",
+              "A small name. A very big place in the family. Naming ceremonies and intimate family traditions bring generations together around a new beginning, capturing baby's smallest expressions and surrounding family.",
           },
         ],
       },
@@ -879,19 +892,54 @@ export const events: EventItem[] = [
         items: [
           {
             title: "The Tradition",
-            description: "The rituals, details and important moments your family expects to have documented properly.",
+            description:
+              "The rituals, details and important moments your family expects to have documented properly.",
           },
           {
             title: "The Blessings",
-            description: "Parents and grandparents often create some of the most meaningful photographs of a traditional ceremony.",
+            description:
+              "Parents and grandparents often create some of the most meaningful photographs of a traditional ceremony. We stay ready for those moments.",
           },
           {
             title: "The Generations",
-            description: "One of the rare occasions when multiple generations are together at once in one frame.",
+            description:
+              "A traditional function may be one of the few occasions when several generations of the family are together at once.",
           },
           {
             title: "The Unscripted",
-            description: "Children getting distracted, cousins laughing, someone fixing an outfit, and parents quietly watching.",
+            description:
+              "Children getting distracted, cousins laughing, someone fixing an outfit, and parents quietly watching.",
+          },
+        ],
+      },
+      {
+        title: "Traditional Ceremony Films",
+        content:
+          "Some traditions deserve more than a photograph.\n\nA photograph preserves a blessing. Film lets you hear it again.\n\nThe prayers. The voices of family members. The laughter between rituals. The movement and atmosphere surrounding the celebration. Photography and videography can work together to preserve your traditional ceremony in two different ways — one you can frame, and one you can relive. Depending on your requirements, coverage can include traditional video as well as shorter cinematic highlights and reels.",
+      },
+      {
+        title: "Available Coverage Options",
+        content: "Choose only what your celebration needs.",
+        items: [
+          {
+            title: "Photography",
+            description: "Rituals, portraits, family groups and important moments.",
+          },
+          {
+            title: "Candid Photography",
+            description: "Natural expressions and interactions happening around the ceremony.",
+          },
+          {
+            title: "Videography",
+            description: "Important rituals and family moments documented in motion.",
+          },
+          {
+            title: "Cinematic Highlights & Reels",
+            description: "Shorter visual stories made for remembering and sharing.",
+          },
+          {
+            title: "Albums",
+            description: "Selected photographs brought together into a physical family keepsake.",
           },
         ],
       },
@@ -900,17 +948,17 @@ export const events: EventItem[] = [
       {
         question: "Do you provide traditional function photography in Hyderabad?",
         answer:
-          "Yes. RAKZS Studio provides photography and videography for traditional and family ceremonies in Hyderabad, with coverage also available across Telangana.",
+          "Yes. RAKZS Studio provides photography and videography for traditional and family ceremonies in Hyderabad, with coverage also available across Telangana depending on the event requirements.",
       },
       {
         question: "What traditional ceremonies do you cover?",
         answer:
-          "Coverage can include Half Saree ceremonies, Dhoti ceremonies, Housewarmings, Naming Ceremonies and other family traditions. Tell us about your rituals and we will plan accordingly.",
+          "Coverage can include Half Saree ceremonies, Dhoti ceremonies, Housewarmings, Naming Ceremonies and other family traditions. If your particular ceremony isn't listed, tell us about the occasion and the rituals involved so we can plan the appropriate coverage.",
       },
       {
         question: "Do you provide Half Saree function photography in Hyderabad?",
         answer:
-          "Yes. Photography and videography can be arranged for Half Saree ceremonies, including rituals, portraits, family photographs and candid moments.",
+          "Yes. Photography and videography can be arranged for Half Saree ceremonies, including the important rituals, portraits, family photographs and candid moments throughout the celebration.",
       },
       {
         question: "Do you provide Dhoti Ceremony photography and videography?",
@@ -920,7 +968,7 @@ export const events: EventItem[] = [
       {
         question: "Do you cover Housewarming ceremonies?",
         answer:
-          "Yes. Housewarming coverage includes traditional rituals, details of the new home, family photographs, guests and candid moments.",
+          "Yes. Housewarming coverage can include the traditional rituals, details of the new home, family photographs, guests and candid moments surrounding the ceremony.",
       },
       {
         question: "Do you provide Naming Ceremony photography?",
@@ -935,17 +983,17 @@ export const events: EventItem[] = [
       {
         question: "Do we need both traditional and candid photography?",
         answer:
-          "Traditional photography is important for rituals and family groups. Candid photography adds natural expressions and interactions between those moments.",
+          "Not necessarily. Traditional photography is important for rituals, family groups and planned photographs. Candid photography adds the natural expressions and interactions happening between those moments. Tell us about your function and we'll help you decide whether you need one or both.",
       },
       {
         question: "How many photographers do we need for a traditional function?",
         answer:
-          "That depends on the number of guests, venue, schedule, rituals and selected coverage. We'll recommend an appropriate team once we understand your celebration.",
+          "That depends on the number of guests, venue, schedule, rituals and the type of coverage you want. A small home ceremony may need a different setup from a larger function at a venue. Once we understand your celebration, we'll recommend an appropriate team.",
       },
       {
         question: "Do you provide video and reels for traditional functions?",
         answer:
-          "Yes. Videography, cinematic highlights and short-form reels can be included depending on your selected coverage.",
+          "Yes. Videography, cinematic highlights and short-form reels can be included depending on your selected coverage and final deliverables.",
       },
       {
         question: "Can we get an album?",
@@ -954,12 +1002,17 @@ export const events: EventItem[] = [
       {
         question: "How much does traditional ceremony photography cost in Hyderabad?",
         answer:
-          "The cost depends on the duration of the function, team required, photography or video coverage and final deliverables. We help you choose suitable coverage without unnecessary add-ons.",
+          "The cost depends on the duration of the function, team required, photography or video coverage and final deliverables. Instead of adding services you don't need, tell us about your ceremony and we'll help you choose suitable coverage.",
       },
       {
         question: "How long will it take to receive our photos and videos?",
         answer:
-          "Delivery depends on the amount of coverage and final deliverables. A clear delivery timeline is provided once requirements are confirmed.",
+          "Delivery depends on the amount of coverage and the final deliverables you select. Once your requirements are finalized, we'll provide a clear delivery timeline for your booking.",
+      },
+      {
+        question: "Do you cover traditional ceremonies outside Hyderabad?",
+        answer:
+          "Hyderabad is our primary service area, and we also cover functions across Telangana. Share your location while enquiring so we can discuss the requirements.",
       },
       {
         question: "How do we book RAKZS Studio?",
@@ -975,13 +1028,13 @@ export const events: EventItem[] = [
     location: "Hyderabad, Telangana",
     year: "2026",
     summary:
-      "Another year passes. This one doesn't have to. First birthdays, milestone years, and anniversaries remembered with those who were there.",
+      "Another year passes. This one doesn't have to. The candles. The people. The laughter. The little expressions you didn't even notice while the celebration was happening. Birthdays and anniversaries aren't only about counting another year. They're about remembering who was there for it.",
     story:
-      "Today they're this little. They won't be for long.\n\nA first birthday feels like it's about the child. And of course, it is. But look around the room: parents are remembering the year that changed everything, grandparents can't stop holding them, family members are trying to make them smile, someone is fixing the outfit, and someone else is protecting the cake.\n\nAnd the birthday child? They're usually doing whatever they want. That's what makes it real. We preserve the celebration — but more importantly, the people experiencing it together.",
+      "Today they're this little. They won't be for long.\n\nA first birthday feels like it's about the child. And of course, it is. But look around the room.\nParents are remembering the year that changed everything. Grandparents can't stop holding them. Family members are trying to make them smile. Someone is fixing the outfit. Someone else is protecting the cake.\n\nAnd the birthday child?\nThey're usually doing whatever they want.\nThat's what makes it real.\n\nWe preserve the celebration — but more importantly, the people experiencing it together.",
     vision:
-      "Get the family photograph. Don't miss the family being itself. There are photographs every birthday needs: birthday child, parents, grandparents, family groups, cake cutting, décor and guests. But between them are the moments that make the final collection personal. Candid photography allows us to capture what the celebration actually felt like.",
+      "Get the family photograph. Don't miss the family being itself.\n\nThere are photographs every birthday needs: the birthday child, parents, grandparents, family groups, cake cutting, décor, guests. We make sure those photographs are properly covered.\n\nBut between them are the moments that make the final collection personal. That's where candid photography comes in. RAKZS Studio combines the important photographs with natural moments so your birthday gallery doesn't become 100 photographs of people standing beside a stage. It becomes a record of what the celebration actually felt like.",
     approach:
-      "You don't need a huge setup to keep a beautiful memory. A small first birthday at home and a large celebration at a venue don't need the same team. Tell us your event size, location, approximate schedule and what you want from the celebration. We'll help you choose coverage accordingly.",
+      "You don't need a huge setup to keep a beautiful memory.\n\nA small first birthday at home and a large celebration at a venue don't need the same team. So we don't treat them like they do.\n\nTell us your event size, location, approximate schedule and what you want from the celebration. We'll help you choose coverage accordingly.",
     image: birthdayHero,
     gallery: [birthdayHero, weddingHero, familyPortrait, preWeddingHero, birthdayHero],
     accent: "wedding",
@@ -994,12 +1047,25 @@ export const events: EventItem[] = [
     ],
     timeline: [
       "01 — Tell Us About the Event: Birthday or anniversary, date, location and approximate guest count",
-      "02 — Tell Us What Matters: Family photographs, candid moments, video, reels, or album preferences",
-      "03 — Plan the Coverage: We recommend a suitable setup based on your event",
+      "02 — Tell Us What Matters: Family photographs, candid moments, video, reels, album or specific preferences",
+      "03 — Plan the Coverage: We recommend a suitable setup based on your event and requirements",
       "04 — Celebrate: You stay present with your family and guests while we document everything",
-      "05 — Receive Your Memories: Prepared deliverables confirmed with a clear delivery timeline",
+      "05 — Receive Your Memories: Your selected photos, films and deliverables prepared with a clear delivery timeline",
     ],
-    equipment: sharedEquipment,
+    equipment: [
+      {
+        title: "Full-frame camera bodies",
+        note: "Fast burst-rate sensors to capture fast-moving toddlers, joyful laughter, and fast candle-blowing action.",
+      },
+      {
+        title: "Prime portrait lenses",
+        note: "Ultra-sharp primes capturing vivid party colors, sparkling decorations, and expressive family eye contact.",
+      },
+      {
+        title: "Cinematic lighting kit",
+        note: "Soft flash bounce and video lighting for balanced indoor party venue lighting and cake-cutting highlights.",
+      },
+    ],
     sections: [
       {
         title: "The Celebrations We Cover",
@@ -1008,22 +1074,22 @@ export const events: EventItem[] = [
           {
             title: "First Birthdays",
             description:
-              "One year old. The first smile, first steps, first words. Portraits, cake cutting, tiny expressions, parents' reactions, and grandparents' joy.",
+              "One year old. A year nobody in the family will forget. The first smile, first steps, first words. We capture portraits and cake cutting alongside tiny expressions, parents' reactions, grandparents, and unpredictable candid moments. Because your child may not remember their first birthday — you will.",
           },
           {
             title: "Kids' Birthdays",
             description:
-              "Let them be children. Running around, laughing with friends, and giving spontaneous expressions without making it feel like a stiff photoshoot.",
+              "Let them be children. We'll take care of the photographs. Children rarely follow a photography plan. We photograph the important birthday moments while giving children room to actually enjoy their celebration, creating photos that feel natural.",
           },
           {
             title: "Milestone Birthdays",
             description:
-              "50th, 60th, 75th or any special milestone. Bringing together family, friends, children and generations to celebrate a lifetime of relationships.",
+              "Some birthdays deserve more than another candle. 50th, 60th, 75th or any milestone. Bringing together family, friends, children and generations to celebrate a lifetime of relationships.",
           },
           {
             title: "Anniversaries",
             description:
-              "Another year together. The couple at the centre, the family that grew around them, speeches, laughter, and candid moments celebrating your journey.",
+              "Another year together. Another reason to bring everyone back. An anniversary is about everything that happened inside those years — the couple at the centre, the family that grew around them, speeches, laughter, and candid moments.",
           },
         ],
       },
@@ -1037,15 +1103,50 @@ export const events: EventItem[] = [
           },
           {
             title: "The Parents",
-            description: "Some of the strongest photographs are the parents watching their child throughout the day.",
+            description: "Especially on a first birthday, some of the strongest photographs are the parents watching their child.",
           },
           {
             title: "The Grandparents",
             description: "Generational photographs that grow more valuable with every passing year.",
           },
           {
+            title: "The Family & Friends",
+            description: "The people who came because the celebration matters to them too.",
+          },
+          {
             title: "The Unplanned",
             description: "A child reaching for cake early, a parent fixing an outfit, and friends laughing away from the stage.",
+          },
+        ],
+      },
+      {
+        title: "Films & Highlights",
+        content:
+          "Because someday, you'll want to hear that laugh again.\n\nPhotographs preserve expressions. Film gives the celebration its sound back.\n\nThe birthday song. Parents talking to their child. Grandparents laughing. Friends shouting. The reaction when the cake arrives.\n\nDepending on your requirements, RAKZS can combine event videography with shorter cinematic highlights and reels. Something to keep. Something to share. Something to return to.",
+      },
+      {
+        title: "Available Coverage Options",
+        content: "Start simple. Add only what matters to you.",
+        items: [
+          {
+            title: "Photography",
+            description: "Birthday portraits, family photographs, cake cutting, guests and important moments.",
+          },
+          {
+            title: "Candid Photography",
+            description: "Natural expressions, interactions and everything happening away from the posed photographs.",
+          },
+          {
+            title: "Videography",
+            description: "The celebration documented in motion.",
+          },
+          {
+            title: "Cinematic Highlights & Reels",
+            description: "Shorter visual stories for remembering and sharing the occasion.",
+          },
+          {
+            title: "Albums",
+            description: "Selected birthday or anniversary photographs brought together as a physical keepsake.",
           },
         ],
       },
@@ -1054,17 +1155,22 @@ export const events: EventItem[] = [
       {
         question: "Do you provide birthday photography in Hyderabad?",
         answer:
-          "Yes. RAKZS Studio provides birthday photography and videography in Hyderabad, including first birthdays, children's birthdays, milestone birthdays and family celebrations.",
+          "Yes. RAKZS Studio provides birthday photography and videography in Hyderabad, including first birthdays, children's birthdays, milestone birthdays and family celebrations. Coverage is also available across Telangana depending on the event requirements.",
       },
       {
         question: "Do you provide first birthday photography in Hyderabad?",
         answer:
-          "Yes. First-birthday coverage can include the child, parents, grandparents, family portraits, décor, cake cutting, guests and candid moments.",
+          "Yes. First-birthday coverage can include the child, parents, grandparents, family portraits, décor, cake cutting, guests and candid moments throughout the celebration. Photography and video can be planned according to the size and requirements of your event.",
+      },
+      {
+        question: "What do you cover during a first birthday?",
+        answer:
+          "We can cover the birthday child's portraits and expressions, parents and grandparents, family photographs, venue and décor details, cake cutting, guests and candid interactions throughout the event. The exact coverage is finalized according to your celebration.",
       },
       {
         question: "Do you provide both candid and traditional birthday photography?",
         answer:
-          "Yes. Traditional coverage captures family groups and cake cutting, while candid photography focuses on natural expressions throughout the event.",
+          "Yes. Traditional event photography makes sure important family groups, stage photographs and cake cutting are properly documented. Candid photography focuses on natural expressions and interactions throughout the celebration. You can choose coverage according to what you need.",
       },
       {
         question: "Can we book only a photographer for a birthday?",
@@ -1072,38 +1178,53 @@ export const events: EventItem[] = [
           "Yes. You don't have to book video or additional services if you only need photography.",
       },
       {
-        question: "Do you provide birthday videography and reels?",
+        question: "Do you provide birthday videography?",
         answer:
-          "Yes. Videography, short-form reels and cinematic highlights can be included depending on your selected coverage.",
+          "Yes. Videography is available and can be combined with photography according to your requirements.",
+      },
+      {
+        question: "Do you make birthday reels or cinematic highlight videos?",
+        answer:
+          "Yes. Short-form reels and cinematic highlights can be included depending on your selected coverage and final deliverables.",
       },
       {
         question: "Do you provide anniversary photography in Hyderabad?",
         answer:
-          "Yes. RAKZS Studio covers anniversary celebrations, including couple portraits, family photographs, guests and candid moments.",
+          "Yes. RAKZS Studio covers anniversary celebrations, including couple portraits, family photographs, guests and candid moments throughout the event.",
       },
       {
         question: "Can you photograph a small birthday at home?",
         answer:
-          "Yes. Coverage can be customized for intimate home celebrations as well as larger banquet venues.",
+          "Yes. Coverage doesn't have to be designed only for large venues. Tell us about the celebration and we'll discuss a suitable setup for your requirements.",
       },
       {
         question: "How many photographers do we need for a birthday party?",
         answer:
-          "It depends on the event size, venue, guest count and schedule. We'll recommend a suitable team without unnecessary extras.",
+          "It depends on the event size, venue, number of guests, schedule and the type of coverage you want. Once we understand your celebration, we'll recommend a suitable team instead of automatically adding unnecessary coverage.",
       },
       {
         question: "How much does birthday photography cost in Hyderabad?",
         answer:
-          "Pricing depends on duration, team required, photography or video coverage and final deliverables. Contact us for a tailored quote.",
+          "Birthday photography pricing depends on the event duration, team required, photography or video coverage and the final deliverables you select. You can keep the coverage simple or add candid photography, video, reels or an album according to your requirements.",
       },
       {
         question: "Do you provide birthday albums?",
-        answer: "Yes. Premium albums can be added to any birthday booking.",
+        answer: "Yes. Albums can be added according to your selected requirements.",
+      },
+      {
+        question: "How long does it take to receive the photos and video?",
+        answer:
+          "Delivery depends on the amount of coverage and your selected deliverables. Once the requirements are finalized, we'll provide a clear delivery timeline.",
+      },
+      {
+        question: "Do you cover birthdays outside Hyderabad?",
+        answer:
+          "Hyderabad is our primary service area, and we also cover celebrations across Telangana. Share your location while enquiring so we can discuss the event requirements.",
       },
       {
         question: "How do we book RAKZS Studio for a birthday or anniversary?",
         answer:
-          "Share your event type, date, location and requirements. We'll confirm availability and share booking details to reserve your date.",
+          "Share your event type, date, location and requirements. Once availability and coverage are finalized, we'll share the booking details and advance required to confirm the date.",
       },
     ],
   },
@@ -1114,13 +1235,13 @@ export const events: EventItem[] = [
     location: "Hyderabad, Telangana",
     year: "2026",
     summary:
-      "The smallest moments become the biggest memories. Baby Showers, Cradle Ceremonies, Naming Celebrations, and intimate family milestones.",
+      "The smallest moments become the biggest memories. A new beginning changes the whole family. The excitement before the baby arrives. The first celebrations. Grandparents holding them. Parents discovering a hundred little expressions they'll never want to forget. Some chapters deserve to be remembered from the very beginning.",
     story:
-      "Before they remember you, you'll remember everything.\n\nThe tiny hands. The way everyone wants to hold them. Grandparents smiling differently when the baby is in their arms. Parents noticing expressions nobody else understands yet. A house suddenly filled with new routines, new sounds and more photographs than anyone planned.\n\nThese moments feel ordinary while you're living them. Then the child grows. And suddenly they aren't ordinary at all. We preserve the beginning — and the family beginning it together.",
+      "Before they remember you, you'll remember everything.\n\nThe tiny hands. The way everyone wants to hold them.\nGrandparents smiling differently when the baby is in their arms.\nParents noticing expressions nobody else understands yet.\nA house suddenly filled with new routines, new sounds and more photographs than anyone planned.\n\nThese moments feel ordinary while you're living them.\nThen the child grows.\nAnd suddenly they aren't ordinary at all.\n\nWe preserve the beginning — and the family beginning it together.",
     vision:
-      "Give us the smiles. Give us the chaos too. Of course we'll make the family portraits — parents with the baby, grandparents, siblings, relatives. But a family celebration shouldn't become an endless line of people looking into a camera. Between those photographs are the moments that make the gallery personal: a parent calming the baby, grandparents playing with them, a sibling getting curious.",
+      "Give us the smiles. Give us the chaos too.\n\nOf course we'll make the family portraits: parents with the baby, grandparents, siblings, relatives. The important groups everyone wants to have.\n\nBut a family celebration shouldn't become an endless line of people looking into a camera. Between those photographs are the moments that make the gallery personal: a parent calming the baby, grandparents playing with them, a sibling getting curious, everyone laughing because the perfect photograph didn't happen.\n\nRAKZS combines the photographs your family expects with candid moments that show what being together actually felt like.",
     approach:
-      "Keep the setup comfortable. Keep the memories complete. Baby and family celebrations don't always need large production teams. Sometimes one simple photography setup is exactly right. Tell us about your occasion, venue, family and what you'd like to remember. We'll help you choose coverage without adding things you don't need.",
+      "Keep the setup comfortable. Keep the memories complete.\n\nBaby and family celebrations don't always need large production teams. Sometimes one simple photography setup is exactly right. Other celebrations may benefit from candid photography, video or a short film as well.\n\nTell us about your occasion, venue, family and what you'd like to remember. We'll help you choose coverage without adding things you don't need.",
     image: newbornHero,
     gallery: intimateGallery,
     accent: "family",
@@ -1132,13 +1253,26 @@ export const events: EventItem[] = [
       "Handcrafted Family Keepsake Album",
     ],
     timeline: [
-      "01 — Tell Us the Occasion: Baby Shower, Cradle Ceremony, Naming Celebration or family milestone",
-      "02 — Share the Details: Date, location, schedule, guest count and important rituals",
-      "03 — Plan the Coverage: We recommend a comfortable setup tailored to your family",
-      "04 — Be With Your Family: Enjoy the occasion while we document the moments",
-      "05 — Receive Your Memories: Beautifully prepared photos, films and deliverables with clear delivery dates",
+      "Tell Us the Occasion: Baby Shower, Cradle Ceremony, Naming Celebration or another family occasion",
+      "Share the Details: Date, location, schedule, approximate guest count and important rituals",
+      "Plan the Coverage: We recommend a suitable setup according to your celebration and requirements",
+      "Be With Your Family: Enjoy the occasion. We'll take care of documenting the important moments and everything happening around them",
+      "Receive Your Memories: Selected photos, films and deliverables prepared with a clear delivery timeline",
     ],
-    equipment: sharedEquipment,
+    equipment: [
+      {
+        title: "Full-frame camera bodies",
+        note: "Silent shutter-enabled camera bodies to capture delicate baby reactions without startling or disturbing the infant.",
+      },
+      {
+        title: "Prime portrait lenses",
+        note: "Gentle, high-luminosity lenses producing soft dreamlike bokeh and warm natural light rendering.",
+      },
+      {
+        title: "Cinematic lighting kit",
+        note: "Diffused softbox lights and indirect bounce illumination safe for sensitive baby eyes.",
+      },
+    ],
     sections: [
       {
         title: "The Celebrations We Cover",
@@ -1147,22 +1281,22 @@ export const events: EventItem[] = [
           {
             title: "Baby Shower (Seemantham / Godh Bharai)",
             description:
-              "Before you meet them, everyone is already celebrating them. Anticipation, blessings, family portraits, and quiet moments surrounding the parents-to-be.",
+              "Before you meet them, everyone is already celebrating them. A Baby Shower is filled with anticipation — parents waiting for what's next, grandparents preparing for another generation, family and friends gathering around a story that hasn't fully begun yet. We capture portraits and traditions alongside candid conversations and blessings.",
           },
           {
             title: "Cradle Ceremony (Uyyala / Barasala)",
             description:
-              "Tiny moments. An entire family watching. Parents keeping everything calm, grandparents waiting for their turn, and rituals captured in motion.",
+              "Tiny moments. An entire family watching. The baby may be at the centre of the ceremony, but there are stories happening all around them — parents keeping everything calm, grandparents waiting for their turn, and dozens of little expressions.",
           },
           {
             title: "Naming Celebrations",
             description:
-              "A name they'll carry forever. A day your family will remember. Documenting rituals, blessings, and natural candid moments.",
+              "A name they'll carry forever. A day your family will remember. Naming celebrations bring generations together around one of the earliest chapters in a child's life. We document rituals, blessings and family photographs while staying ready for natural moments.",
           },
           {
             title: "Family Celebrations & Get-Togethers",
             description:
-              "Not every memory needs a big occasion. A growing child, visiting grandparents, and generations together in one place.",
+              "Not every memory needs a big occasion. Sometimes the reason is simply that everyone is together — a growing child, visiting grandparents, and generations finally in one place.",
           },
         ],
       },
@@ -1176,15 +1310,50 @@ export const events: EventItem[] = [
           },
           {
             title: "The Parents",
-            description: "Some of the strongest photographs are of parents looking at their child with quiet tenderness.",
+            description: "Some of the strongest photographs aren't of parents looking at the camera. They're of parents looking at their child.",
           },
           {
             title: "The Grandparents",
-            description: "A photograph of a baby in a grandparent's arms becomes a family heirloom for decades.",
+            description: "A photograph of a baby in a grandparent's arms may become far more important to the family with time.",
           },
           {
             title: "The Generations",
-            description: "One frame holding a brand new beginning alongside decades of family history.",
+            description: "One frame can hold a new beginning and decades of family history together.",
+          },
+          {
+            title: "The Unplanned",
+            description: "A baby doesn't care about the photography schedule. Some moments are better because nobody could plan them.",
+          },
+        ],
+      },
+      {
+        title: "Family Films",
+        content:
+          "Photographs show you how little they were. Film reminds you how they moved.\n\nThe tiny sounds. The way parents talk to their baby. Grandparents calling them by a nickname. Family members laughing around them. A ceremony happening while the baby is completely unaware of how much attention they're receiving.\n\nFilm preserves something photographs can't — movement, voices and sound. Depending on your requirements, coverage can include event videography, cinematic highlights and shorter reels.",
+      },
+      {
+        title: "Available Coverage Options",
+        content: "Keep the setup comfortable. Keep the memories complete.",
+        items: [
+          {
+            title: "Photography",
+            description: "Baby, parents, family groups, rituals and important photographs.",
+          },
+          {
+            title: "Candid Photography",
+            description: "Natural expressions and family interactions throughout the celebration.",
+          },
+          {
+            title: "Videography",
+            description: "The ceremony and important family moments documented in motion.",
+          },
+          {
+            title: "Cinematic Highlights & Reels",
+            description: "Shorter emotional stories made for keeping and sharing.",
+          },
+          {
+            title: "Albums",
+            description: "Selected photographs brought together as a physical family keepsake.",
           },
         ],
       },
@@ -1193,12 +1362,22 @@ export const events: EventItem[] = [
       {
         question: "Do you provide Baby Shower photography in Hyderabad?",
         answer:
-          "Yes. RAKZS Studio provides photography and videography for Baby Showers in Hyderabad, with coverage also available across Telangana. We cover parents-to-be, family portraits, traditions, décor and candid moments.",
+          "Yes. RAKZS Studio provides photography and videography for Baby Showers in Hyderabad, with coverage also available across Telangana depending on the event requirements. Coverage can include the parents-to-be, family portraits, traditions, décor, guests and candid moments throughout the celebration.",
+      },
+      {
+        question: "What do you photograph during a Baby Shower?",
+        answer:
+          "Coverage can include portraits of the parents-to-be, family photographs, rituals and traditions, décor and details, guests and natural interactions throughout the celebration. The exact coverage is planned according to your event.",
+      },
+      {
+        question: "Do you provide Baby Shower videography?",
+        answer:
+          "Yes. Videography can be added according to your requirements, including event coverage and shorter cinematic highlights or reels.",
       },
       {
         question: "Do you cover Cradle Ceremonies in Hyderabad?",
         answer:
-          "Yes. Photography and video coverage can be arranged for Cradle Ceremonies, including rituals, baby portraits, grandparents, family groups and candids.",
+          "Yes. Photography and video coverage can be arranged for Cradle Ceremonies, including rituals, baby photographs, parents, grandparents, family groups and candid moments.",
       },
       {
         question: "Do you provide Naming Ceremony photography?",
@@ -1208,7 +1387,7 @@ export const events: EventItem[] = [
       {
         question: "Do you provide family photography along with the ceremony?",
         answer:
-          "Yes. Multi-generational family portraits are an essential part of our coverage and can include parents, grandparents, siblings and relatives.",
+          "Yes. Family photographs are an important part of these celebrations and can include parents, grandparents, siblings, relatives and different generations together.",
       },
       {
         question: "Can we book only photography?",
@@ -1216,24 +1395,48 @@ export const events: EventItem[] = [
           "Yes. You don't need to select video, reels or albums if you only want photography. Coverage can be kept as simple as your celebration requires.",
       },
       {
+        question: "Do we need candid photography for a small family function?",
+        answer:
+          "Not necessarily. For a small celebration, simple photography may be enough. Candid photography becomes useful when you also want natural expressions and interactions happening away from the planned photographs. Tell us about your event and we'll help you decide.",
+      },
+      {
         question: "Can you cover a small ceremony at home?",
         answer:
-          "Yes. Coverage can be planned for intimate celebrations at home as well as larger functions at banquet halls.",
+          "Yes. Coverage can be planned for intimate celebrations at home as well as larger functions at venues. The team is recommended according to the event rather than assuming every celebration needs the same setup.",
       },
       {
         question: "Do you create reels or highlight videos for baby functions?",
         answer:
-          "Yes. Short-form reels and cinematic highlights can be included depending on your selected coverage.",
+          "Yes. Short-form reels and cinematic highlights can be included depending on your selected coverage and deliverables.",
+      },
+      {
+        question: "How many photographers do we need?",
+        answer:
+          "That depends on the celebration size, venue, number of guests, schedule and type of coverage required. Once we understand your event, we'll recommend an appropriate setup.",
+      },
+      {
+        question: "How much does Baby Shower photography cost in Hyderabad?",
+        answer:
+          "Pricing depends on the event duration, team required, photography or video coverage and your final deliverables. You can keep the coverage simple or add candid photography, video, reels or an album according to your requirements.",
+      },
+      {
+        question: "Do you provide albums?",
+        answer: "Yes. Albums can be included according to your selected requirements.",
       },
       {
         question: "How long does delivery take?",
         answer:
-          "Delivery depends on the amount of coverage and final deliverables you select. We provide a clear delivery timeline once requirements are confirmed.",
+          "Delivery depends on the amount of coverage and final deliverables you select. Once the requirements are finalized, we'll provide a clear delivery timeline.",
+      },
+      {
+        question: "Do you cover baby and family celebrations outside Hyderabad?",
+        answer:
+          "Hyderabad is our primary service area, and we also cover celebrations across Telangana. Share your location while enquiring so we can discuss the requirements.",
       },
       {
         question: "How do we book RAKZS Studio?",
         answer:
-          "Share the occasion, date, location and requirements with us. We'll provide booking details and advance required to confirm the date.",
+          "Share the occasion, date, location and requirements with us. Once availability and coverage are finalized, we'll provide the booking details and advance required to confirm the date.",
       },
     ],
   },
