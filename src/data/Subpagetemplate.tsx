@@ -32,6 +32,11 @@ import {
 import { Button } from "@/components/ui/button";
 import type { SubPage, SubPageIcon } from "@/data/subPages";
 import { cn } from "@/lib/utils";
+import enquire from "../assets/enquire.png";
+import understand from "../assets/understand.png";
+import plan from "../assets/plan.png";
+import capture from "../assets/capture.png";
+import refine_deliver from "../assets/refine_deliver.png";
 
 /**
  * Single-page UI used by every sub-page (Wedding, Engagement, Pre-Wedding …).
@@ -209,31 +214,12 @@ export function SubPageTemplate({ page, categoryLabel }: { page: SubPage; catego
                 </Button>
               </div>
             </div>
-
-            <div className="rounded-lg border border-border bg-card p-7 shadow-cinematic">
-              <p className="section-kicker">{process.kicker}</p>
-              <h3 className="mt-3 whitespace-pre-line font-display text-2xl font-semibold leading-tight text-foreground">
-                {process.title}
-              </h3>
-              <ol className="mt-6 grid gap-5">
-                {process.steps.map((step, index) => (
-                  <li key={step.title} className="flex gap-4">
-                    <span className="grid size-10 shrink-0 place-items-center rounded-md border border-border bg-secondary font-display text-sm font-semibold text-primary">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <h4 className="font-display text-lg font-semibold text-foreground">
-                        {step.title}
-                      </h4>
-                      <p className="mt-1 text-sm leading-6 text-muted-foreground">{step.text}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
           </aside>
         </div>
       </section>
+
+      {/* ───────────────────────── PROCESS (zig-zag timeline) ───────────────────────── */}
+      <ProcessTimeline process={process} />
 
       {/* ───────────────────────── GALLERY (own row) ───────────────────────── */}
       <section id="gallery" className="section-band scroll-mt-24 bg-card">
@@ -304,6 +290,113 @@ export function SubPageTemplate({ page, categoryLabel }: { page: SubPage; catego
         </div>
       </section>
     </>
+  );
+}
+
+/* ───────────────────────── Process: zig-zag timeline with dotted connector ───────────────────────── */
+
+/** Images are mapped by step order: 01 enquire, 02 understand, 03 plan, 04 capture, 05 refine & deliver */
+const processImages: string[] = [enquire, understand, plan, capture, refine_deliver];
+
+const processColumns: Record<number, string> = {
+  3: "md:grid-cols-3",
+  4: "md:grid-cols-4",
+  5: "md:grid-cols-5",
+};
+
+function ProcessTimeline({ process }: { process: SubPage["process"] }) {
+  const { kicker, title, steps } = process;
+  // First line is normal text, remaining line(s) get the gold accent
+  const [firstLine, ...restLines] = title.split("\n");
+  const total = steps.length;
+
+  return (
+    <section className="section-band">
+      <div className="mx-auto max-w-[95%] px-5 lg:px-8">
+        <div className="reveal relative overflow-hidden rounded-lg bg-card px-5 py-12 md:px-10 md:py-16">
+          {/* Heading */}
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="section-kicker">{kicker}</p>
+            <h3 className="mt-4 font-display text-3xl font-semibold leading-tight text-foreground md:text-5xl">
+              {firstLine}
+              {restLines.length > 0 ? (
+                <span className="block text-primary">{restLines.join(" ")}</span>
+              ) : null}
+            </h3>
+          </div>
+
+          {/* Steps */}
+          <ol className={cn("relative mt-12 grid md:mt-16", processColumns[total])}>
+            {/* Dotted wavy connector (desktop only, sits behind the images) */}
+            {total === 5 ? (
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 1000 160"
+                preserveAspectRatio="none"
+                className="pointer-events-none absolute inset-x-0 top-0 hidden h-40 w-full md:block"
+              >
+                <path
+                  d="M100,72 C200,72 200,152 300,152 C400,152 400,72 500,72 C600,72 600,152 700,152 C800,152 800,72 900,72"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeDasharray="5 6"
+                  strokeLinecap="round"
+                  vectorEffect="non-scaling-stroke"
+                  className="text-primary/50"
+                />
+              </svg>
+            ) : null}
+
+            {steps.map((step, index) => {
+              const image = processImages[index];
+              const isLow = index % 2 === 1; // 02 & 04 sit lower; 01 / 03 / 05 sit higher
+              const isLast = index === total - 1;
+
+              return (
+                <li
+                  key={step.title}
+                  className={cn(
+                    "relative flex gap-5 pb-10 md:flex-col md:items-center md:gap-0 md:px-3 md:pb-0 md:text-center",
+                    isLow && "md:pt-20",
+                    // vertical dotted line for mobile
+                    !isLast &&
+                      "before:absolute before:left-10 before:top-20 before:h-[calc(100%-5rem)] before:border-l-2 before:border-dashed before:border-primary/40 md:before:hidden",
+                  )}
+                >
+                  {/* Image + number badge */}
+                  <div className="relative z-10 shrink-0">
+                    {image ? (
+                      <img
+                        src={image}
+                        alt={step.title}
+                        loading="lazy"
+                        width={170}
+                        height={170}
+                        className="size-24 rounded-full bg-card object-cover shadow-lg ring-4 ring-card md:size-44"
+                      />
+                    ) : (
+                      <div className="size-24 rounded-full bg-secondary shadow-lg ring-4 ring-card md:size-44" />
+                    )}
+                    <span className="absolute -top-1 left-0 grid size-8 place-items-center rounded-full bg-primary font-display text-xs font-semibold text-primary-foreground shadow-md md:left-4 md:top-2 md:size-10 md:text-lg">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  {/* Text */}
+                  <div className="md:mt-5 md:max-w-[15rem]">
+                    <h4 className="font-display text-xl font-semibold text-foreground md:text-2xl">
+                      {step.title}
+                    </h4>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">{step.text}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </div>
+    </section>
   );
 }
 
