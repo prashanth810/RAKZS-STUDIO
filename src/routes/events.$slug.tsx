@@ -6,14 +6,21 @@ import { GalleryLightbox } from "@/components/rakzs/GalleryLightbox";
 import { SectionHeader } from "@/components/rakzs/SectionHeader";
 import { EventCard } from "@/components/rakzs/EventCard";
 import { Button } from "@/components/ui/button";
-import { events } from "@/data/events";
+import { events, getServiceCategoryBySlug, type EventItem } from "@/data/events";
+import { getSubPageBySlug } from "@/data/subPages";
 import { cn } from "@/lib/utils";
+import { SubPageTemplate } from "@/data/Subpagetemplate";
 
 export const Route = createFileRoute("/events/$slug")({
   loader: ({ params }) => {
+    // 1) New single-page sub-pages (content lives in src/data/subPages.ts)
+    const subPage = getSubPageBySlug(params.slug);
+    if (subPage) return { subPage, event: null };
+
+    // 2) Older portfolio stories (content lives in src/data/events.ts)
     const event = events.find((item) => item.slug === params.slug);
     if (!event) throw notFound();
-    return { event };
+    return { subPage: null, event };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
@@ -21,7 +28,20 @@ export const Route = createFileRoute("/events/$slug")({
         meta: [{ title: "Story not found — RAKZS STUDIO" }, { name: "robots", content: "noindex" }],
       };
     }
-    const { event } = loaderData;
+    const { event, subPage } = loaderData;
+    if (subPage) {
+      return {
+        meta: [
+          { title: `${subPage.seo.title} — RAKZS STUDIO` },
+          { name: "description", content: subPage.seo.description },
+          { property: "og:title", content: `${subPage.seo.title} — RAKZS STUDIO` },
+          { property: "og:description", content: subPage.seo.description },
+          { property: "og:type", content: "article" },
+          { name: "twitter:card", content: "summary_large_image" },
+        ],
+      };
+    }
+    if (!event) return { meta: [{ title: "Story — RAKZS STUDIO" }] };
     return {
       meta: [
         { title: `${event.title} — RAKZS STUDIO` },
@@ -39,7 +59,18 @@ export const Route = createFileRoute("/events/$slug")({
 });
 
 function EventDetailPage() {
-  const { event } = Route.useLoaderData();
+  const { event, subPage } = Route.useLoaderData();
+
+  if (subPage) {
+    const categoryLabel = getServiceCategoryBySlug(subPage.categorySlug)?.label ?? "";
+    // key = reset gallery / FAQ state when moving between sub-pages
+    return <SubPageTemplate key={subPage.slug} page={subPage} categoryLabel={categoryLabel} />;
+  }
+
+  return event ? <LegacyEventDetail event={event} /> : null;
+}
+
+function LegacyEventDetail({ event }: { event: EventItem }) {
   const related = events.filter((item) => item.slug !== event.slug).slice(0, 3);
   const [openFaq, setOpenFaq] = useState<number>(0);
 
@@ -86,17 +117,23 @@ function EventDetailPage() {
               <h2 className="mt-4 font-display text-4xl font-semibold leading-tight text-foreground md:text-5xl">
                 How this story would be told.
               </h2>
-              <p className="mt-6 text-base leading-8 text-muted-foreground whitespace-pre-line">{event.story}</p>
+              <p className="mt-6 text-base leading-8 text-muted-foreground whitespace-pre-line">
+                {event.story}
+              </p>
             </div>
 
             <div>
               <h3 className="font-display text-3xl text-foreground">Creative Vision</h3>
-              <p className="mt-4 text-base leading-8 text-muted-foreground whitespace-pre-line">{event.vision}</p>
+              <p className="mt-4 text-base leading-8 text-muted-foreground whitespace-pre-line">
+                {event.vision}
+              </p>
             </div>
 
             <div>
               <h3 className="font-display text-3xl text-foreground">Our Approach</h3>
-              <p className="mt-4 text-base leading-8 text-muted-foreground whitespace-pre-line">{event.approach}</p>
+              <p className="mt-4 text-base leading-8 text-muted-foreground whitespace-pre-line">
+                {event.approach}
+              </p>
             </div>
 
             {event.sections?.map((sec) => (
@@ -200,14 +237,16 @@ function EventDetailPage() {
                           <ChevronDown
                             className={cn(
                               "size-4 shrink-0 text-primary transition-transform duration-300 mt-0.5",
-                              isOpen && "rotate-180"
+                              isOpen && "rotate-180",
                             )}
                           />
                         </button>
                         <div
                           className={cn(
                             "grid transition-all duration-300 ease-in-out",
-                            isOpen ? "grid-rows-[1fr] mt-2.5 opacity-100" : "grid-rows-[0fr] opacity-0"
+                            isOpen
+                              ? "grid-rows-[1fr] mt-2.5 opacity-100"
+                              : "grid-rows-[0fr] opacity-0",
                           )}
                         >
                           <div className="overflow-hidden">

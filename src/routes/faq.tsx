@@ -12,9 +12,16 @@ export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
       { title: "Frequently Asked Questions — RAKZS STUDIO" },
-      { name: "description", content: "Answers about booking, coverage, editing requests, delivery timelines, and custom quotes at RAKZS STUDIO." },
+      {
+        name: "description",
+        content:
+          "Answers about booking, coverage, editing requests, delivery timelines, and custom quotes at RAKZS STUDIO.",
+      },
       { property: "og:title", content: "FAQ — RAKZS STUDIO" },
-      { property: "og:description", content: "How booking, planning, capture, editing, and delivery work at our studio." },
+      {
+        property: "og:description",
+        content: "How booking, planning, capture, editing, and delivery work at our studio.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -46,7 +53,8 @@ function FAQPage() {
             Ask us anything about your shoot.
           </h2>
           <p className="mt-5 text-base leading-8 text-muted-foreground">
-            Share your date and requirements, and we will reply with a considered plan and a custom quote.
+            Share your date and requirements, and we will reply with a considered plan and a custom
+            quote.
           </p>
           <Button asChild variant="gold" size="lg" className="mt-8">
             <Link to="/contact" search={{ event: undefined, service: undefined }}>

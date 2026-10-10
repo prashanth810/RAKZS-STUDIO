@@ -6,6 +6,7 @@ import { PageHero } from "@/components/rakzs/PageHero";
 import { SectionHeader } from "@/components/rakzs/SectionHeader";
 import { Button } from "@/components/ui/button";
 import { getEventsByServiceCategory, getServiceCategoryBySlug } from "@/data/events";
+import { getSubPagesByCategory } from "@/data/subPages";
 
 export const Route = createFileRoute("/events/category/$category")({
   loader: ({ params }) => {
@@ -41,6 +42,8 @@ export const Route = createFileRoute("/events/category/$category")({
 function EventCategoryPage() {
   const { category } = Route.useLoaderData();
   const categoryEvents = getEventsByServiceCategory(category);
+  // Sub-page cards (Wedding, Engagement & Reception …) come from src/data/subPages.ts
+  const subPages = getSubPagesByCategory(category.slug);
 
   return (
     <>
@@ -55,43 +58,39 @@ function EventCategoryPage() {
       <section className="section-band">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {category.children.map((child) => (
+            {subPages.map((sub) => (
               <article
-                key={child.title}
+                key={sub.slug}
                 className="group reveal overflow-hidden rounded-lg border border-border bg-card shadow-cinematic"
               >
-                <div className="overflow-hidden">
+                <Link
+                  to="/events/$slug"
+                  params={{ slug: sub.slug }}
+                  className="block overflow-hidden"
+                >
                   <img
-                    src={child.image}
-                    alt={child.title}
+                    src={sub.card.image}
+                    alt={sub.card.title}
                     loading="lazy"
                     width={1400}
                     height={1000}
                     className="h-80 w-full object-cover image-zoom"
                   />
-                </div>
+                </Link>
                 <div className="p-6">
-                  {child.eyebrow ? (
-                    <p className="text-xs uppercase tracking-[0.18em] text-primary">
-                      {child.eyebrow}
-                    </p>
-                  ) : null}
+                  <p className="text-xs uppercase tracking-[0.18em] text-primary">
+                    {sub.card.eyebrow}
+                  </p>
                   <h3 className="mt-4 font-display text-2xl font-semibold text-foreground">
-                    {child.title}
+                    {sub.card.title}
                   </h3>
                   <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                    {child.description}
+                    {sub.card.description}
                   </p>
                   <Button asChild variant="outlineGold" className="mt-6">
-                    {child.eventSlug ? (
-                      <Link to="/events/$slug" params={{ slug: child.eventSlug }}>
-                        {child.cta} <ArrowRight className="size-4" />
-                      </Link>
-                    ) : (
-                      <Link to="/contact" search={{ service: category.label, event: child.title }}>
-                        {child.cta} <ArrowRight className="size-4" />
-                      </Link>
-                    )}
+                    <Link to="/events/$slug" params={{ slug: sub.slug }}>
+                      {sub.card.cta} <ArrowRight className="size-4" />
+                    </Link>
                   </Button>
                 </div>
               </article>
