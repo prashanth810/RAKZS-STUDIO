@@ -207,11 +207,13 @@ export function SubPageTemplate({ page, categoryLabel }: { page: SubPage; catego
                     {sidebar.primaryCta} <ArrowRight />
                   </Link>
                 </Button>
-                <Button asChild variant="outlineGold" size="lg">
-                  <Link to="/packages">
-                    {sidebar.secondaryCta} <ArrowRight />
-                  </Link>
-                </Button>
+                {sidebar.secondaryCta ? (
+                  <Button asChild variant="outlineGold" size="lg">
+                    <Link to="/packages">
+                      {sidebar.secondaryCta} <ArrowRight />
+                    </Link>
+                  </Button>
+                ) : null}
               </div>
             </div>
           </aside>
@@ -232,13 +234,15 @@ export function SubPageTemplate({ page, categoryLabel }: { page: SubPage; catego
             <p className="mt-4 text-sm leading-7 text-muted-foreground">{gallery.description}</p>
           </div>
           <SubPageGallery images={gallery.images} title={page.card.title} />
-          <div className="mt-8 text-center">
-            <Button asChild variant="gold">
-              <Link to="/events/category/$category" params={{ category: page.categorySlug }}>
-                {gallery.cta} <ArrowRight />
-              </Link>
-            </Button>
-          </div>
+          {gallery.cta ? (
+            <div className="mt-8 text-center">
+              <Button asChild variant="gold">
+                <Link to="/events/category/$category" params={{ category: page.categorySlug }}>
+                  {gallery.cta} <ArrowRight />
+                </Link>
+              </Button>
+            </div>
+          ) : null}
         </div>
       </section>
 
@@ -261,8 +265,10 @@ export function SubPageTemplate({ page, categoryLabel }: { page: SubPage; catego
                 <h3 className="font-display text-2xl font-semibold text-foreground">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm font-semibold text-primary">{item.tagline}</p>
-                <p className="mt-2 flex-1 text-sm leading-7 text-muted-foreground">
+                {item.tagline ? (
+                  <p className="mt-3 text-sm font-semibold text-primary">{item.tagline}</p>
+                ) : null}
+                <p className="mt-3 flex-1 text-sm leading-7 text-muted-foreground">
                   {item.description}
                 </p>
                 <Link
@@ -274,6 +280,22 @@ export function SubPageTemplate({ page, categoryLabel }: { page: SubPage; catego
               </article>
             ))}
           </div>
+          {packages.footerLink ? (
+            <p className="mt-8 text-center text-sm text-muted-foreground">
+              {packages.footerLink.prefix}{" "}
+              <Link
+                to="/packages"
+                className="inline-flex items-center gap-1.5 font-semibold text-primary"
+              >
+                {packages.footerLink.label} <ArrowRight className="size-4" />
+              </Link>
+            </p>
+          ) : null}
+          {packages.note ? (
+            <p className="mt-3 text-center text-xs leading-6 text-muted-foreground">
+              {packages.note}
+            </p>
+          ) : null}
         </div>
       </section>
 
@@ -305,7 +327,7 @@ const processColumns: Record<number, string> = {
 };
 
 function ProcessTimeline({ process }: { process: SubPage["process"] }) {
-  const { kicker, title, steps } = process;
+  const { kicker, title, steps, note } = process;
   // First line is normal text, remaining line(s) get the gold accent
   const [firstLine, ...restLines] = title.split("\n");
   const total = steps.length;
@@ -371,14 +393,14 @@ function ProcessTimeline({ process }: { process: SubPage["process"] }) {
                         src={image}
                         alt={step.title}
                         loading="lazy"
-                        width={170}
-                        height={170}
-                        className="size-24 rounded-full bg-card object-cover shadow-lg ring-4 ring-card md:size-44"
+                        width={130}
+                        height={130}
+                        className="size-24 rounded-full bg-card object-cover shadow-lg ring-4 ring-card md:size-35"
                       />
                     ) : (
                       <div className="size-24 rounded-full bg-secondary shadow-lg ring-4 ring-card md:size-44" />
                     )}
-                    <span className="absolute -top-1 left-0 grid size-8 place-items-center rounded-full bg-primary font-display text-xs font-semibold text-primary-foreground shadow-md md:left-4 md:top-2 md:size-10 md:text-lg">
+                    <span className="absolute -top-1 left-0 grid size-8 place-items-center rounded-full bg-primary font-display text-xs font-semibold text-primary-foreground shadow-md md:left-3 md:-top-1 md:size-10 md:text-lg">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
@@ -394,6 +416,9 @@ function ProcessTimeline({ process }: { process: SubPage["process"] }) {
               );
             })}
           </ol>
+          {note ? (
+            <p className="mt-10 text-center text-sm text-muted-foreground md:mt-14">{note}</p>
+          ) : null}
         </div>
       </div>
     </section>

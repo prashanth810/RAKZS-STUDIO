@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Camera, Facebook, Instagram, Mail, MapPin, Phone, PinIcon, Youtube } from "lucide-react";
 import { studioContact } from "@/data/site";
 import GMB_QR from "../../data/GMB_QR.png";
-import RAKZS_Logo from "../../assets/RAKZS_Logo.png";
+import RAKZS_Logo from "../../assets/Brand_logo.png";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
@@ -47,9 +47,9 @@ export function Footer() {
             <img
               src={RAKZS_Logo}
               alt="RAKZS STUDIO"
-              width={56}
-              height={56}
-              className="size-12 rounded bg-white object-cover shadow-gold ring-2 ring-primary/50 transition-transform duration-300 group-hover:scale-105 sm:size-14"
+              width={60}
+              height={60}
+              className="size-12 rounded object-cover shadow-gold ring-2 ring-primary/50 transition-transform duration-300 sm:size-16"
             />
             <span className="hidden leading-none lg:block">
               <span

@@ -95,7 +95,7 @@ export type SubPage = {
     services: { icon: SubPageIcon; label: string }[];
     note: string;
     primaryCta: string;
-    secondaryCta: string;
+    secondaryCta?: string;
   };
 
   /** Right column — "From hello to delivery" steps */
@@ -103,6 +103,8 @@ export type SubPage = {
     kicker: string;
     title: string;
     steps: { title: string; text: string }[];
+    /** optional line shown under the steps */
+    note?: string;
   };
 
   /** Gallery row (separate full-width row) */
@@ -110,7 +112,8 @@ export type SubPage = {
     kicker: string;
     title: string;
     description: string;
-    cta: string;
+    /** optional button under the gallery — leave out to hide it */
+    cta?: string;
     images: string[];
   };
 
@@ -119,7 +122,11 @@ export type SubPage = {
     kicker: string;
     title: string;
     description: string;
-    items: { title: string; tagline: string; description: string; cta: string }[];
+    items: { title: string; tagline?: string; description: string; cta: string }[];
+    /** optional "Need something different? Make Your Own →" line */
+    footerLink?: { prefix: string; label: string };
+    /** optional small note under the package cards */
+    note?: string;
   };
 
   /** FAQ (separate row, one open at a time, first open by default) */
@@ -146,15 +153,15 @@ export const subPages: SubPage[] = [
       image: weddingHero,
     },
     seo: {
-      title: "Wedding Photography & Films in Hyderabad",
+      title: "Wedding Photographers in Hyderabad",
       description:
-        "Traditional and candid wedding photography, cinematic films and videography across Hyderabad and Telangana — planned around your rituals, family and day.",
+        "Wedding photography and videography in Hyderabad by RAKZS Studio. Traditional rituals, candid moments, cinematic films and flexible wedding coverage.",
     },
     hero: {
       kicker: "Weddings",
-      title: "Some days pass.\nThis one stays with you.",
+      title: "Some days pass.\nYour wedding stays with you forever.",
       description:
-        "You spend months planning it. Then somehow, it passes in a few hours. The rituals. The nervous smiles. The people you love. And the quiet moments nobody else noticed. We make sure you can return to them.",
+        "Months of preparation become a few unforgettable hours. The rituals. The nervous smiles. The people you love. And the moments you never noticed while they were happening. We preserve your wedding so you can experience those memories again.",
       cta: "Check Your Date",
       location: "Hyderabad & Telangana",
       image: weddingHero,
@@ -162,36 +169,37 @@ export const subPages: SubPage[] = [
     blocks: [
       {
         kicker: "The Story",
-        title: "You won't remember everything.\nThat's why we do.",
+        title: "While you're living your wedding, a hundred other stories are unfolding.",
         paragraphs: [
-          "On your wedding day, hundreds of moments are happening around you. While you're in the middle of a ritual, your parents may be sharing a look across the room. Your friends may be laughing somewhere behind you. Someone may be wiping away a tear before anyone notices.",
-          "You can't be everywhere. **Our cameras can.**",
-          "At RAKZS Studio, we preserve the people, traditions and emotions that made your wedding yours. So years later, you don't just remember how your wedding looked. You remember how it felt.",
+          "You're standing at the mandapam, surrounded by rituals and blessings.",
+          "Somewhere nearby, your parents are watching with emotions they can't quite explain. Your friends are laughing. Your family is sharing a moment you may never see yourself.",
+          "You can't witness everything on your wedding day.",
+          "But one day, your photographs can show you what you missed.",
         ],
       },
       {
         kicker: "Wedding Photography",
-        title: "Beautiful when it needs to be.\nHonest when it matters more.",
+        title: "The photographs you plan for. And the moments you never expected.",
         paragraphs: [
-          "Traditional photography documents the important rituals, family portraits and must-have moments. Candid photography captures the natural expressions, relationships and unexpected moments happening around you. We bring the two together to tell a complete and honest wedding story.",
+          "Traditional photography preserves your rituals, family portraits and important ceremonies. Candid photography captures the laughter, expressions and emotions unfolding naturally.",
+          "Together, they tell the story of your wedding.",
         ],
-        cta: { label: "View Wedding Photography", to: "gallery" },
       },
       {
         kicker: "Wedding Films",
-        title: "Some memories need movement.\nSome need a voice.",
+        title: "Years later, you'll want to hear those voices again.",
         paragraphs: [
-          "A photograph can hold an expression forever. But some memories live in the sound of a parent's voice, the music surrounding a ritual, your friends laughing and the way the room changes when you walk in. From traditional wedding videography to cinematic wedding films, we preserve the movement, voices and atmosphere that photographs alone cannot.",
+          "The sound of the wedding music. A parent's blessing. Your friends cheering.",
+          "Traditional videography and cinematic wedding films bring back the movement, voices and atmosphere that photographs alone cannot preserve.",
         ],
-        cta: { label: "Watch Our Films", to: "gallery" },
       },
     ],
     sidebar: {
       kicker: "Your Wedding, Your Way",
-      title: "Start with what matters to you.\nWe'll build around it.",
+      title: "Your wedding is unique. Your coverage should be too.",
       paragraphs: [
-        "Some weddings need straightforward photography and video coverage. Others unfold across several functions, hundreds of guests and countless moments.",
-        "Every wedding is different. Tell us about your wedding, your functions and what matters most to you. We'll help you choose coverage that makes sense for your celebration and your requirements.",
+        "Some weddings need straightforward photography and video. Others need a larger team across several functions.",
+        "Tell us what you're planning. We'll help you choose coverage that fits your celebration.",
       ],
       listTitle: "Available when you need them",
       services: [
@@ -205,53 +213,54 @@ export const subPages: SubPage[] = [
         { icon: "live", label: "Live Streaming" },
         { icon: "led", label: "LED Screen" },
       ],
-      note: "Choose them individually, start with a package, or create your own combination.",
+      note: "Choose individual services, select a package or create your own combination.",
       primaryCta: "Build Your Coverage",
-      secondaryCta: "Explore Packages",
     },
     process: {
       kicker: "From Hello to Delivery",
       title: "Simple behind the scenes.\nSo you can enjoy what's in front of you.",
       steps: [
-        { title: "Enquire", text: "Tell us your date, location, functions and what you're planning." },
-        { title: "Understand", text: "We discuss your priorities, schedule and the type of coverage you're looking for." },
-        { title: "Plan", text: "We build the team and coverage around your wedding." },
-        { title: "Capture", text: "We cover the moments that have to happen — and stay ready for the ones nobody can predict." },
-        { title: "Refine & Deliver", text: "Your photographs, films and selected deliverables are carefully prepared. A clear delivery timeline is confirmed according to your final requirements." },
+        { title: "Enquire", text: "Share your wedding date, location and functions." },
+        { title: "Understand", text: "We discuss your priorities and requirements." },
+        { title: "Plan", text: "We plan your team and coverage." },
+        { title: "Capture", text: "We document your wedding celebrations." },
+        { title: "Refine & Deliver", text: "We prepare your agreed photographs and films." },
       ],
+      note: "Delivery timelines are confirmed according to your requirements.",
     },
     gallery: {
       kicker: "Real Weddings",
       title: "Frames from real weddings.",
-      description: "Every wedding has its own story. Here's a glimpse into a few of ours.",
-      cta: "View Our Weddings",
+      description:
+        "Every wedding has a story that belongs only to its family. A glimpse into the real weddings we've captured.",
       images: [weddingHero, preWeddingHero, familyPortrait],
     },
     packages: {
       kicker: "Your Coverage, Your Way",
       title: "A starting point. Not a restriction.",
       description:
-        "Every wedding has a different schedule, scale and set of priorities. Our packages give you an easy place to start. From there, coverage can be adjusted around what your celebration actually requires.",
+        "Every wedding deserves coverage that feels right for its celebration. Choose a starting point, then customize according to your functions and requirements.",
       items: [
         {
           title: "The Essentials",
-          tagline: "Everything you need to capture the day.",
-          description: "For celebrations that need straightforward photography and video coverage.",
+          description:
+            "The important moments, captured through straightforward photography and video.",
           cta: "View Package",
         },
         {
           title: "The Family Favorite",
-          tagline: "More moments. More memories.",
-          description: "Expanded photography and film coverage for weddings with more people, more moments and more to preserve.",
+          description:
+            "More photography and film coverage for the people, rituals and celebrations around your wedding.",
           cta: "View Package",
         },
         {
           title: "The Grand Celebration",
-          tagline: "The complete wedding story.",
-          description: "Broader photo, film and cinematic coverage across multiple functions, more guests and more moments.",
+          description:
+            "Broader photography and cinematic coverage for weddings with multiple functions and larger requirements.",
           cta: "View Package",
         },
       ],
+      footerLink: { label: "Make Your Own", prefix: "Need something different?" },
     },
     faqs: {
       kicker: "Wedding FAQs",
@@ -260,32 +269,27 @@ export const subPages: SubPage[] = [
         {
           question: "How much does wedding photography cost in Hyderabad?",
           answer:
-            "It depends on the number of functions, the size of the team, the deliverables you choose and your wedding dates. Our Packages page shows starting points, and you can build your own coverage there. Share your plans with us and we'll suggest what fits your celebration and your budget.",
+            "Wedding photography pricing depends on the number of functions, coverage duration, team size and selected photography or video services. RAKZS Studio offers wedding packages and customizable coverage based on your requirements.",
         },
         {
-          question: "What is the difference between candid and traditional photography?",
+          question: "Should we choose candid photography, traditional photography or both?",
           answer:
-            "Traditional photography covers the rituals, family portraits and must-have moments in a planned, posed way. Candid photography captures natural expressions, emotions and unscripted moments as they happen. Most weddings benefit from both, which is why we bring the two together.",
+            "Traditional photography preserves rituals, family portraits and important planned moments. Candid photography captures natural expressions and unexpected emotions. Choosing both provides a more complete record of your wedding.",
         },
         {
-          question: "Do you provide both photography and videography?",
+          question: "Can one team cover our entire wedding, including multiple functions?",
           answer:
-            "Yes. We offer traditional and candid photography, traditional videography and cinematic films. You can book them together or choose only what you need.",
+            "Coverage can be planned across multiple wedding functions. The required team depends on your schedule, locations, guest count and whether events happen simultaneously.",
         },
         {
-          question: "Can we customize a package or book only one function?",
+          question: "Can we customize our wedding package instead of booking every service?",
           answer:
-            "Absolutely. Packages are a starting point. You can book a single function such as Haldi, Mehendi, Sangeet or the wedding itself, add or remove team members, and include extras like drone, LED screen or live streaming.",
+            "Yes. You can start with a package or choose individual services such as photography, videography, cinematography, albums and other available coverage options.",
         },
         {
-          question: "When will we receive our photographs and videos?",
+          question: "When will we receive our wedding photographs and films?",
           answer:
-            "Delivery depends on the size of your wedding and the deliverables you've chosen. We confirm a clear delivery timeline with you once your requirements are final, so you know exactly what to expect.",
-        },
-        {
-          question: "How do we check availability and book RAKZS Studio?",
-          answer:
-            "Tap 'Check Your Date' or send an enquiry with your date, location and functions. We'll confirm availability, discuss your requirements and take it from there.",
+            "Delivery depends on the agreed photographs, videos, cinematic films and albums. Your expected delivery timeline and final deliverables will be confirmed before booking.",
         },
       ],
     },
@@ -308,13 +312,13 @@ export const subPages: SubPage[] = [
     seo: {
       title: "Engagement & Reception Photography in Hyderabad",
       description:
-        "Engagement ceremony and wedding reception photography and videography in Hyderabad and Telangana — rings, stage moments, family and the celebration around them.",
+        "Engagement and reception photography and videography in Hyderabad by RAKZS Studio. Ring ceremonies, couple portraits, family photographs and cinematic films.",
     },
     hero: {
       kicker: "Engagement & Reception",
-      title: "The yes. The rings.\nThe night everyone celebrates you.",
+      title: "One beautiful beginning.\nA celebration everyone becomes part of.",
       description:
-        "An engagement is where your story becomes public. A reception is where everyone you love gets to celebrate it with you. Both pass quickly. We make sure you can go back to every part of them.",
+        "A ring exchanged. Two families coming together. A room filled with familiar faces. From the excitement of an engagement to the joy of a reception, we preserve the people and moments that make the occasion yours.",
       cta: "Check Your Date",
       location: "Hyderabad & Telangana",
       image: preWeddingHero,
@@ -322,37 +326,36 @@ export const subPages: SubPage[] = [
     blocks: [
       {
         kicker: "The Story",
-        title: "Two families. One stage.\nA hundred little moments.",
+        title: "The celebration is about the two of you. The memories belong to everyone there.",
         paragraphs: [
-          "The ring exchange is only a few seconds long. Around it, there are two families meeting, relatives blessing you, friends cheering from the crowd and the nervous smiles you share before the first photograph is taken.",
-          "At a reception, the stage is where everyone queues up to wish you well — but the best moments often happen away from it. A grandparent's blessing. A cousin's dance. Old friends reunited.",
-          "**We cover the stage and everything around it.**",
-          "So when the evening is over, you don't just have the formal photographs. You have the whole night.",
+          "An engagement begins with anticipation — a promise, a ring and the happiness of families coming together.",
+          "A reception brings a different kind of joy. Friends arrive, relatives reunite and the room fills with conversations and laughter.",
+          "Years later, the photographs should remind you not only of the occasion, but of everyone who shared it with you.",
         ],
       },
       {
         kicker: "Engagement & Reception Photography",
-        title: "The ceremony, the couple,\nand the crowd that came for you.",
+        title: "Beautiful portraits for your home. Real moments for your memories.",
         paragraphs: [
-          "Traditional photography covers the ring exchange, couple portraits, family groups and guest photographs on stage. Candid photography follows the emotions, reactions and moments between everyone present — the ones nobody poses for.",
+          "From ring exchanges and couple portraits to stage photographs and family gatherings, traditional photography preserves the important moments.",
+          "Candid photography captures the laughter and natural interactions happening around them.",
         ],
-        cta: { label: "View Photography", to: "gallery" },
       },
       {
-        kicker: "Films & Highlights",
-        title: "Keep the music, the cheers\nand the way the room felt.",
+        kicker: "Engagement & Reception Films",
+        title: "The evening ends. The applause and laughter can live on.",
         paragraphs: [
-          "From the entry to the ring exchange to the stage moments and dance floor, video captures the energy of the evening that stills cannot. Choose full-length coverage, a cinematic highlight film, or both.",
+          "Your entrance music. The applause during the ring exchange. A heartfelt speech. Friends celebrating together.",
+          "Traditional videography and cinematic films preserve the sounds, movement and atmosphere of the occasion.",
         ],
-        cta: { label: "Watch Our Films", to: "gallery" },
       },
     ],
     sidebar: {
-      kicker: "Your Celebration, Your Way",
-      title: "Tell us the occasion.\nWe'll shape the coverage.",
+      kicker: "Your Event, Your Way",
+      title: "A quiet engagement and a grand reception deserve different plans.",
       paragraphs: [
-        "Some engagements are intimate family gatherings. Others are large evening events with hundreds of guests, a stage and a full programme.",
-        "Share your venue, timing and guest count. We'll help you decide what coverage makes sense — one event, or the engagement and reception together.",
+        "Some celebrations are intimate. Others bring hundreds of guests together.",
+        "Tell us about your venue, schedule and priorities. We'll help you choose coverage that fits the occasion.",
       ],
       listTitle: "Available when you need them",
       services: [
@@ -366,87 +369,82 @@ export const subPages: SubPage[] = [
         { icon: "live", label: "Live Streaming" },
         { icon: "led", label: "LED Screen" },
       ],
-      note: "Choose them individually, start with a package, or create your own combination.",
+      note: "Choose individual services, start with a package or create your own combination.",
       primaryCta: "Build Your Coverage",
-      secondaryCta: "Explore Packages",
     },
     process: {
       kicker: "From Hello to Delivery",
       title: "Simple behind the scenes.\nSo you can enjoy the evening.",
       steps: [
-        { title: "Enquire", text: "Tell us the date, venue and whether it's an engagement, a reception or both." },
-        { title: "Understand", text: "We talk through the schedule, the stage programme and the moments that matter most to your families." },
-        { title: "Plan", text: "We plan team positions, lighting for the venue and a coverage schedule." },
-        { title: "Capture", text: "We cover the planned moments and stay alert to the unplanned ones." },
-        { title: "Refine & Deliver", text: "Photographs and films are carefully edited. A clear delivery timeline is confirmed according to your final requirements." },
+        { title: "Enquire", text: "Share your date, venue and event." },
+        { title: "Understand", text: "We discuss your schedule and priorities." },
+        { title: "Plan", text: "We plan the agreed team and coverage." },
+        { title: "Capture", text: "We document your important moments and celebrations." },
+        { title: "Refine & Deliver", text: "We prepare your selected photographs and films." },
       ],
+      note: "Delivery timelines are confirmed according to your requirements.",
     },
     gallery: {
-      kicker: "Real Celebrations",
+      kicker: "Real Engagements & Receptions",
       title: "Frames from real engagements & receptions.",
-      description: "Every celebration has its own story. Here's a glimpse into a few of ours.",
-      cta: "View Our Celebrations",
+      description:
+        "Every celebration looks different when the people make it their own. A glimpse into the engagements and receptions we've captured.",
       images: [preWeddingHero, weddingHero, familyPortrait],
     },
     packages: {
-      kicker: "Your Coverage, Your Way",
+      kicker: "Celebration Coverage",
       title: "A starting point. Not a restriction.",
       description:
-        "An engagement and a reception are very different evenings. Our packages give you an easy place to start, and coverage can be adjusted around the way your celebration unfolds.",
+        "The right coverage for the way you're celebrating. Choose a suitable starting package and adjust the services to match your event.",
       items: [
         {
           title: "The Essentials",
-          tagline: "Everything you need to capture the evening.",
-          description: "Straightforward photography and video coverage for a single engagement or reception.",
+          description: "Straightforward photography and video coverage for intimate celebrations.",
           cta: "View Package",
         },
         {
           title: "The Family Favorite",
-          tagline: "More moments. More memories.",
-          description: "Expanded photo and film coverage for larger gatherings, with more guests and more stage moments.",
+          description: "Expanded photography and film coverage for larger family gatherings.",
           cta: "View Package",
         },
         {
           title: "The Grand Celebration",
-          tagline: "Engagement and reception, together.",
-          description: "Broader coverage across both events, with cinematic films and extra team for large guest lists.",
+          description:
+            "Broader photography and cinematic coverage for grand receptions and multiple functions.",
           cta: "View Package",
         },
       ],
+      footerLink: { label: "Make Your Own", prefix: "Need something different?" },
+      note: "Final package suitability depends on the functions and requirements.",
     },
     faqs: {
       kicker: "Engagement & Reception FAQs",
       title: "Questions families ask us.",
       items: [
         {
-          question: "Do you cover engagement and reception on the same booking?",
+          question: "What photographs are usually covered during an engagement ceremony?",
           answer:
-            "Yes. You can book one event or both together. If they happen on different dates or at different venues, we plan the team and timings separately for each.",
+            "Engagement coverage can include the ring exchange, couple portraits, family photographs, ceremony details and candid moments. The priorities can be discussed before the event.",
         },
         {
-          question: "How early should we book for an engagement or reception?",
+          question: "Can you photograph our reception stage and all our important family groups?",
           answer:
-            "As early as your date is confirmed. Popular dates fill up quickly, especially during wedding season. Send us your date and we'll confirm availability.",
+            "Yes. Stage portraits and family group photographs can be planned alongside candid coverage. Sharing your important group-photo requirements helps us prepare.",
         },
         {
-          question: "Can you manage stage photography when many guests queue up?",
+          question: "Do you provide cinematic videos for engagement and reception events?",
           answer:
-            "Yes. We keep stage photography moving so guests are not kept waiting, while a second photographer stays free to capture candid moments away from the stage.",
+            "Yes. Traditional videography and cinematic coverage are available. You can discuss the type of film or highlights you want when choosing your coverage.",
         },
         {
-          question: "Do you work in low-light or decorated venues?",
+          question: "How many photographers do we need for a large reception?",
           answer:
-            "Yes. We bring professional lighting and low-light equipment so photographs and video look natural even in dimly lit halls and decorated stages.",
+            "It depends on the number of guests, venue layout, event schedule and coverage priorities. Larger receptions may need additional photographers, particularly when stage portraits and candid moments happen simultaneously.",
         },
         {
-          question: "Can we get a highlight film as well as full-length video?",
+          question: "Can we combine engagement and reception coverage with our wedding booking?",
           answer:
-            "Yes. You can choose a full-length traditional video, a cinematic highlight film, short teasers and reels, or a combination of them.",
-        },
-        {
-          question: "How do we book RAKZS Studio?",
-          answer:
-            "Send us your date, venue and requirements through the enquiry form. We'll confirm availability, discuss coverage and help you pick a package that fits.",
+            "Yes. Share your complete schedule so we can discuss coverage across the engagement, wedding and reception, including team requirements and deliverables.",
         },
       ],
     },
@@ -467,15 +465,15 @@ export const subPages: SubPage[] = [
       image: familyPortrait,
     },
     seo: {
-      title: "Haldi, Mehendi & Sangeet Photography in Hyderabad",
+      title: "Haldi, Mehendi & Sangeet Photography Hyderabad",
       description:
-        "Photography and videography for Haldi, Mehendi, Sangeet and other wedding celebrations in Hyderabad and Telangana — colour, music, movement and family.",
+        "Haldi, Mehendi and Sangeet photography and videography in Hyderabad by RAKZS Studio. Traditional, candid and cinematic coverage for wedding celebrations.",
     },
     hero: {
       kicker: "Wedding Celebrations",
-      title: "The wedding is one day.\nThe celebration is many.",
+      title: "Before the wedding comes everything that makes it unforgettable.",
       description:
-        "Haldi, Mehendi, Sangeet and the days around your wedding are where the laughter is loudest and the colours are brightest. They deserve to be remembered as carefully as the ceremony itself.",
+        "Haldi on your face. Mehendi on your hands. Music getting louder. Family coming together. These aren't simply events before the wedding. They're part of your story too.",
       cta: "Check Your Date",
       location: "Hyderabad & Telangana",
       image: familyPortrait,
@@ -483,37 +481,35 @@ export const subPages: SubPage[] = [
     blocks: [
       {
         kicker: "The Story",
-        title: "The celebrations are where\neveryone finally lets go.",
+        title: "Sometimes the best memories happen before the main event.",
         paragraphs: [
-          "Haldi is turmeric, laughter and cousins who have waited all year to take part. Mehendi is quiet conversations, intricate designs and music in the background. Sangeet is the night when everyone, including the people who never dance, ends up on the floor.",
-          "These functions move fast and look different from the wedding. They are about colour, people and joy.",
-          "**We follow all of it.**",
-          "So when the wedding is over, the days before it are not a blur — they are part of the story.",
+          "The Haldi that became a colour fight. The Mehendi where everyone sat together. The Sangeet performance somebody secretly practised for weeks.",
+          "Every family celebrates differently.",
+          "We preserve the traditions, people and moments that make these celebrations unforgettable.",
         ],
       },
       {
-        kicker: "Celebration Photography",
-        title: "Colour, laughter and the\nmoments no one planned.",
+        kicker: "Wedding Celebration Photography",
+        title: "Every tradition. Every expression. Every celebration.",
         paragraphs: [
-          "From the first splash of haldi to the last mehendi design and the dance floor at the Sangeet, we photograph the traditions and the unscripted fun around them. Family portraits are included, but the real focus is on expressions and interactions as they happen.",
+          "From Haldi rituals and Mehendi details to Sangeet performances and family portraits, traditional and candid photography capture both the important moments and the spontaneous ones.",
         ],
-        cta: { label: "View Celebration Photography", to: "gallery" },
       },
       {
-        kicker: "Celebration Films",
-        title: "The music, the dances\nand the noise you'll want back.",
+        kicker: "Wedding Celebration Films",
+        title: "Some celebrations refuse to stand still.",
         paragraphs: [
-          "Sangeet performances, haldi chaos and mehendi laughter all sound as good as they look. We capture video and audio together so you can relive the energy — as full coverage, highlight films or short reels.",
+          "The music, performances, laughter and energy of the room.",
+          "From traditional video to cinematic highlights, films bring the movement and atmosphere of your celebrations back to life.",
         ],
-        cta: { label: "Watch Our Films", to: "gallery" },
       },
     ],
     sidebar: {
       kicker: "Your Functions, Your Way",
-      title: "Pick the functions.\nWe'll plan around them.",
+      title: "One function or five. We'll build around it.",
       paragraphs: [
-        "Some families celebrate with one function alongside the wedding. Others host Haldi, Mehendi, Sangeet and more over several days.",
-        "Tell us which functions you're planning, where and when. We'll help you decide what to cover and how many people you'll need.",
+        "Some families need coverage for one Haldi or Sangeet. Others want a complete team across multiple celebrations.",
+        "Tell us your functions, locations and schedule. We'll help plan coverage that suits your requirements.",
       ],
       listTitle: "Available when you need them",
       services: [
@@ -522,92 +518,86 @@ export const subPages: SubPage[] = [
         { icon: "video", label: "Traditional Videography" },
         { icon: "clapperboard", label: "Cinematography" },
         { icon: "drone", label: "Drone Coverage" },
-        { icon: "reels", label: "Function Teasers & Reels" },
+        { icon: "reels", label: "Wedding Teasers & Reels" },
         { icon: "album", label: "Albums" },
-        { icon: "music", label: "Sangeet Performance Coverage" },
+        { icon: "live", label: "Live Streaming" },
         { icon: "led", label: "LED Screen" },
       ],
-      note: "Choose them individually, start with a package, or create your own combination.",
+      note: "Choose individual services, combine multiple functions or create your own coverage.",
       primaryCta: "Build Your Coverage",
-      secondaryCta: "Explore Packages",
     },
     process: {
       kicker: "From Hello to Delivery",
       title: "Simple behind the scenes.\nSo you can enjoy every function.",
       steps: [
-        { title: "Enquire", text: "Tell us which functions you're planning, with dates and venues." },
-        { title: "Understand", text: "We talk through each function's mood, timing and the traditions involved." },
-        { title: "Plan", text: "We plan team size and schedule for each function separately." },
-        { title: "Capture", text: "We cover rituals, performances and candid moments across every function." },
-        { title: "Refine & Deliver", text: "Each function is edited with care. A clear delivery timeline is confirmed according to your final requirements." },
+        { title: "Enquire", text: "Share your dates, locations and functions." },
+        { title: "Understand", text: "We discuss your schedule and priorities." },
+        { title: "Plan", text: "We plan the agreed team and coverage." },
+        { title: "Capture", text: "We document your rituals and celebrations." },
+        { title: "Refine & Deliver", text: "We prepare your selected photographs and films." },
       ],
+      note: "Delivery timelines are confirmed according to the final requirements.",
     },
     gallery: {
-      kicker: "Real Celebrations",
+      kicker: "Real Wedding Celebrations",
       title: "Frames from real wedding celebrations.",
-      description: "Every function has its own mood. Here's a glimpse into a few of ours.",
-      cta: "View Our Celebrations",
+      description:
+        "Every celebration has its own story. A glimpse into the traditions, emotions and celebrations we've captured.",
       images: [familyPortrait, weddingHero, preWeddingHero],
     },
     packages: {
-      kicker: "Your Coverage, Your Way",
+      kicker: "One Wedding. Multiple Celebrations.",
       title: "A starting point. Not a restriction.",
       description:
-        "Each celebration has its own rhythm and size. Our packages give you an easy place to start, and coverage can be adjusted function by function.",
+        "Plan the coverage together. Whether you're planning one function or several, our packages offer a starting point with room to customize.",
       items: [
         {
           title: "The Essentials",
-          tagline: "One function, well covered.",
-          description: "Straightforward photography and video coverage for a single celebration such as Haldi or Mehendi.",
+          description: "Straightforward photography and video coverage for selected functions.",
           cta: "View Package",
         },
         {
           title: "The Family Favorite",
-          tagline: "More functions. More memories.",
-          description: "Expanded photo and film coverage across two or three functions, with room for candid and cinematic work.",
+          description: "Expanded photography and film coverage across more celebrations.",
           cta: "View Package",
         },
         {
           title: "The Grand Celebration",
-          tagline: "Every function, one continuous story.",
-          description: "Broader multi-function coverage with cinematic films and extra team, planned around your full schedule.",
+          description: "Broader photo and cinematic coverage for multi-function weddings.",
           cta: "View Package",
         },
       ],
+      footerLink: { label: "Make Your Own", prefix: "Need something different?" },
+      note: "Final coverage depends on the selected functions, team and requirements.",
     },
     faqs: {
       kicker: "Wedding Celebration FAQs",
       title: "Questions families ask us.",
       items: [
         {
-          question: "Can we book only Haldi, Mehendi or Sangeet?",
+          question: "Do you provide Haldi, Mehendi and Sangeet photography in Hyderabad?",
           answer:
-            "Yes. You can book any single function or any combination. Coverage is planned around the functions you choose.",
+            "Yes. RAKZS Studio provides photography and video coverage for these celebrations in Hyderabad and across Telangana.",
         },
         {
-          question: "Will the same team cover every function?",
+          question: "Can we book coverage for only one wedding function?",
           answer:
-            "We aim to keep the core team consistent across functions so there's continuity in style and familiarity with your family. Team size can change depending on the function.",
+            "Yes. You can book coverage for an individual Haldi, Mehendi, Sangeet or another wedding celebration.",
         },
         {
-          question: "How do you cover Sangeet performances?",
+          question: "Can you cover multiple wedding functions together?",
           answer:
-            "We position the team for stage and floor angles, use suitable lighting and capture both photo and video so performances are covered properly.",
+            "Yes. Share your dates, locations and schedule so we can plan the appropriate team and coverage.",
         },
         {
-          question: "Do you cover outdoor functions like Haldi?",
+          question: "Do you provide candid photography, cinematic videos and reels?",
           answer:
-            "Yes. Outdoor and daytime functions are part of our regular work. We plan around light, location and the fun that tends to get messy.",
+            "Yes. These options are available depending on the services and deliverables selected for your celebrations.",
         },
         {
-          question: "Can all functions be edited into one film?",
+          question: "How do we check availability and confirm our booking?",
           answer:
-            "Yes. You can get a separate film for each function, a single combined highlight film, or both. We'll discuss it during planning.",
-        },
-        {
-          question: "How do we check availability?",
-          answer:
-            "Send us your function dates, venues and requirements through the enquiry form. We'll check the dates and get back to you.",
+            "Share your functions, dates, venues and requirements. Once availability and coverage are finalized, we'll provide the quotation and booking details.",
         },
       ],
     },
@@ -695,11 +685,23 @@ export const subPages: SubPage[] = [
       kicker: "From Hello to Delivery",
       title: "Simple behind the scenes.\nSo you can just enjoy each other.",
       steps: [
-        { title: "Enquire", text: "Tell us your wedding date, preferred places and the kind of shoot you imagine." },
-        { title: "Understand", text: "We talk about your personalities, your story and what you want the final photos and film to feel like." },
+        {
+          title: "Enquire",
+          text: "Tell us your wedding date, preferred places and the kind of shoot you imagine.",
+        },
+        {
+          title: "Understand",
+          text: "We talk about your personalities, your story and what you want the final photos and film to feel like.",
+        },
         { title: "Plan", text: "We help finalise the location, timing, outfits and concept." },
-        { title: "Capture", text: "On the day, we guide lightly and let the natural moments lead." },
-        { title: "Refine & Deliver", text: "Your photographs and film are edited with care. A clear delivery timeline is confirmed according to your final requirements." },
+        {
+          title: "Capture",
+          text: "On the day, we guide lightly and let the natural moments lead.",
+        },
+        {
+          title: "Refine & Deliver",
+          text: "Your photographs and film are edited with care. A clear delivery timeline is confirmed according to your final requirements.",
+        },
       ],
     },
     gallery: {
@@ -724,13 +726,15 @@ export const subPages: SubPage[] = [
         {
           title: "The Family Favorite",
           tagline: "Photos and a film.",
-          description: "Photography plus a short cinematic film, with time for a second look or outfit change.",
+          description:
+            "Photography plus a short cinematic film, with time for a second look or outfit change.",
           cta: "View Package",
         },
         {
           title: "The Grand Celebration",
           tagline: "The complete pre-wedding experience.",
-          description: "Multiple locations, outfit changes, drone and a full cinematic film planned around your story.",
+          description:
+            "Multiple locations, outfit changes, drone and a full cinematic film planned around your story.",
           cta: "View Package",
         },
       ],
@@ -856,10 +860,19 @@ export const subPages: SubPage[] = [
       title: "Simple behind the scenes.\nSo it stays easy for you.",
       steps: [
         { title: "Enquire", text: "Tell us what the shoot is for and when you need it by." },
-        { title: "Understand", text: "We learn about the two of you and the mood you want for the photographs or film." },
+        {
+          title: "Understand",
+          text: "We learn about the two of you and the mood you want for the photographs or film.",
+        },
         { title: "Plan", text: "We pick a location, timing and format, and keep the plan simple." },
-        { title: "Capture", text: "A relaxed session with light direction, built around natural moments." },
-        { title: "Refine & Deliver", text: "Selected photographs and films are edited and prepared. A clear delivery timeline is confirmed according to your final requirements." },
+        {
+          title: "Capture",
+          text: "A relaxed session with light direction, built around natural moments.",
+        },
+        {
+          title: "Refine & Deliver",
+          text: "Selected photographs and films are edited and prepared. A clear delivery timeline is confirmed according to your final requirements.",
+        },
       ],
     },
     gallery: {
@@ -884,13 +897,15 @@ export const subPages: SubPage[] = [
         {
           title: "The Family Favorite",
           tagline: "Photos plus a short video.",
-          description: "Couple photography with a Save-the-Date reel or short film made for sharing.",
+          description:
+            "Couple photography with a Save-the-Date reel or short film made for sharing.",
           cta: "View Package",
         },
         {
           title: "The Grand Celebration",
           tagline: "The complete announcement.",
-          description: "Multiple looks or locations, a cinematic Save-the-Date film and extra social media cuts.",
+          description:
+            "Multiple looks or locations, a cinematic Save-the-Date film and extra social media cuts.",
           cta: "View Package",
         },
       ],
@@ -1017,16 +1032,26 @@ export const subPages: SubPage[] = [
       title: "Simple behind the scenes.\nSo you can be present for the ritual.",
       steps: [
         { title: "Enquire", text: "Tell us the ceremony, date, venue and who will be attending." },
-        { title: "Understand", text: "We learn about your family's traditions, the order of rituals and the people you want captured." },
+        {
+          title: "Understand",
+          text: "We learn about your family's traditions, the order of rituals and the people you want captured.",
+        },
         { title: "Plan", text: "We plan positions, timing and team size around the ceremony." },
-        { title: "Capture", text: "We cover each ritual quietly, without interrupting the proceedings." },
-        { title: "Refine & Deliver", text: "Photographs and video are carefully edited. A clear delivery timeline is confirmed according to your final requirements." },
+        {
+          title: "Capture",
+          text: "We cover each ritual quietly, without interrupting the proceedings.",
+        },
+        {
+          title: "Refine & Deliver",
+          text: "Photographs and video are carefully edited. A clear delivery timeline is confirmed according to your final requirements.",
+        },
       ],
     },
     gallery: {
       kicker: "Real Ceremonies",
       title: "Frames from real family ceremonies.",
-      description: "Every family has its own traditions. Here's a glimpse into a few we've been trusted with.",
+      description:
+        "Every family has its own traditions. Here's a glimpse into a few we've been trusted with.",
       cta: "View Our Ceremonies",
       images: [familyPortrait, birthdayHero, weddingHero],
     },
@@ -1045,13 +1070,15 @@ export const subPages: SubPage[] = [
         {
           title: "The Family Favorite",
           tagline: "More moments. More generations.",
-          description: "Expanded photo and film coverage for ceremonies with larger guest lists and more family moments.",
+          description:
+            "Expanded photo and film coverage for ceremonies with larger guest lists and more family moments.",
           cta: "View Package",
         },
         {
           title: "The Grand Celebration",
           tagline: "The complete ceremony story.",
-          description: "Broader coverage with cinematic films and extra team for ceremonies that continue through the day.",
+          description:
+            "Broader coverage with cinematic films and extra team for ceremonies that continue through the day.",
           cta: "View Package",
         },
       ],
@@ -1177,11 +1204,20 @@ export const subPages: SubPage[] = [
       kicker: "From Hello to Delivery",
       title: "Simple behind the scenes.\nSo you can enjoy the party.",
       steps: [
-        { title: "Enquire", text: "Tell us the occasion, date, venue and approximate guest count." },
-        { title: "Understand", text: "We discuss the theme, the programme and the moments you most want to keep." },
+        {
+          title: "Enquire",
+          text: "Tell us the occasion, date, venue and approximate guest count.",
+        },
+        {
+          title: "Understand",
+          text: "We discuss the theme, the programme and the moments you most want to keep.",
+        },
         { title: "Plan", text: "We plan timings, positions and team for the celebration." },
         { title: "Capture", text: "We cover the planned moments and follow the unplanned ones." },
-        { title: "Refine & Deliver", text: "Photographs and films are carefully edited. A clear delivery timeline is confirmed according to your final requirements." },
+        {
+          title: "Refine & Deliver",
+          text: "Photographs and films are carefully edited. A clear delivery timeline is confirmed according to your final requirements.",
+        },
       ],
     },
     gallery: {
@@ -1206,13 +1242,15 @@ export const subPages: SubPage[] = [
         {
           title: "The Family Favorite",
           tagline: "More guests. More memories.",
-          description: "Expanded photo and film coverage for larger parties with more people and more moments.",
+          description:
+            "Expanded photo and film coverage for larger parties with more people and more moments.",
           cta: "View Package",
         },
         {
           title: "The Grand Celebration",
           tagline: "The complete celebration story.",
-          description: "Broader coverage with cinematic highlights for milestone birthdays and major anniversaries.",
+          description:
+            "Broader coverage with cinematic highlights for milestone birthdays and major anniversaries.",
           cta: "View Package",
         },
       ],
@@ -1339,10 +1377,19 @@ export const subPages: SubPage[] = [
       title: "Simple behind the scenes.\nSo you can focus on the little one.",
       steps: [
         { title: "Enquire", text: "Tell us about the occasion, date, venue and guests." },
-        { title: "Understand", text: "We learn about the family, the customs involved and any comfort considerations for the baby or mother." },
-        { title: "Plan", text: "We plan timing, positions and equipment around the ceremony and the baby's routine." },
+        {
+          title: "Understand",
+          text: "We learn about the family, the customs involved and any comfort considerations for the baby or mother.",
+        },
+        {
+          title: "Plan",
+          text: "We plan timing, positions and equipment around the ceremony and the baby's routine.",
+        },
         { title: "Capture", text: "We stay gentle, quiet and unobtrusive throughout." },
-        { title: "Refine & Deliver", text: "Photographs and films are carefully edited. A clear delivery timeline is confirmed according to your final requirements." },
+        {
+          title: "Refine & Deliver",
+          text: "Photographs and films are carefully edited. A clear delivery timeline is confirmed according to your final requirements.",
+        },
       ],
     },
     gallery: {
@@ -1367,13 +1414,15 @@ export const subPages: SubPage[] = [
         {
           title: "The Family Favorite",
           tagline: "More family. More memories.",
-          description: "Expanded photo and film coverage for larger gatherings with more relatives and more moments.",
+          description:
+            "Expanded photo and film coverage for larger gatherings with more relatives and more moments.",
           cta: "View Package",
         },
         {
           title: "The Grand Celebration",
           tagline: "The complete welcome story.",
-          description: "Broader coverage with cinematic highlights for celebrations across multiple functions.",
+          description:
+            "Broader coverage with cinematic highlights for celebrations across multiple functions.",
           cta: "View Package",
         },
       ],
@@ -1498,11 +1547,23 @@ export const subPages: SubPage[] = [
       kicker: "From Hello to Delivery",
       title: "Simple behind the scenes.\nSo your team can focus on the event.",
       steps: [
-        { title: "Enquire", text: "Tell us the event type, date, venue and what you'd like captured." },
-        { title: "Understand", text: "We learn about your company, your brand guidelines and how the content will be used." },
+        {
+          title: "Enquire",
+          text: "Tell us the event type, date, venue and what you'd like captured.",
+        },
+        {
+          title: "Understand",
+          text: "We learn about your company, your brand guidelines and how the content will be used.",
+        },
         { title: "Plan", text: "We plan the shot list, team and schedule with your organiser." },
-        { title: "Capture", text: "We cover the programme professionally without getting in the way." },
-        { title: "Refine & Deliver", text: "Photographs and videos are edited and prepared. A clear delivery timeline is confirmed according to your final requirements." },
+        {
+          title: "Capture",
+          text: "We cover the programme professionally without getting in the way.",
+        },
+        {
+          title: "Refine & Deliver",
+          text: "Photographs and videos are edited and prepared. A clear delivery timeline is confirmed according to your final requirements.",
+        },
       ],
     },
     gallery: {
@@ -1527,13 +1588,15 @@ export const subPages: SubPage[] = [
         {
           title: "The Business Standard",
           tagline: "More coverage. More content.",
-          description: "Expanded photography and video coverage for larger events, with highlight film and social media cuts.",
+          description:
+            "Expanded photography and video coverage for larger events, with highlight film and social media cuts.",
           cta: "View Package",
         },
         {
           title: "The Full Production",
           tagline: "The complete event record.",
-          description: "Multi-camera coverage, live streaming and rapid-turnaround delivery for large or multi-day events.",
+          description:
+            "Multi-camera coverage, live streaming and rapid-turnaround delivery for large or multi-day events.",
           cta: "View Package",
         },
       ],
@@ -1659,10 +1722,22 @@ export const subPages: SubPage[] = [
       title: "Simple behind the scenes.\nSo your event runs on time.",
       steps: [
         { title: "Enquire", text: "Tell us the event name, dates, venue and expected attendance." },
-        { title: "Understand", text: "We review the agenda, speakers, sponsors and what you want to publish afterwards." },
-        { title: "Plan", text: "We plan camera positions, team size and a coverage schedule across sessions." },
-        { title: "Capture", text: "We cover sessions, audiences and networking without disrupting the programme." },
-        { title: "Refine & Deliver", text: "Photographs and videos are organised, edited and delivered. A clear delivery timeline is confirmed according to your final requirements." },
+        {
+          title: "Understand",
+          text: "We review the agenda, speakers, sponsors and what you want to publish afterwards.",
+        },
+        {
+          title: "Plan",
+          text: "We plan camera positions, team size and a coverage schedule across sessions.",
+        },
+        {
+          title: "Capture",
+          text: "We cover sessions, audiences and networking without disrupting the programme.",
+        },
+        {
+          title: "Refine & Deliver",
+          text: "Photographs and videos are organised, edited and delivered. A clear delivery timeline is confirmed according to your final requirements.",
+        },
       ],
     },
     gallery: {
@@ -1681,19 +1756,22 @@ export const subPages: SubPage[] = [
         {
           title: "The Essentials",
           tagline: "Everything you need to document the day.",
-          description: "Straightforward photography and video coverage for a half-day or single-session event.",
+          description:
+            "Straightforward photography and video coverage for a half-day or single-session event.",
           cta: "View Package",
         },
         {
           title: "The Business Standard",
           tagline: "More sessions. More coverage.",
-          description: "Expanded photography and video for full-day conferences, with highlights and speaker clips.",
+          description:
+            "Expanded photography and video for full-day conferences, with highlights and speaker clips.",
           cta: "View Package",
         },
         {
           title: "The Full Production",
           tagline: "The complete conference record.",
-          description: "Multi-camera, multi-day coverage with live streaming and rapid delivery for large summits.",
+          description:
+            "Multi-camera, multi-day coverage with live streaming and rapid delivery for large summits.",
           cta: "View Package",
         },
       ],
@@ -1818,11 +1896,23 @@ export const subPages: SubPage[] = [
       kicker: "From Hello to Delivery",
       title: "Simple behind the scenes.\nSo you can look and feel like yourself.",
       steps: [
-        { title: "Enquire", text: "Tell us about your work, your audience and where the photographs will be used." },
-        { title: "Understand", text: "We talk through your brand, preferred style and the impression you want to create." },
+        {
+          title: "Enquire",
+          text: "Tell us about your work, your audience and where the photographs will be used.",
+        },
+        {
+          title: "Understand",
+          text: "We talk through your brand, preferred style and the impression you want to create.",
+        },
         { title: "Plan", text: "We plan outfits, locations, lighting and a shot list." },
-        { title: "Capture", text: "A relaxed, guided session with a mix of poses and natural moments." },
-        { title: "Refine & Deliver", text: "Selected photographs are retouched and prepared. A clear delivery timeline is confirmed according to your final requirements." },
+        {
+          title: "Capture",
+          text: "A relaxed, guided session with a mix of poses and natural moments.",
+        },
+        {
+          title: "Refine & Deliver",
+          text: "Selected photographs are retouched and prepared. A clear delivery timeline is confirmed according to your final requirements.",
+        },
       ],
     },
     gallery: {
@@ -1841,19 +1931,22 @@ export const subPages: SubPage[] = [
         {
           title: "The Essentials",
           tagline: "A clean, professional set.",
-          description: "A focused portrait session with a set of retouched photographs for web and social use.",
+          description:
+            "A focused portrait session with a set of retouched photographs for web and social use.",
           cta: "View Package",
         },
         {
           title: "The Brand Standard",
           tagline: "Portraits plus your workspace.",
-          description: "Brand portraits plus workplace and service photography, with social-ready formats.",
+          description:
+            "Brand portraits plus workplace and service photography, with social-ready formats.",
           cta: "View Package",
         },
         {
           title: "The Full Brand Shoot",
           tagline: "The complete visual identity.",
-          description: "Portraits, team, workspace, services and short video content planned across a full day.",
+          description:
+            "Portraits, team, workspace, services and short video content planned across a full day.",
           cta: "View Package",
         },
       ],
@@ -1978,17 +2071,30 @@ export const subPages: SubPage[] = [
       kicker: "From Hello to Delivery",
       title: "Simple behind the scenes.\nSo your products look their best.",
       steps: [
-        { title: "Enquire", text: "Tell us what you sell, how many products and where the images will be used." },
-        { title: "Understand", text: "We discuss your brand, style references and platform requirements." },
+        {
+          title: "Enquire",
+          text: "Tell us what you sell, how many products and where the images will be used.",
+        },
+        {
+          title: "Understand",
+          text: "We discuss your brand, style references and platform requirements.",
+        },
         { title: "Plan", text: "We plan the shot list, backgrounds, props and schedule." },
-        { title: "Capture", text: "Products are shot in controlled lighting for accuracy and consistency." },
-        { title: "Refine & Deliver", text: "Images are retouched and exported for your platforms. A clear delivery timeline is confirmed according to your final requirements." },
+        {
+          title: "Capture",
+          text: "Products are shot in controlled lighting for accuracy and consistency.",
+        },
+        {
+          title: "Refine & Deliver",
+          text: "Images are retouched and exported for your platforms. A clear delivery timeline is confirmed according to your final requirements.",
+        },
       ],
     },
     gallery: {
       kicker: "Real Products",
       title: "Frames from real product shoots.",
-      description: "Every product has its own story. Here's a glimpse into a few we've photographed.",
+      description:
+        "Every product has its own story. Here's a glimpse into a few we've photographed.",
       cta: "View Our Work",
       images: [productHero, editorialHero, brandingHero],
     },
@@ -2001,19 +2107,22 @@ export const subPages: SubPage[] = [
         {
           title: "The Essentials",
           tagline: "Clean, accurate product shots.",
-          description: "Catalogue-style photography on clean backgrounds for a set number of products.",
+          description:
+            "Catalogue-style photography on clean backgrounds for a set number of products.",
           cta: "View Package",
         },
         {
           title: "The Brand Standard",
           tagline: "Catalogue plus lifestyle.",
-          description: "Clean product shots plus styled and lifestyle images for social media and advertising.",
+          description:
+            "Clean product shots plus styled and lifestyle images for social media and advertising.",
           cta: "View Package",
         },
         {
           title: "The Full Campaign",
           tagline: "Photography and video together.",
-          description: "Catalogue, lifestyle, model shots and short videos for product launches and campaigns.",
+          description:
+            "Catalogue, lifestyle, model shots and short videos for product launches and campaigns.",
           cta: "View Package",
         },
       ],
@@ -2138,11 +2247,23 @@ export const subPages: SubPage[] = [
       kicker: "From Hello to Delivery",
       title: "Simple behind the scenes.\nSo you can run your business.",
       steps: [
-        { title: "Enquire", text: "Tell us about your business, your goal and where the video will be used." },
-        { title: "Understand", text: "We discuss your audience, message, style references and timeline." },
-        { title: "Plan", text: "We prepare the concept, script or outline, locations and shoot schedule." },
+        {
+          title: "Enquire",
+          text: "Tell us about your business, your goal and where the video will be used.",
+        },
+        {
+          title: "Understand",
+          text: "We discuss your audience, message, style references and timeline.",
+        },
+        {
+          title: "Plan",
+          text: "We prepare the concept, script or outline, locations and shoot schedule.",
+        },
         { title: "Capture", text: "A planned shoot with the right crew, lighting and sound." },
-        { title: "Refine & Deliver", text: "Videos are edited, graded and exported for your platforms. A clear delivery timeline is confirmed according to your final requirements." },
+        {
+          title: "Refine & Deliver",
+          text: "Videos are edited, graded and exported for your platforms. A clear delivery timeline is confirmed according to your final requirements.",
+        },
       ],
     },
     gallery: {
@@ -2173,7 +2294,8 @@ export const subPages: SubPage[] = [
         {
           title: "The Full Campaign",
           tagline: "A complete content series.",
-          description: "Multiple videos, reels and photographs planned together for a campaign or product launch.",
+          description:
+            "Multiple videos, reels and photographs planned together for a campaign or product launch.",
           cta: "View Package",
         },
       ],

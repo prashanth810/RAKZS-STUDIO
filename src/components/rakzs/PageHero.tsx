@@ -7,7 +7,7 @@ type PageHeroProps = {
 
 export function PageHero({ eyebrow, title, description, image }: PageHeroProps) {
   return (
-    <section className="relative mt-20 min-h-[calc(100vh-5rem)] overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden">
       <img
         src={image}
         alt=""
@@ -16,7 +16,7 @@ export function PageHero({ eyebrow, title, description, image }: PageHeroProps) 
         height={1000}
       />
       <div className="absolute inset-0 bg-hero-overlay" />
-      <div className="relative mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl items-end px-5 pb-16 pt-12 lg:px-8">
+      <div className="relative mx-auto flex min-h-screen max-w-7xl items-end px-5 pb-16 pt-32 lg:px-8">
         <div className="max-w-3xl animate-hero-in">
           <p className="text-[0.72rem] font-bold uppercase tracking-[0.22em] text-on-media-accent">
             {eyebrow}

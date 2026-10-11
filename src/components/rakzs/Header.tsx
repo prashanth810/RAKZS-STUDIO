@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/rakzs/ThemeToggle";
 import { cn } from "@/lib/utils";
-import RAKZS_Logo from "../../assets/RAKZS_Logo.png";
+import RAKZS_Logo from "../../assets/Brand_logo.png";
 
 const navItems = [
   { label: "Home", to: "/" },
@@ -24,7 +24,8 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const overHomeVideo = pathname === "/" && !scrolled && !open;
+  // Every page: transparent at the top (over the hero), solid white once scrolled
+  const overHomeVideo = !scrolled && !open;
 
   useEffect(() => {
     const updateHeader = () => setScrolled(window.scrollY > 36);
@@ -36,10 +37,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-500 py-2",
         overHomeVideo
           ? "bg-transparent text-on-media"
-          : "bg-background/90 text-foreground shadow-cinematic backdrop-blur-xl",
+          : "bg-white text-foreground shadow-cinematic dark:bg-background",
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
@@ -47,9 +48,9 @@ export function Header() {
           <img
             src={RAKZS_Logo}
             alt="RAKZS STUDIO"
-            width={56}
-            height={56}
-            className="size-12 rounded bg-white object-cover shadow-gold ring-2 ring-primary/50 transition-transform duration-300 group-hover:scale-105 sm:size-14"
+            width={60}
+            height={60}
+            className="size-12 rounded object-cover shadow-gold ring-2 ring-primary/50 transition-transform duration-300 sm:size-16"
           />
           <span className="hidden leading-none lg:block">
             <span
