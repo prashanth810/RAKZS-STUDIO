@@ -1,10 +1,8 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Camera, Facebook, Instagram, Mail, MapPin, Phone, PinIcon, Youtube } from "lucide-react";
 import { studioContact } from "@/data/site";
 import GMB_QR from "../../data/GMB_QR.png";
 import RAKZS_Logo from "../../assets/Brand_logo.png";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
 
 const quickLinks = [
   { label: "Home", to: "/" },
@@ -32,18 +30,12 @@ const socialLinks = [
 ];
 
 export function Footer() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const overHomeVideo = pathname === "/" && !scrolled && !open;
-
   return (
     <footer className="relative overflow-hidden border-t border-border bg-card text-card-foreground">
       <div className="mountain-silhouette pointer-events-none absolute inset-x-0 bottom-0 h-56 opacity-60" />
       <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.25fr_0.8fr_0.8fr_1fr] lg:px-8">
         <div>
-          <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
+          <Link to="/" className="group flex items-center gap-3">
             <img
               src={RAKZS_Logo}
               alt="RAKZS STUDIO"
@@ -52,12 +44,7 @@ export function Footer() {
               className="size-12 rounded object-cover shadow-gold ring-2 ring-primary/50 transition-transform duration-300 sm:size-16"
             />
             <span className="hidden leading-none lg:block">
-              <span
-                className={cn(
-                  "block font-display text-xl font-semibold tracking-wide",
-                  overHomeVideo ? "text-on-media" : "text-foreground",
-                )}
-              >
+              <span className="block font-display text-xl font-semibold tracking-wide text-foreground">
                 RAKZS STUDIO
               </span>
               <span className="mt-1.5 block text-[0.62rem] uppercase tracking-[0.32em] text-primary">

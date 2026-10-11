@@ -145,8 +145,8 @@ export function ContactForm({
 
   if (submitted) {
     return (
-      <div className="reveal rounded-lg border border-primary/40 bg-card p-5 text-center shadow-cinematic sm:p-8">
-        <CheckCircle2 className="mx-auto size-12 text-primary" />
+      <div className="reveal flex h-full min-h-[420px] flex-col items-center justify-center rounded-lg border border-primary/40 bg-card p-5 text-center shadow-cinematic sm:p-8">
+        <CheckCircle2 className="size-12 text-primary" />
         <h2 className="mt-5 font-display text-3xl font-semibold text-foreground sm:text-4xl">
           Thank You for Your Enquiry!
         </h2>
@@ -161,7 +161,7 @@ export function ContactForm({
           the total amount is required.
         </div>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Button variant="gold" onClick={reset}>
             <RotateCcw className="size-4" /> Reset Form
           </Button>
@@ -295,12 +295,13 @@ export function ContactForm({
         {errors.consent ? <p className="mt-2 text-sm text-destructive">{errors.consent}</p> : null}
       </div>
 
-      <div className="flex flex-wrap gap-3">
-        <Button variant="gold" type="submit" disabled={loading}>
-          <Send className="size-4" /> {loading ? "Sending..." : "Submit Enquiry"}
-        </Button>
+      <div className="flex flex-wrap md:justify-end justify-center gap-3">
         <Button variant="outlineGold" type="button" onClick={reset}>
           Reset
+        </Button>
+
+        <Button variant="gold" type="submit" disabled={loading}>
+          <Send className="size-4" /> {loading ? "Sending..." : "Submit Enquiry"}
         </Button>
       </div>
       {submitError ? (

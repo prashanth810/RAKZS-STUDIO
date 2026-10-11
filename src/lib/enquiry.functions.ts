@@ -54,6 +54,24 @@ function servicePills(services: string[]) {
     .join("");
 }
 
+const socialLinks = [
+  { name: "Instagram", href: "https://instagram.com/rakzsstudio", icon: "instagram-new" },
+  { name: "YouTube", href: "https://youtube.com/@rakzsstudio", icon: "youtube-play" },
+  { name: "Facebook", href: "https://facebook.com/rakzsstudio", icon: "facebook-new" },
+  { name: "Pinterest", href: "https://pinterest.com/rakzsstudio", icon: "pinterest" },
+];
+
+// Gmail blocks SVG and inline icon fonts, so we use hosted PNG images (gold #d9b56d).
+function socialIcons() {
+  const cells = socialLinks
+    .map(
+      (item) =>
+        `<td style="padding:0 5px"><a href="${item.href}" target="_blank" rel="noreferrer" style="text-decoration:none"><table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:separate"><tr><td width="38" height="38" align="center" valign="middle" style="width:38px;height:38px;border-radius:999px;background:#2a2521"><img src="https://img.icons8.com/ios-filled/50/D9B56D/${item.icon}.png" alt="${item.name}" width="18" height="18" style="display:block;border:0;outline:none;width:18px;height:18px;margin:0 auto" /></td></tr></table></a></td>`,
+    )
+    .join("");
+  return `<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto 16px;border-collapse:collapse"><tr>${cells}</tr></table>`;
+}
+
 export const sendEnquiry = createServerFn({ method: "POST" })
   .inputValidator((data) => enquirySchema.parse(data))
   .handler(async ({ data }) => {
@@ -67,6 +85,7 @@ export const sendEnquiry = createServerFn({ method: "POST" })
       detailRow("&#128100;", "Name", data.fullName, false),
       detailRow("&#9993;", "Email", data.email, false),
       detailRow("&#128222;", "Phone", data.phone, false),
+      detailRow("&#127916;", "Event / Service type", data.type, false),
       detailRow("&#128197;", "Event date", data.date, false),
       detailRow("&#128205;", "Location", data.location, false),
       detailRow("&#128176;", "Expected budget", data.budget, false),
@@ -82,7 +101,7 @@ export const sendEnquiry = createServerFn({ method: "POST" })
       },
       body: JSON.stringify({
         from: "RAKZS STUDIO Enquiries <onboarding@resend.dev>",
-        to: ["srikanthdfg@gmail.com"],
+        to: ["bookings.rakzsstudio@gmail.com"],
         reply_to: data.email,
         subject: `New RAKZS STUDIO enquiry — ${data.type}`,
         html: `<div style="background:#efe7d6;padding:32px 16px;font-family:Arial,Helvetica,sans-serif">
@@ -111,7 +130,7 @@ export const sendEnquiry = createServerFn({ method: "POST" })
     </tr>
     <tr>
       <td style="padding:28px 40px;text-align:center">
-        <a href="mailto:${data.email}" style="display:inline-block;padding:14px 36px;background:#e9c47e;color:#151311;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;border-radius:3px">Reply to Client &rarr;</a>
+        <a href="mailto:${escapeHtml(data.email)}" style="display:inline-block;padding:14px 36px;background:#e9c47e;color:#151311;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;border-radius:3px">Reply to Client &rarr;</a>
         <p style="margin:14px 0 0;color:#8a7f6e;font-size:12px;line-height:1.6">You can reply directly to the client's email or contact them using the details above.</p>
       </td>
     </tr>
@@ -119,8 +138,13 @@ export const sendEnquiry = createServerFn({ method: "POST" })
       <td style="padding:32px 40px;background:#151311;text-align:center">
         <p style="margin:0;color:#d9b56d;font-family:Georgia,'Times New Roman',serif;font-size:20px;letter-spacing:0.1em">RAKZS <span style="color:#f7f3ea;font-size:11px;letter-spacing:0.3em">STUDIO</span></p>
         <p style="margin:8px 0 16px;color:#8a7f6e;font-size:10px;letter-spacing:0.14em;text-transform:uppercase">Capturing moments &middot; Creating memories</p>
-        <p style="margin:0 0 16px"><a href="https://instagram.com/rakzsstudio" target="_blank" rel="noreferrer" aria-label="Instagram" style="display:inline-block;width:34px;height:34px;line-height:34px;border-radius:999px;background:#2a2521;color:#d9b56d;text-decoration:none;font-size:12px;font-weight:700;margin:0 3px">IG</a><a href="https://youtube.com/@rakzsstudio" target="_blank" rel="noreferrer" aria-label="YouTube" style="display:inline-block;width:34px;height:34px;line-height:34px;border-radius:999px;background:#2a2521;color:#d9b56d;text-decoration:none;font-size:12px;font-weight:700;margin:0 3px">YT</a><a href="https://facebook.com/rakzsstudio" target="_blank" rel="noreferrer" aria-label="Facebook" style="display:inline-block;width:34px;height:34px;line-height:34px;border-radius:999px;background:#2a2521;color:#d9b56d;text-decoration:none;font-size:12px;font-weight:700;margin:0 3px">FB</a><a href="https://pinterest.com/rakzsstudio" target="_blank" rel="noreferrer" aria-label="Pinterest" style="display:inline-block;width:34px;height:34px;line-height:34px;border-radius:999px;background:#2a2521;color:#d9b56d;text-decoration:none;font-size:12px;font-weight:700;margin:0 3px">PIN</a></p>
-        <p style="margin:0;padding-top:16px;border-top:1px solid #2a2521;color:#6e6656;font-size:11px;line-height:1.7">This enquiry was submitted via the RAKZS STUDIO website.<br/>&copy; 2026 RAKZS STUDIO. All rights reserved.</p>
+        ${socialIcons()}
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:20px 40px 28px;background:#151311;border-top:1px solid #2a2521;text-align:center">
+        <p style="margin:0 0 6px;color:#a89d88;font-size:12px;line-height:1.7">This enquiry was submitted via the RAKZS STUDIO website.</p>
+        <p style="margin:0;color:#a89d88;font-size:12px;line-height:1.7">&copy; 2026 RAKZS STUDIO. All rights reserved.</p>
       </td>
     </tr>
   </table>
