@@ -76,6 +76,8 @@ export type SubPage = {
     cta: string;
     location: string;
     image: string;
+    /** optional: smaller headline + paragraph for long hero text */
+    compact?: boolean;
   };
 
   /** Left column text blocks (1st block = "The Story"). cta.to: gallery | packages | contact */
@@ -123,6 +125,8 @@ export type SubPage = {
     title: string;
     description: string;
     items: { title: string; tagline?: string; description: string; cta: string }[];
+    /** optional quotation button (use with items: [] for a quote-only section) */
+    cta?: string;
     /** optional "Need something different? Make Your Own →" line */
     footerLink?: { prefix: string; label: string };
     /** optional small note under the package cards */
@@ -1480,160 +1484,134 @@ export const subPages: SubPage[] = [
       image: corporateHero,
     },
     seo: {
-      title: "Corporate Event Photography & Videography in Hyderabad",
+      title: "Corporate Event Photographer in Hyderabad | RAKZS Studio",
       description:
-        "Corporate event photography and video for launches, awards, annual days and team events in Hyderabad and Telangana — clean, professional and delivered on time.",
+        "Corporate event photography and videography in Hyderabad by RAKZS Studio. Professional coverage for company celebrations, award ceremonies, launches and team events.",
     },
     hero: {
       kicker: "Corporate Events",
-      title: "The people behind the business.\nThe moments that bring them together.",
+      title: "Behind every successful company event\nare people and moments worth remembering.",
       description:
-        "Annual days, award nights, launches and team celebrations say a lot about a company. We cover them with clean, professional photography and video that reflect the people and the brand.",
-      cta: "Check Your Date",
+        "An employee receiving an award. A team celebrating a milestone. Colleagues coming together outside their everyday work. These moments reflect more than an event schedule. They reflect the people, achievements and culture of your organisation. RAKZS Studio captures them through professional corporate event photography and videography in Hyderabad. Photography that honours the occasion and the people who made it happen.",
+      cta: "Discuss Your Event",
       location: "Hyderabad & Telangana",
       image: corporateHero,
+      compact: true,
     },
     blocks: [
       {
         kicker: "The Story",
-        title: "Your events say something\nabout your company.",
+        title: "An event may be planned by a company,\nbut it's the people who make it memorable.",
         paragraphs: [
-          "A well-run event is remembered by employees, partners and customers. Photographs and video are how it continues to speak after the day is over — on your website, social channels, newsletters and presentations.",
-          "But event coverage isn't just stage shots. It's the people arriving, the conversations in corridors, the award being handed over and the laughter at the team table.",
-          "**We capture the event as it felt, in a way that suits your brand.**",
+          "Every corporate event has a purpose. Sometimes it's celebrating years of hard work. Sometimes it's recognising an employee's achievement, introducing something new or bringing a team together.",
+          "The official programme deserves to be documented. But so do the moments around it. The applause when someone receives an award. The pride in a team photograph. The conversations between colleagues and the energy of everyone sharing the occasion.",
+          "We capture both the planned highlights and the natural moments that reveal what the event meant to the people attending.",
+          "**Because the most valuable photographs don't simply show that an event happened. They show why it mattered.**",
         ],
       },
       {
-        kicker: "Event Photography",
-        title: "Clean, professional\nand ready to use.",
+        kicker: "Corporate Event Photography",
+        title: "Your company's milestones deserve\nphotographs that reflect the pride behind them.",
         paragraphs: [
-          "We cover stage moments, branding and signage, attendee interactions, awards, group photographs and candid shots. Edited photographs are delivered in formats prepared for websites, social media, press and internal use.",
+          "From company celebrations and award ceremonies to product launches, employee gatherings and networking events, we document the people, programme and atmosphere.",
+          "Our approach combines professional portraits, important stage moments, branding, team photographs and candid interactions.",
+          "The result is a collection that can support your company's event records, website, internal communication and social media.",
         ],
         cta: { label: "View Event Photography", to: "gallery" },
       },
       {
-        kicker: "Event Videography",
-        title: "A recap people\nactually watch.",
+        kicker: "Corporate Event Films",
+        title: "Photographs preserve the highlights.\nFilm brings back the atmosphere.",
         paragraphs: [
-          "From event highlight videos to short social cuts and full-length recordings of key sessions, video helps your event reach people who weren't in the room. We keep edits concise and on brand.",
+          "The applause after an announcement. The energy of a launch. The excitement of a team coming together.",
+          "Corporate event videography captures movement, sound and the moments that give an occasion its character.",
+          "Depending on your requirements, coverage can include event videos, highlights and shorter edits for business communication.",
         ],
         cta: { label: "Watch Our Films", to: "gallery" },
       },
     ],
     sidebar: {
-      kicker: "Your Event, Your Way",
-      title: "Tell us the event.\nWe'll plan the coverage.",
+      kicker: "Your Event, Your Requirements",
+      title:
+        "Every company has a different reason to celebrate.\nYour coverage should reflect that purpose.",
       paragraphs: [
-        "Corporate events vary from a two-hour internal gathering to a multi-day programme with large audiences.",
-        "Share the schedule, venue, expected attendance and how you intend to use the content. We'll recommend coverage that's practical and focused on your requirements.",
+        "An intimate employee gathering doesn't need the same approach as a large corporate celebration or launch.",
+        "Tell us about your event, the important people, key moments and how you intend to use the photographs and videos. We'll help plan coverage around your actual requirements.",
       ],
-      listTitle: "Available when you need them",
+      listTitle: "Coverage can include",
       services: [
-        { icon: "camera", label: "Event Photography" },
-        { icon: "users", label: "Candid Attendee Photography" },
-        { icon: "video", label: "Event Videography" },
-        { icon: "clapperboard", label: "Highlight Films" },
-        { icon: "drone", label: "Drone Coverage (Venue Permitting)" },
-        { icon: "reels", label: "Social Media Reels" },
-        { icon: "live", label: "Live Streaming" },
-        { icon: "led", label: "LED Screen" },
-        { icon: "briefcase", label: "Same-Day Photo Delivery" },
+        { icon: "camera", label: "Corporate Event Photography" },
+        { icon: "gift", label: "Awards & Recognition Coverage" },
+        { icon: "package", label: "Launch & Company Celebration Coverage" },
+        { icon: "briefcase", label: "Leadership & Team Photographs" },
+        { icon: "users", label: "Candid & Networking Photography" },
+        { icon: "video", label: "Corporate Event Videography" },
+        { icon: "reels", label: "Event Highlights & Reels" },
+        { icon: "palette", label: "Branding & Venue Details" },
       ],
-      note: "Choose them individually, start with a package, or create your own combination.",
-      primaryCta: "Build Your Coverage",
-      secondaryCta: "Explore Packages",
+      note: "Coverage and deliverables are finalized according to your event brief.",
+      primaryCta: "Build Your Event Coverage",
     },
     process: {
-      kicker: "From Hello to Delivery",
-      title: "Simple behind the scenes.\nSo your team can focus on the event.",
+      kicker: "From Brief to Delivery",
+      title: "Thoughtful preparation helps us capture\nthe moments that cannot be repeated.",
       steps: [
-        {
-          title: "Enquire",
-          text: "Tell us the event type, date, venue and what you'd like captured.",
-        },
+        { title: "Enquire", text: "Share your event date, venue and timings." },
         {
           title: "Understand",
-          text: "We learn about your company, your brand guidelines and how the content will be used.",
+          text: "We discuss your programme, important people and content requirements.",
         },
-        { title: "Plan", text: "We plan the shot list, team and schedule with your organiser." },
-        {
-          title: "Capture",
-          text: "We cover the programme professionally without getting in the way.",
-        },
+        { title: "Plan", text: "We finalize the team and agreed coverage." },
+        { title: "Capture", text: "We document the event, its people and important moments." },
         {
           title: "Refine & Deliver",
-          text: "Photographs and videos are edited and prepared. A clear delivery timeline is confirmed according to your final requirements.",
+          text: "We prepare your agreed photographs and films. Delivery timelines are confirmed according to the finalized scope.",
         },
       ],
     },
     gallery: {
-      kicker: "Real Events",
-      title: "Frames from real corporate events.",
-      description: "Every event has its own story. Here's a glimpse into a few of ours.",
-      cta: "View Our Events",
+      kicker: "Real Corporate Moments",
+      title: "Behind every company milestone are people who helped make it possible.",
+      description: "A glimpse into genuine corporate events documented by RAKZS Studio.",
       images: [corporateHero, brandingHero, birthdayHero],
     },
+    // Quotation section (no package cards for this page)
     packages: {
-      kicker: "Your Coverage, Your Way",
-      title: "A starting point. Not a restriction.",
+      kicker: "Find Your Coverage",
+      title: "Let's plan your event.",
       description:
-        "Every event has a different schedule, scale and purpose. Our packages give you an easy place to start, and coverage can be adjusted around your requirements.",
-      items: [
-        {
-          title: "The Essentials",
-          tagline: "Everything you need to document the event.",
-          description: "Straightforward photography and video coverage for a single event.",
-          cta: "View Package",
-        },
-        {
-          title: "The Business Standard",
-          tagline: "More coverage. More content.",
-          description:
-            "Expanded photography and video coverage for larger events, with highlight film and social media cuts.",
-          cta: "View Package",
-        },
-        {
-          title: "The Full Production",
-          tagline: "The complete event record.",
-          description:
-            "Multi-camera coverage, live streaming and rapid-turnaround delivery for large or multi-day events.",
-          cta: "View Package",
-        },
-      ],
+        "Tell us what your company is celebrating. We'll help you preserve the moments that matter. Share your event date, venue, programme, approximate guest count and whether you need photography, videography or both. We'll recommend coverage based on your event rather than a fixed wedding-style package.",
+      items: [],
+      cta: "Request Corporate Event Quote",
     },
     faqs: {
       kicker: "Corporate Event FAQs",
       title: "Questions businesses ask us.",
       items: [
         {
-          question: "What kind of corporate events do you cover?",
+          question: "What types of corporate events does RAKZS Studio cover?",
           answer:
-            "Annual days, award ceremonies, product launches, team celebrations, office openings, townhalls, training sessions and other business occasions.",
+            "We offer photography and videography for company celebrations, employee gatherings, award ceremonies, launches, networking events and other corporate occasions in Hyderabad. Coverage is planned according to the event requirements.",
         },
         {
-          question: "How much does corporate event coverage cost in Hyderabad?",
+          question: "Can you capture award presentations, leadership and team photographs?",
           answer:
-            "Pricing depends on the event's duration, team size, deliverables and turnaround time. Share the details and we'll send a tailored quote.",
+            "Yes. We can plan coverage for award presentations, important guests, leadership portraits and group photographs. Share any must-have photographs before the event so we can account for them in the schedule.",
         },
         {
-          question: "Can you deliver photos on the same day?",
+          question: "Can we use corporate event photographs for our website and social media?",
           answer:
-            "For events that need quick publishing, we can arrange a selected set of edited photographs for same-day delivery. Please discuss this when booking.",
+            "We can plan the photography around your intended content needs, including websites, company updates, internal communication and social media. Usage requirements and any applicable permissions should be discussed when finalizing the booking.",
         },
         {
-          question: "Do you follow our brand guidelines?",
+          question: "How many photographers or videographers will our event need?",
           answer:
-            "Yes. Share your guidelines, logos and any key people to feature. We'll make sure those are covered and the content reflects your brand.",
+            "The team depends on the venue, event duration, number of guests, programme and whether important activities happen simultaneously. We'll recommend suitable coverage after reviewing your requirements.",
         },
         {
-          question: "Can you work with our in-house marketing team?",
+          question: "How much does corporate event photography cost in Hyderabad?",
           answer:
-            "Absolutely. We're happy to coordinate with your team on shot lists, schedules and delivery formats.",
-        },
-        {
-          question: "How do we book?",
-          answer:
-            "Send us the event details through the enquiry form. We'll confirm availability and share a proposal.",
+            "Pricing depends on the duration, location, team requirements, photography or video coverage and agreed deliverables. Share your event brief with us for a quotation.",
         },
       ],
     },
@@ -1654,161 +1632,141 @@ export const subPages: SubPage[] = [
       image: brandingHero,
     },
     seo: {
-      title: "Conference & Seminar Photography in Hyderabad",
+      title: "Conference Photographer in Hyderabad | RAKZS Studio",
       description:
-        "Conference, seminar and business event photography and video in Hyderabad and Telangana — speakers, sessions, audiences and networking, documented clearly.",
+        "Conference photography and videography in Hyderabad by RAKZS Studio. Coverage for keynote speakers, seminars, panel discussions, business meetings and professional events.",
     },
     hero: {
       kicker: "Conferences & Business Events",
-      title: "When the room matters,\nevery moment does too.",
+      title:
+        "When important ideas bring people together,\nevery meaningful moment deserves to be seen.",
       description:
-        "Keynotes. Panels. Workshops. Networking breaks. A conference runs on many small moments, and the value of the day lives in all of them. We document them with clean, purposeful coverage.",
-      cta: "Check Your Date",
+        "A speaker sharing a new perspective. An audience listening with attention. A conversation that begins between sessions. Conferences and professional gatherings create moments of knowledge, connection and opportunity. RAKZS Studio documents these occasions through professional conference photography and videography in Hyderabad. Preserving not only what was presented, but the people and conversations that gave the event its purpose.",
+      cta: "Discuss Your Event",
       location: "Hyderabad & Telangana",
       image: corporateHero,
+      compact: true,
     },
     blocks: [
       {
         kicker: "The Story",
-        title: "A conference is more than\na stage and a screen.",
+        title: "The stage carries the message.\nThe people in the room give it meaning.",
         paragraphs: [
-          "While the speaker is on stage, the real conversations happen at the tea counter. While one session runs, another room fills up. Attendees take notes, exchange cards and discover the person they came to meet.",
-          "Good conference coverage reflects all of this — the speakers, the sessions, the audience, the sponsors and the atmosphere of a room full of people with something in common.",
-          "**We cover the event so you can use it again.**",
+          "A conference is built around ideas. People travel, gather and make time to listen, learn, speak and connect.",
+          "The keynote speaker may be the centre of attention, but the complete story reaches further. An audience reacting to a presentation. A question that starts a discussion. Professionals exchanging ideas during a break. A panel bringing different perspectives into one conversation. These moments are part of what makes the event valuable.",
+          "We approach conference coverage with attention to the agenda, important participants and the natural interactions that happen around the programme.",
+          "**Because a meaningful event deserves a visual record of both the ideas shared and the connections made.**",
         ],
       },
       {
         kicker: "Conference Photography",
-        title: "Speakers, sessions\nand the people in the seats.",
+        title: "Every speaker has something to share.\nEvery audience has a story of its own.",
         paragraphs: [
-          "We photograph keynotes, panels, workshops, sponsor booths, attendee interactions, registration and networking. Speaker portraits and sponsor visibility are covered on request, and edited images are delivered in organised sets.",
+          "We document keynote presentations, seminars, panel discussions, business meetings and professional gatherings with attention to clarity and context.",
+          "Alongside important speakers and sessions, we capture audience engagement, networking, event branding and wider photographs that show the scale and atmosphere.",
+          "The result is a visual record suitable for event documentation and future organisational communication.",
         ],
         cta: { label: "View Conference Photography", to: "gallery" },
       },
       {
-        kicker: "Conference Videography",
-        title: "Sessions that can be\nwatched long after the event.",
+        kicker: "Conference Films & Video",
+        title: "Some ideas are remembered through photographs.\nOthers deserve to be heard again.",
         paragraphs: [
-          "Record keynotes and sessions in full, produce highlight recaps, or create short speaker clips for promotion. Multi-camera setups and clean audio can be arranged for larger events.",
+          "A keynote presentation. A panel discussion. An important announcement. The energy of a room responding to a speaker.",
+          "Conference videography can preserve the movement, voices and atmosphere that photographs alone cannot convey.",
+          "Depending on the agreed scope, coverage can include session recording, event highlights and shorter edits for professional communication.",
         ],
         cta: { label: "Watch Our Films", to: "gallery" },
       },
     ],
     sidebar: {
-      kicker: "Your Event, Your Way",
-      title: "Tell us the programme.\nWe'll plan around it.",
+      kicker: "Your Conference, Your Priorities",
+      title:
+        "Every conference has an agenda.\nWe plan around the moments your organisation cannot afford to miss.",
       paragraphs: [
-        "Conferences range from a half-day seminar to a multi-day summit with parallel tracks.",
-        "Share the agenda, venue and what you want from the content. We'll plan coverage so nothing important is missed.",
+        "Some events have a single stage and a straightforward schedule. Others include multiple speakers, parallel sessions, panel discussions and networking activities.",
+        "Share your agenda, venue, important speakers and final content requirements. We'll help plan the coverage around the structure of your event.",
       ],
-      listTitle: "Available when you need them",
+      listTitle: "Coverage can include",
       services: [
-        { icon: "camera", label: "Conference Photography" },
-        { icon: "mic", label: "Speaker & Session Coverage" },
-        { icon: "video", label: "Multi-Camera Videography" },
-        { icon: "clapperboard", label: "Highlight Recap Films" },
-        { icon: "users", label: "Networking & Candid Photography" },
-        { icon: "reels", label: "Speaker Clips & Social Reels" },
-        { icon: "live", label: "Live Streaming" },
-        { icon: "led", label: "LED Screen" },
-        { icon: "briefcase", label: "Speaker & Team Portraits" },
+        { icon: "mic", label: "Keynote Speaker Photography" },
+        { icon: "camera", label: "Seminars & Presentations" },
+        { icon: "users", label: "Panel Discussions" },
+        { icon: "heart", label: "Audience Reactions & Engagement" },
+        { icon: "briefcase", label: "Delegate Networking" },
+        { icon: "video", label: "Conference Videography" },
+        { icon: "clapperboard", label: "Session Recording" },
+        { icon: "reels", label: "Event Highlights & Reels" },
+        { icon: "palette", label: "Branding, Sponsors & Venue Details" },
       ],
-      note: "Choose them individually, start with a package, or create your own combination.",
-      primaryCta: "Build Your Coverage",
-      secondaryCta: "Explore Packages",
+      note: "Simultaneous sessions and recording requirements may affect the team, equipment and final quotation.",
+      primaryCta: "Plan Your Conference Coverage",
     },
     process: {
-      kicker: "From Hello to Delivery",
-      title: "Simple behind the scenes.\nSo your event runs on time.",
+      kicker: "From Agenda to Delivery",
+      title: "When the schedule matters,\npreparation makes the difference.",
       steps: [
-        { title: "Enquire", text: "Tell us the event name, dates, venue and expected attendance." },
+        { title: "Enquire", text: "Share your event date, venue and timings." },
         {
-          title: "Understand",
-          text: "We review the agenda, speakers, sponsors and what you want to publish afterwards.",
+          title: "Review the Agenda",
+          text: "We understand the speakers, sessions and priorities.",
         },
+        { title: "Plan", text: "We discuss the required team and coverage." },
         {
-          title: "Plan",
-          text: "We plan camera positions, team size and a coverage schedule across sessions.",
-        },
-        {
-          title: "Capture",
-          text: "We cover sessions, audiences and networking without disrupting the programme.",
+          title: "Document",
+          text: "We capture the programme, audience and professional interactions.",
         },
         {
           title: "Refine & Deliver",
-          text: "Photographs and videos are organised, edited and delivered. A clear delivery timeline is confirmed according to your final requirements.",
+          text: "We prepare the agreed photographs, recordings or films. Delivery timelines are confirmed according to the finalized requirements.",
         },
       ],
     },
     gallery: {
-      kicker: "Real Events",
-      title: "Frames from real conferences & business events.",
-      description: "Every event has its own story. Here's a glimpse into a few of ours.",
-      cta: "View Our Events",
+      kicker: "Real Conference Stories",
+      title: "Every conversation begins somewhere. Every important idea deserves to be remembered.",
+      description:
+        "A glimpse into genuine conferences and professional events documented by RAKZS Studio.",
       images: [corporateHero, brandingHero, birthdayHero],
     },
+    // Quotation section (no package cards for this page)
     packages: {
-      kicker: "Your Coverage, Your Way",
-      title: "A starting point. Not a restriction.",
+      kicker: "Find Your Coverage",
+      title: "Your agenda. Our plan.",
       description:
-        "Every conference differs in length, scale and goals. Our packages give you an easy place to start, and coverage can be adjusted around your agenda.",
-      items: [
-        {
-          title: "The Essentials",
-          tagline: "Everything you need to document the day.",
-          description:
-            "Straightforward photography and video coverage for a half-day or single-session event.",
-          cta: "View Package",
-        },
-        {
-          title: "The Business Standard",
-          tagline: "More sessions. More coverage.",
-          description:
-            "Expanded photography and video for full-day conferences, with highlights and speaker clips.",
-          cta: "View Package",
-        },
-        {
-          title: "The Full Production",
-          tagline: "The complete conference record.",
-          description:
-            "Multi-camera, multi-day coverage with live streaming and rapid delivery for large summits.",
-          cta: "View Package",
-        },
-      ],
+        "You bring the programme. We'll help you capture the moments that give it meaning. Share your conference date, venue, agenda, number of sessions, expected attendance and photography or video requirements. We'll review the structure of your event and discuss suitable coverage.",
+      items: [],
+      cta: "Request Conference Quote",
     },
     faqs: {
       kicker: "Conference FAQs",
       title: "Questions organisers ask us.",
       items: [
         {
-          question: "Do you cover multi-day conferences?",
+          question: "Do you cover keynote speakers, seminars and panel discussions?",
           answer:
-            "Yes. We plan teams and schedules for multi-day events, including parallel tracks and evening programmes.",
+            "Yes. Conference coverage can include keynote presentations, seminars, panel discussions, moderators, audience questions and professional sessions, depending on the agreed event brief.",
         },
         {
-          question: "Can you record full sessions and keynotes?",
+          question: "Can you cover multiple conference sessions happening at the same time?",
           answer:
-            "Yes. We can record sessions in full with clean audio and edit them for sharing or on-demand access afterwards.",
+            "Yes, where suitable team coverage can be arranged. Parallel sessions may require additional photographers or videographers, so please share the complete agenda before the event.",
         },
         {
-          question: "Can you livestream our conference?",
+          question:
+            "Can you record complete conference sessions as well as create highlight videos?",
           answer:
-            "Yes. We offer live streaming for remote attendees. Please share your platform and requirements early so we can plan the setup.",
+            "Session recording and shorter event films can be discussed as separate or combined requirements. The number of cameras, audio arrangements, recording duration and final edits will be confirmed in the quotation.",
         },
         {
-          question: "Do you take speaker portraits or sponsor photographs?",
+          question: "Can you prioritize specific speakers, VIPs and sponsor branding?",
           answer:
-            "Yes. Speaker portraits, sponsor group photographs and booth coverage can be included on request.",
+            "Yes. Share your speaker list, important guests, sponsor requirements and branding priorities before the event. This helps us plan the coverage around the people and details that matter most to your organisation.",
         },
         {
-          question: "How are the photographs delivered?",
+          question: "What details do you need to provide a conference photography quotation?",
           answer:
-            "We deliver organised, edited sets through a shared online gallery. Delivery timelines are confirmed according to your requirements.",
-        },
-        {
-          question: "How do we book?",
-          answer:
-            "Send us the event details and agenda through the enquiry form. We'll confirm availability and share a plan.",
+            "Please share the event date, venue, timings, agenda, expected attendance, number of sessions or stages, and whether you need photography, video recording or both. These details help us estimate suitable coverage and pricing.",
         },
       ],
     },

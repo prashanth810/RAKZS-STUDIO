@@ -103,14 +103,28 @@ export function SubPageTemplate({ page, categoryLabel }: { page: SubPage; catego
         />
         <div className="absolute inset-0 bg-hero-overlay" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-14 lg:px-8">
-          <div className="max-w-2xl animate-hero-in">
+          <div className={cn("animate-hero-in", hero.compact ? "max-w-3xl" : "max-w-2xl")}>
             <p className="text-[0.72rem] font-bold uppercase tracking-[0.22em] text-on-media-accent">
               {hero.kicker}
             </p>
-            <h1 className="mt-5 whitespace-pre-line font-display text-4xl font-semibold leading-[1.05] text-on-media md:text-6xl">
+            <h1
+              className={cn(
+                "mt-5 whitespace-pre-line font-display font-semibold text-on-media",
+                hero.compact
+                  ? "text-3xl leading-[1.1] md:text-4xl lg:text-5xl"
+                  : "text-4xl leading-[1.05] md:text-6xl",
+              )}
+            >
               {hero.title}
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-on-media-muted md:text-lg md:leading-8">
+            <p
+              className={cn(
+                "mt-6 text-on-media-muted",
+                hero.compact
+                  ? "max-w-2xl text-sm leading-7 md:text-base md:leading-7"
+                  : "max-w-xl text-base leading-7 md:text-lg md:leading-8",
+              )}
+            >
               {hero.description}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-6">
@@ -256,30 +270,41 @@ export function SubPageTemplate({ page, categoryLabel }: { page: SubPage; catego
             </h2>
             <p className="mt-4 text-sm leading-7 text-muted-foreground">{packages.description}</p>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {packages.items.map((item) => (
-              <article
-                key={item.title}
-                className="reveal flex flex-col rounded-lg border border-border bg-card p-7 shadow-cinematic"
-              >
-                <h3 className="font-display text-2xl font-semibold text-foreground">
-                  {item.title}
-                </h3>
-                {item.tagline ? (
-                  <p className="mt-3 text-sm font-semibold text-primary">{item.tagline}</p>
-                ) : null}
-                <p className="mt-3 flex-1 text-sm leading-7 text-muted-foreground">
-                  {item.description}
-                </p>
-                <Link
-                  to="/packages"
-                  className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-primary"
+          {packages.items.length > 0 ? (
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {packages.items.map((item) => (
+                <article
+                  key={item.title}
+                  className="reveal flex flex-col rounded-lg border border-border bg-card p-7 shadow-cinematic"
                 >
-                  {item.cta} <ArrowRight className="size-4" />
+                  <h3 className="font-display text-2xl font-semibold text-foreground">
+                    {item.title}
+                  </h3>
+                  {item.tagline ? (
+                    <p className="mt-3 text-sm font-semibold text-primary">{item.tagline}</p>
+                  ) : null}
+                  <p className="mt-3 flex-1 text-sm leading-7 text-muted-foreground">
+                    {item.description}
+                  </p>
+                  <Link
+                    to="/packages"
+                    className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-primary"
+                  >
+                    {item.cta} <ArrowRight className="size-4" />
+                  </Link>
+                </article>
+              ))}
+            </div>
+          ) : null}
+          {packages.cta ? (
+            <div className="mt-8 text-center">
+              <Button asChild variant="gold" size="lg">
+                <Link to="/contact" search={{ service: categoryLabel, event: page.card.title }}>
+                  {packages.cta} <ArrowRight />
                 </Link>
-              </article>
-            ))}
-          </div>
+              </Button>
+            </div>
+          ) : null}
           {packages.footerLink ? (
             <p className="mt-8 text-center text-sm text-muted-foreground">
               {packages.footerLink.prefix}{" "}
