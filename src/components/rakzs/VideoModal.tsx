@@ -50,13 +50,16 @@ export function VideoModal() {
     <section className="section-band bg-card">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div className="reveal self-center">
-          <p className="section-kicker">Cinematic Film Showcase</p>
+          <p className="section-kicker">Cinematic Films</p>
           <h2 className="mt-4 font-display text-4xl font-semibold text-foreground md:text-6xl">
-            Motion, music, and memory in one luminous frame.
+            Some memories deserve to be seen and heard again.
           </h2>
           <p className="mt-6 text-base leading-8 text-muted-foreground">
-            Preview an illustrative film treatment for wedding highlights, event stories, and
-            refined brand edits.
+            The laughter, the celebrations and the moments that photographs alone cannot fully bring
+            back.
+          </p>
+          <p className="mt-4 text-base leading-8 text-muted-foreground">
+            Discover how we preserve stories through cinematic films.
           </p>
         </div>
 
@@ -90,7 +93,7 @@ export function VideoModal() {
           <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/70 to-transparent p-6">
             <div>
               <Film className="mb-2 size-6 text-primary" />
-              <p className="font-display text-2xl text-white">Golden Hour Wedding Film</p>
+              <p className="font-display text-2xl text-white">RAKZS STUDIO — Cinematic Stories</p>
             </div>
             <button
               type="button"

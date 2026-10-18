@@ -10,7 +10,7 @@ import { EventCard } from "@/components/rakzs/EventCard";
 import { SectionHeader } from "@/components/rakzs/SectionHeader";
 import { VideoModal } from "@/components/rakzs/VideoModal";
 import { events, getEventsByServiceCategory, serviceCategories } from "@/data/events";
-import { services, testimonials } from "@/data/site";
+import { services } from "@/data/site";
 import { CategoryCard } from "@/components/ui/Categorycard";
 
 const heroSlides = [
@@ -55,16 +55,17 @@ const heroSlides = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "RAKZS STUDIO — Every Moment Has a Story" },
+      { title: "Wedding & Event Photography in Hyderabad | RAKZS Studio" },
       {
         name: "description",
         content:
-          "Luxury photography, videography, and editing for weddings, celebrations, families, and brands.",
+          "RAKZS Studio offers wedding photography, cinematic wedding films, pre-wedding shoots, family celebrations and business photography in Hyderabad, Telangana.",
       },
-      { property: "og:title", content: "RAKZS STUDIO — Every Moment Has a Story" },
+      { property: "og:title", content: "Wedding & Event Photography in Hyderabad | RAKZS Studio" },
       {
         property: "og:description",
-        content: "Cinematic photography and films shaped around emotion, atmosphere, and memory.",
+        content:
+          "Wedding photography, cinematic films, pre-wedding shoots, family celebrations and business photography in Hyderabad, Telangana.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -74,12 +75,60 @@ export const Route = createFileRoute("/")({
 });
 
 const process = [
-  ["01", "Enquire", "Tell us the story, date, place, and services you have in mind."],
-  ["02", "Plan", "We shape a thoughtful visual direction, timeline, and creative approach."],
-  ["03", "Capture", "Our team follows real emotion while creating polished editorial frames."],
-  ["04", "Refine", "Every photograph and film is carefully selected, edited, and graded."],
-  ["05", "Deliver", "Your finished story arrives in formats prepared for keepsakes and sharing."],
+  ["01", "Enquire", "Tell us about your event, date and requirements."],
+  ["02", "Plan", "We discuss your ideas and plan the coverage."],
+  ["03", "Capture", "We photograph and film the moments that matter."],
+  ["04", "Refine", "We carefully select and edit your photographs and films."],
+  ["05", "Deliver", "Your memories are prepared in the agreed formats."],
 ];
+
+/** Home-page service cards (approved copy). Images/links come from serviceCategories by slug. */
+const serviceCards: Record<
+  string,
+  { eyebrow: string; title: string; description: string; cta: string }
+> = {
+  "wedding-engagement": {
+    eyebrow: "The Big Day",
+    title: "Weddings & Engagements",
+    description:
+      "From meaningful rituals to joyful celebrations, we capture the people and emotions that make your wedding unforgettable.",
+    cta: "Explore Weddings",
+  },
+  "pre-wedding-couple": {
+    eyebrow: "Before Forever",
+    title: "Pre-Wedding & Couples",
+    description:
+      "Before the wedding celebrations begin, create photographs and films that tell the story of just the two of you.",
+    cta: "Explore Shoots",
+  },
+  "family-function": {
+    eyebrow: "Family Milestones",
+    title: "Family Celebrations",
+    description:
+      "From birthdays to meaningful traditions, we preserve the moments your family will love looking back on.",
+    cta: "Explore Celebrations",
+  },
+  "corporate-business": {
+    eyebrow: "The Professional Frame",
+    title: "Corporate & Business Events",
+    description:
+      "Professional photography and films for the people, achievements and events that represent your organisation.",
+    cta: "Explore Events",
+  },
+  "commercial-creative": {
+    eyebrow: "Brand in Focus",
+    title: "Brand & Creative",
+    description:
+      "Thoughtful photography and films that help people discover your products, services and business.",
+    cta: "Explore Brand Work",
+  },
+};
+
+/**
+ * Client stories: add ONLY real, approved testimonials here.
+ * While this list is empty the "Client Stories" section stays hidden (no invented quotes).
+ */
+const clientStories: { name: string; role: string; quote: string }[] = [];
 
 function HomePage() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -189,19 +238,22 @@ function HomePage() {
             />
           </div>
           <div className="reveal">
-            <p className="section-kicker">Inside RAKZS STUDIO</p>
+            <p className="section-kicker">Inside RAKZS Studio</p>
             <h2 className="mt-4 font-display text-5xl font-semibold leading-tight md:text-6xl">
               Stories remembered by how they felt.
             </h2>
             <p className="mt-6 text-base leading-8 text-muted-foreground">
-              We are a photography, videography, and editing studio drawn to honest expression,
-              considered light, and imagery with lasting atmosphere. From intimate families to grand
-              celebrations and refined brands, every commission begins by listening.
+              The best photographs bring back more than a moment. They remind you of the people,
+              laughter and emotions that made it special.
+            </p>
+            <p className="mt-4 text-base leading-8 text-muted-foreground">
+              At RAKZS Studio, we create photography and cinematic films for weddings, family
+              celebrations and businesses, with care for every story we capture.
             </p>
             <div className="mt-8 grid grid-cols-2 gap-5 border-t border-border pt-7 text-sm text-muted-foreground">
               <span>
-                <strong className="block font-display text-3xl text-primary">Still</strong>Editorial
-                photographs
+                <strong className="block font-display text-3xl text-primary">Still</strong>
+                Photography
               </span>
               <span>
                 <strong className="block font-display text-3xl text-primary">Motion</strong>
@@ -220,23 +272,23 @@ function HomePage() {
       <section className="section-band bg-card">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeader
-            eyebrow="Selected Stories"
-            title="Moments with a life of their own."
-            description="Illustrative portfolio stories spanning celebrations, families, and brand worlds."
+            eyebrow="Our Services"
+            title="Every story deserves its own way of being told."
+            description="From weddings and family milestones to professional events and brands, we capture what makes each story meaningful."
           />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {serviceCategories.map((category) => (
               <CategoryCard
                 key={category.slug}
                 category={category}
-                count={getEventsByServiceCategory(category).length}
+                content={serviceCards[category.slug]}
               />
             ))}
           </div>
           <div className="mt-12 text-center">
             <Button asChild variant="gold">
               <Link to="/events">
-                View All Events <ArrowRight />
+                View All Services <ArrowRight />
               </Link>
             </Button>
           </div>
@@ -277,7 +329,7 @@ function HomePage() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeader
             eyebrow="Our Process"
-            title="Made carefully, from conversation to delivery."
+            title="From the first conversation to the memories you keep."
           />
           <div className="grid gap-8 md:grid-cols-5">
             {process.map(([number, title, text]) => (
@@ -292,37 +344,43 @@ function HomePage() {
       </section>
       <VideoModal />
 
-      <section className="section-band">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeader
-            eyebrow="Client Notes"
-            title="Kind words, thoughtfully shared."
-            description="Editable sample testimonials for layout demonstration."
-          />
-          <div className="grid gap-5 md:grid-cols-3">
-            {testimonials.map((item) => (
-              <blockquote key={item.name} className="reveal border-l border-primary bg-card p-7">
-                <p className="font-display text-2xl leading-relaxed text-foreground">
-                  “{item.quote}”
-                </p>
-                <footer className="mt-7 text-sm text-primary">
-                  {item.name}
-                  <span className="mt-1 block text-muted-foreground">{item.role}</span>
-                </footer>
-              </blockquote>
-            ))}
+      {clientStories.length > 0 ? (
+        <section className="section-band">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <SectionHeader
+              eyebrow="Client Stories"
+              title="The memories are theirs. The words should be too."
+              description="Real experiences, shared by the people whose stories we've captured."
+            />
+            <div className="grid gap-5 md:grid-cols-3">
+              {clientStories.map((item) => (
+                <blockquote key={item.name} className="reveal border-l border-primary bg-card p-7">
+                  <p className="font-display text-2xl leading-relaxed text-foreground">
+                    “{item.quote}”
+                  </p>
+                  <footer className="mt-7 text-sm text-primary">
+                    {item.name}
+                    <span className="mt-1 block text-muted-foreground">{item.role}</span>
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
-      <section className="relative overflow-hidden bg-card py-24">
+      {/* Parallax: image stays fixed to the viewport, content scrolls over it (clip-path keeps it inside this section on every device, incl. iOS) */}
+      <section
+        className="relative overflow-hidden bg-card py-24 md:py-32"
+        style={{ clipPath: "inset(0)" }}
+      >
         <img
           src={familyHero}
-          alt="Warm family portrait"
+          alt="Family portrait photographed by RAKZS Studio"
           loading="lazy"
           width={1408}
           height={1008}
-          className="absolute inset-0 size-full object-cover opacity-25"
+          className="fixed inset-0 h-screen w-full object-cover opacity-25 will-change-transform"
         />
         <div className="absolute inset-0 bg-hero-overlay" />
         <div className="relative mx-auto max-w-4xl px-5 text-center">
@@ -332,6 +390,10 @@ function HomePage() {
           <h2 className="mt-5 font-display text-5xl font-semibold text-on-media md:text-7xl">
             Let&apos;s create something worth remembering.
           </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-on-media-muted md:text-lg">
+            Whether it&apos;s your wedding, a family celebration or a business project, we&apos;d
+            love to hear what you&apos;re planning.
+          </p>
           <Button asChild variant="gold" size="lg" className="mt-8">
             <Link to="/contact" search={{ event: undefined, service: undefined }}>
               Start an Enquiry <ArrowRight />
