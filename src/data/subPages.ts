@@ -21,7 +21,7 @@
  *  2. Pre-Wedding / Couple   -> pre-wedding-shoot · couple-shoot-save-the-date
  *  3. Family Function        -> traditional-ceremonies · birthdays-anniversaries · baby-family-celebrations
  *  4. Corporate / Business   -> corporate-events · conferences-business-events
- *  5. Commercial / Creative  -> personal-branding · product-photography · commercial-promotional-videos
+ *  5. Commercial / Creative  -> brand-business · product-promotional · social-media-content
  * ============================================================================
  */
 import weddingHero from "@/assets/rakzs-hero-wedding.jpg";
@@ -1773,524 +1773,431 @@ export const subPages: SubPage[] = [
   },
 
   // ==========================================================================
-  // 5 · COMMERCIAL / CREATIVE  →  Personal Branding
+  // 5 · COMMERCIAL / CREATIVE  →  Brand & Business
   // ==========================================================================
   {
-    slug: "personal-branding",
+    slug: "brand-business",
     categorySlug: "commercial-creative",
     card: {
-      eyebrow: "Personal Branding",
-      title: "Personal Branding",
+      eyebrow: "Brand & Business",
+      title: "Brand & Business",
       description:
-        "Brand portraits, team photographs, workplaces, services and business-focused visual content created around how you want customers to see you.",
-      cta: "Explore Personal Branding",
+        "Brand portraits, team photographs, workplaces, services and business-focused visual content created around how you want customers to see your brand.",
+      cta: "Explore Brand Content",
       image: brandingHero,
     },
     seo: {
-      title: "Personal Branding & Business Portrait Photography in Hyderabad",
+      title: "Business & Brand Photography Hyderabad | RAKZS Studio",
       description:
-        "Personal branding photography and brand portraits for founders, professionals and small businesses in Hyderabad and Telangana.",
+        "Professional brand and business photography in Hyderabad by RAKZS Studio. Business portraits, workplaces, services, team photography and promotional videos.",
     },
     hero: {
-      kicker: "Personal Branding",
-      title: "Show the people\nbehind the name.",
+      kicker: "Brand & Business",
+      title: "People see your business.\nLet them discover the work and passion behind it.",
       description:
-        "Customers trust people before they trust logos. Brand portraits and business photographs help them see who you are, what you do and why it matters.",
-      cta: "Plan Your Shoot",
+        "Every business begins with someone believing in an idea. Behind the name are people, decisions, effort and countless hours spent building something valuable. We create photographs and films that introduce your business through its people, spaces, services and everyday work. Because your brand deserves to be seen for more than just its logo.",
+      cta: "Discuss Your Project",
       location: "Hyderabad & Telangana",
       image: brandingHero,
+      compact: true,
     },
     blocks: [
       {
         kicker: "The Story",
-        title: "Your profile picture is\nyour first handshake.",
+        title:
+          "Your business has taken time to build.\nIts photographs should reflect the care behind it.",
         paragraphs: [
-          "Before a client calls, they've looked at your website, your LinkedIn and your Instagram. Those few seconds decide whether they feel they know you.",
-          "A good brand photograph isn't a stiff headshot against a grey wall. It shows you at work, in your space, with your team — looking like someone people would want to do business with.",
-          "**We make photographs that feel like you, only clearer.**",
+          "A customer may discover your business through a website, social media page or advertisement. Before speaking to you, they begin forming an impression from what they see.",
+          "The people behind the service. The environment where the work happens. The details that show care and professionalism. These are the things that make a business feel real.",
+          "We help you present them through photographs and films that are thoughtful, clear and true to your brand.",
+          "**Because a strong business identity begins with showing people what makes your work meaningful.**",
         ],
       },
       {
-        kicker: "Brand Portraits",
-        title: "Portraits that earn trust\nbefore you say a word.",
+        kicker: "Brand & Business Photography",
+        title:
+          "Professional photographs should show what you do\nand the people who make it possible.",
         paragraphs: [
-          "We create brand portraits for founders, consultants, doctors, designers, coaches and other professionals. A mix of formal, relaxed and in-action photographs gives you a set you can use across your website, social profiles, presentations and press.",
+          "From business portraits and team photographs to workspaces, services, facilities and everyday operations, we create imagery that reflects your business.",
+          "Coverage can be planned for websites, business profiles, brochures, social media and other agreed uses.",
         ],
-        cta: { label: "View Brand Portraits", to: "gallery" },
+        cta: { label: "View Business Photography", to: "gallery" },
       },
       {
-        kicker: "Business Content",
-        title: "Your workspace, your team,\nyour work — photographed well.",
+        kicker: "Business Films",
+        title:
+          "Some businesses are easier to understand\nwhen customers can see the work in motion.",
         paragraphs: [
-          "Beyond portraits, we photograph your office, studio, shop or clinic, your team at work and the services you offer. Short behind-the-scenes videos and reels can be added to keep your content fresh.",
+          "The process behind a service. A team at work. A tour of your workspace. The details that make your business different.",
+          "Business videos and short promotional films can help explain what you offer through movement, atmosphere and clear visual storytelling.",
         ],
-        cta: { label: "See Business Content", to: "gallery" },
+        cta: { label: "Watch Our Films", to: "gallery" },
       },
     ],
     sidebar: {
-      kicker: "Your Brand, Your Way",
-      title: "Tell us who you serve.\nWe'll shape the shoot around it.",
+      kicker: "Your Business, Your Way",
+      title:
+        "Your business is different.\nYour visual content should be planned around its purpose.",
       paragraphs: [
-        "A branding shoot can be a one-hour portrait session or a full day across your workplace.",
-        "Share your profession, your audience and where the photographs will be used. We'll recommend the setup that covers it.",
+        "A clinic, showroom, interior business and professional service don't need identical photography.",
+        "Tell us what your business offers, what needs to be photographed and how you intend to use the content. We'll help plan the creative approach and coverage.",
       ],
-      listTitle: "Available when you need them",
+      listTitle: "Coverage can include",
       services: [
-        { icon: "camera", label: "Brand Portraits" },
-        { icon: "briefcase", label: "Professional Headshots" },
-        { icon: "users", label: "Team & Group Photographs" },
-        { icon: "palette", label: "Workspace & Service Photography" },
-        { icon: "video", label: "Behind-the-Scenes Video" },
-        { icon: "reels", label: "Reels for Social Media" },
-        { icon: "light", label: "Studio or On-Location Lighting" },
-        { icon: "phone", label: "Web & Social Ready Exports" },
-        { icon: "album", label: "Retouching & Colour Grading" },
+        { icon: "briefcase", label: "Business & Workplace Photography" },
+        { icon: "users", label: "Professional & Team Portraits" },
+        { icon: "camera", label: "Service & Process Photography" },
+        { icon: "palette", label: "Office, Clinic & Showroom Visuals" },
+        { icon: "video", label: "Brand Story Videos" },
+        { icon: "clapperboard", label: "Promotional Films" },
+        { icon: "reels", label: "Business Reels & Short Videos" },
       ],
-      note: "Choose them individually, start with a package, or create your own combination.",
+      note: "Services and final deliverables depend on the agreed project scope.",
       primaryCta: "Build Your Coverage",
-      secondaryCta: "Explore Packages",
     },
     process: {
-      kicker: "From Hello to Delivery",
-      title: "Simple behind the scenes.\nSo you can look and feel like yourself.",
+      kicker: "From Brief to Delivery",
+      title: "We understand the business\nbefore planning how to photograph it.",
       steps: [
-        {
-          title: "Enquire",
-          text: "Tell us about your work, your audience and where the photographs will be used.",
-        },
-        {
-          title: "Understand",
-          text: "We talk through your brand, preferred style and the impression you want to create.",
-        },
-        { title: "Plan", text: "We plan outfits, locations, lighting and a shot list." },
-        {
-          title: "Capture",
-          text: "A relaxed, guided session with a mix of poses and natural moments.",
-        },
-        {
-          title: "Refine & Deliver",
-          text: "Selected photographs are retouched and prepared. A clear delivery timeline is confirmed according to your final requirements.",
-        },
+        { title: "Enquire", text: "Share your business and project requirements." },
+        { title: "Understand", text: "We discuss your audience, brand and intended content use." },
+        { title: "Plan", text: "We plan the visual approach, location and agreed coverage." },
+        { title: "Capture", text: "We photograph or film your business and its people." },
+        { title: "Refine & Deliver", text: "We prepare the selected photographs and videos." },
       ],
+      note: "Delivery timelines are confirmed according to the project scope.",
     },
     gallery: {
-      kicker: "Real Brands",
-      title: "Frames from real branding shoots.",
-      description: "Every brand has its own story. Here's a glimpse into a few we've worked on.",
-      cta: "View Our Work",
+      kicker: "Real Businesses. Real Stories.",
+      title: "Behind every professional space are people who bring it to life.",
+      description:
+        "A glimpse into genuine business photography and video projects captured by RAKZS Studio.",
       images: [brandingHero, corporateHero, editorialHero],
     },
+    // Quotation section (no package cards for this page)
     packages: {
-      kicker: "Your Coverage, Your Way",
-      title: "A starting point. Not a restriction.",
+      kicker: "Find Your Coverage",
+      title: "Let's show your business at its best.",
       description:
-        "Every brand has different needs. Our packages give you an easy place to start, and coverage can be adjusted around your goals.",
-      items: [
-        {
-          title: "The Essentials",
-          tagline: "A clean, professional set.",
-          description:
-            "A focused portrait session with a set of retouched photographs for web and social use.",
-          cta: "View Package",
-        },
-        {
-          title: "The Brand Standard",
-          tagline: "Portraits plus your workspace.",
-          description:
-            "Brand portraits plus workplace and service photography, with social-ready formats.",
-          cta: "View Package",
-        },
-        {
-          title: "The Full Brand Shoot",
-          tagline: "The complete visual identity.",
-          description:
-            "Portraits, team, workspace, services and short video content planned across a full day.",
-          cta: "View Package",
-        },
-      ],
+        "Tell us what you do. We'll help you plan how to present it. Whether you need business portraits, workspace photography, service visuals or a promotional film, we'll discuss coverage suited to your goals.",
+      items: [],
+      cta: "Request Business Quote",
     },
     faqs: {
-      kicker: "Personal Branding FAQs",
-      title: "Questions professionals ask us.",
+      kicker: "Brand & Business FAQs",
+      title: "Questions businesses ask us.",
       items: [
         {
-          question: "What is a personal branding shoot?",
+          question: "What types of businesses can book brand photography in Hyderabad?",
           answer:
-            "It's a photography session that creates a set of images representing you and your work, for use on your website, social profiles, presentations and marketing.",
+            "We can discuss photography for professional services, clinics, showrooms, offices, interiors and other businesses. The visual approach depends on the industry, location and content requirements.",
         },
         {
-          question: "How many outfits should I bring?",
+          question: "Can you photograph our workplace, staff and services in one session?",
           answer:
-            "Two to three is usually enough. We'll advise on colours and styles that suit your brand and the settings we'll use.",
+            "Yes, subject to the agreed schedule and scope. We can plan a combination of workspace photographs, team portraits, service details and work-in-progress images.",
         },
         {
-          question: "Can you shoot at my office or clinic?",
+          question: "Do we need to prepare our office or business location before the shoot?",
           answer:
-            "Yes. We shoot on location at workplaces, studios, shops and clinics, as well as in our studio or at an outdoor setting.",
+            "Some preparation is helpful. We'll discuss the areas being photographed, staff availability, important details and any permissions or privacy considerations before the session.",
         },
         {
-          question: "Do you retouch the photographs?",
+          question:
+            "Can we use the photographs on our website, business profile and marketing materials?",
           answer:
-            "Yes. Selected images are retouched and colour-graded for a clean, natural finish. We keep it realistic.",
+            "Content can be planned for those purposes. Please share the intended usage during the enquiry so the required formats, deliverables and usage permissions can be agreed.",
         },
         {
-          question: "Can I get photographs for social media in different sizes?",
+          question: "How much does business photography cost in Hyderabad?",
           answer:
-            "Yes. We prepare exports sized for websites, LinkedIn, Instagram and other platforms.",
-        },
-        {
-          question: "How do I book?",
-          answer:
-            "Send us your profession, goals and preferred dates through the enquiry form. We'll plan the session together.",
+            "Pricing depends on the location, duration, team, photography or video requirements and final deliverables. Share your business details and project brief for a quotation.",
         },
       ],
     },
   },
 
   // ==========================================================================
-  // 5 · COMMERCIAL / CREATIVE  →  Product Photography
+  // 5 · COMMERCIAL / CREATIVE  →  Product & Promotional
   // ==========================================================================
   {
-    slug: "product-photography",
+    slug: "product-promotional",
     categorySlug: "commercial-creative",
     card: {
-      eyebrow: "Product Photography",
-      title: "Product Photography",
+      eyebrow: "Product & Promotional",
+      title: "Product & Promotional",
       description:
-        "Clean product photography designed to present what you sell with clarity, detail and personality — for catalogues, websites, marketplaces and social media.",
-      cta: "Explore Product Photography",
+        "Clean product photography and promotional visual content designed to present what you sell with clarity, detail and personality.",
+      cta: "Explore Product Work",
       image: productHero,
     },
     seo: {
-      title: "Product Photography in Hyderabad",
+      title: "Product Photography & Promotional Videos Hyderabad | RAKZS Studio",
       description:
-        "Product photography for catalogues, e-commerce, marketplaces and social media in Hyderabad and Telangana — clean, detailed and consistent.",
+        "Product photography and promotional videography in Hyderabad by RAKZS Studio. Creative product visuals, detail photography, product reels and promotional films.",
     },
     hero: {
-      kicker: "Product Photography",
-      title: "Make the product the reason\nthey stop scrolling.",
+      kicker: "Product & Promotional",
+      title:
+        "You've put thought into every detail.\nYour product deserves photographs that show it.",
       description:
-        "Customers can't touch what they're buying online. Your photographs have to do it for them — showing the detail, the quality and the feel of what you sell.",
-      cta: "Plan Your Shoot",
+        "Behind every product are choices that customers may never see. The design. The finishing. The little details that make it useful, beautiful or different. We create product photography and promotional films that bring those details into focus. Helping people see not just what you're selling, but what makes it worth their attention.",
+      cta: "Discuss Your Product",
       location: "Hyderabad & Telangana",
       image: productHero,
+      compact: true,
     },
     blocks: [
       {
         kicker: "The Story",
-        title: "A good photograph sells\nbefore a description does.",
+        title: "Before customers experience your product,\nyour photographs introduce it to them.",
         paragraphs: [
-          "People decide in seconds. A blurry or flat photograph makes a good product look ordinary. A clear, well-lit one makes it look worth the price.",
-          "Good product photography is about consistency, accuracy and care — the right colours, sharp detail, clean backgrounds and angles that answer a buyer's questions.",
-          "**We photograph products so customers know what they're getting.**",
+          "A customer browsing online cannot always touch the material, examine the finish or experience the product in person. They depend on what they can see.",
+          "A clear photograph can explain its shape and details. A thoughtfully styled image can show how it fits into everyday life. A short film can reveal how it moves or works.",
+          "Good product imagery helps customers understand the product before they make a decision.",
+          "**Because the care you put into creating something deserves the same attention when it's presented.**",
         ],
       },
       {
-        kicker: "Catalogue & E-Commerce",
-        title: "Clean, consistent images\nacross your whole range.",
+        kicker: "Product Photography",
+        title: "Every detail matters when the photograph\nis speaking for the product.",
         paragraphs: [
-          "White-background and clean-background photographs for marketplaces, websites and catalogues. Consistent lighting, angles and sizing across products, with accurate colours and detail shots where needed.",
+          "We plan product photographs around the shape, texture, design and features that need attention.",
+          "Depending on the brief, coverage can include clean product images, detail photographs, styled compositions and promotional visuals. The approach is chosen according to the product and its intended use.",
         ],
         cta: { label: "View Product Photography", to: "gallery" },
       },
       {
-        kicker: "Lifestyle & Creative",
-        title: "Show the product\nin the life it belongs to.",
+        kicker: "Promotional Films",
+        title: "Some product details become clearer\nwhen customers see them in action.",
         paragraphs: [
-          "Styled and lifestyle photography places your product in a setting — on a table, in a hand, in a room — to help customers imagine owning it. Ideal for social media, advertising and brand campaigns.",
+          "A product being opened. A feature being demonstrated. A close-up revealing its finish.",
+          "Promotional videos and short reels can communicate movement, usage and visual appeal. We plan the filming around the message, product and final format you need.",
         ],
-        cta: { label: "See Lifestyle Work", to: "gallery" },
+        cta: { label: "Watch Our Films", to: "gallery" },
       },
     ],
     sidebar: {
-      kicker: "Your Products, Your Way",
-      title: "Tell us what you sell.\nWe'll plan the shoot.",
+      kicker: "Your Product, Your Presentation",
+      title: "Different products need\ndifferent ways of being photographed.",
       paragraphs: [
-        "A product shoot can cover a handful of items for a website or hundreds for a catalogue.",
-        "Share the number of products, the platforms you're selling on and the style you want. We'll recommend a setup that suits your products and budget.",
+        "A small handmade item, an interior product and a larger commercial product each have their own visual requirements.",
+        "Tell us what you're showcasing, the details that matter and where the content will appear. We'll discuss suitable photography and video options.",
       ],
-      listTitle: "Available when you need them",
+      listTitle: "Coverage can include",
       services: [
-        { icon: "camera", label: "Catalogue Photography" },
-        { icon: "package", label: "White-Background E-Commerce Shots" },
-        { icon: "palette", label: "Styled & Lifestyle Photography" },
-        { icon: "light", label: "Detail & Macro Shots" },
-        { icon: "users", label: "Product-with-Model Photography" },
-        { icon: "video", label: "Short Product Videos" },
-        { icon: "reels", label: "Reels for Social Media" },
-        { icon: "phone", label: "Marketplace-Ready Exports" },
-        { icon: "album", label: "Retouching & Colour Correction" },
+        { icon: "camera", label: "Product Photography" },
+        { icon: "light", label: "Detail & Close-Up Photography" },
+        { icon: "palette", label: "Styled Product Compositions" },
+        { icon: "video", label: "Product Demonstration Videos" },
+        { icon: "clapperboard", label: "Promotional Videos" },
+        { icon: "reels", label: "Product Reels & Short Edits" },
+        { icon: "package", label: "Campaign Visuals" },
       ],
-      note: "Choose them individually, start with a package, or create your own combination.",
-      primaryCta: "Build Your Coverage",
-      secondaryCta: "Explore Packages",
+      note: "Props, models, special locations and other third-party arrangements are not automatically included.",
+      primaryCta: "Build Your Product Coverage",
     },
     process: {
-      kicker: "From Hello to Delivery",
-      title: "Simple behind the scenes.\nSo your products look their best.",
+      kicker: "From Product Brief to Final Visuals",
+      title: "A clear brief helps every detail\nreceive the attention it deserves.",
       steps: [
-        {
-          title: "Enquire",
-          text: "Tell us what you sell, how many products and where the images will be used.",
-        },
-        {
-          title: "Understand",
-          text: "We discuss your brand, style references and platform requirements.",
-        },
-        { title: "Plan", text: "We plan the shot list, backgrounds, props and schedule." },
-        {
-          title: "Capture",
-          text: "Products are shot in controlled lighting for accuracy and consistency.",
-        },
-        {
-          title: "Refine & Deliver",
-          text: "Images are retouched and exported for your platforms. A clear delivery timeline is confirmed according to your final requirements.",
-        },
+        { title: "Enquire", text: "Tell us about your product and requirements." },
+        { title: "Understand", text: "We discuss its features, audience and intended use." },
+        { title: "Plan", text: "We agree on the visual direction and shoot requirements." },
+        { title: "Capture", text: "We photograph or film the product according to the brief." },
+        { title: "Refine & Deliver", text: "We prepare the agreed final visuals." },
       ],
+      note: "Delivery timelines are confirmed according to the project scope.",
     },
     gallery: {
-      kicker: "Real Products",
-      title: "Frames from real product shoots.",
+      kicker: "Products in Focus",
+      title: "Every product has details that deserve a closer look.",
       description:
-        "Every product has its own story. Here's a glimpse into a few we've photographed.",
-      cta: "View Our Work",
+        "A glimpse into genuine product and promotional projects captured by RAKZS Studio.",
       images: [productHero, editorialHero, brandingHero],
     },
+    // Quotation section (no package cards for this page)
     packages: {
-      kicker: "Your Coverage, Your Way",
-      title: "A starting point. Not a restriction.",
+      kicker: "Find Your Coverage",
+      title: "Let's bring your product into focus.",
       description:
-        "Every product range is different. Our packages give you an easy place to start, and coverage can be adjusted around your catalogue.",
-      items: [
-        {
-          title: "The Essentials",
-          tagline: "Clean, accurate product shots.",
-          description:
-            "Catalogue-style photography on clean backgrounds for a set number of products.",
-          cta: "View Package",
-        },
-        {
-          title: "The Brand Standard",
-          tagline: "Catalogue plus lifestyle.",
-          description:
-            "Clean product shots plus styled and lifestyle images for social media and advertising.",
-          cta: "View Package",
-        },
-        {
-          title: "The Full Campaign",
-          tagline: "Photography and video together.",
-          description:
-            "Catalogue, lifestyle, model shots and short videos for product launches and campaigns.",
-          cta: "View Package",
-        },
-      ],
+        "Tell us what makes your product special. We'll help you show it. Share the product type, approximate number of items, required photographs or videos and intended platforms. We'll discuss a suitable creative approach and quotation.",
+      items: [],
+      cta: "Request Product Quote",
     },
     faqs: {
-      kicker: "Product Photography FAQs",
-      title: "Questions sellers ask us.",
+      kicker: "Product & Promotional FAQs",
+      title: "Questions brands ask us.",
       items: [
         {
-          question: "How is product photography priced?",
+          question: "What types of products can you photograph?",
           answer:
-            "It depends on the number of products, the number of angles per product and the style of shoot. Share a list of your products and we'll send a quote.",
+            "Product photography can be discussed for a range of physical goods, depending on their size, handling requirements, location and visual brief. Share photographs or details of your products so we can assess the project.",
         },
         {
-          question: "Can you shoot for Amazon, Flipkart and other marketplaces?",
+          question:
+            "Can you create both simple product photographs and creative promotional images?",
           answer:
-            "Yes. We follow common marketplace requirements for backgrounds, sizing and angles. Share any platform-specific guidelines you have.",
+            "Yes. Depending on the agreed requirements, we can plan clean product images, detail shots and styled promotional compositions. More elaborate setups may require additional arrangements.",
         },
         {
-          question: "Do I need to send products to your studio?",
+          question: "Can you make short promotional reels showing how a product works?",
           answer:
-            "Yes for studio shoots. For larger or fragile items, we can discuss shooting on location at your premises.",
+            "Yes. Product demonstrations and short promotional videos can be planned when the product, setup and required visuals are suitable for filming.",
         },
         {
-          question: "Can you photograph jewellery, food or apparel?",
+          question: "What should we prepare before a product photoshoot?",
           answer:
-            "Yes. Different products need different lighting and handling. Tell us what you sell and we'll plan accordingly.",
+            "It helps to have the products ready, identify their important features and share any reference images, branding guidelines and required image formats. We'll discuss the remaining shoot arrangements beforehand.",
         },
         {
-          question: "Do you retouch images?",
+          question: "How is product photography pricing calculated?",
           answer:
-            "Yes. Dust, marks and colour inconsistencies are cleaned up so products look accurate and polished.",
-        },
-        {
-          question: "How do I book?",
-          answer:
-            "Send us your product list and requirements through the enquiry form. We'll confirm timings and share a quote.",
+            "Pricing depends on the number and type of products, number of final images, styling, shoot complexity, video requirements and editing. We'll provide a quotation after reviewing the brief.",
         },
       ],
     },
   },
 
   // ==========================================================================
-  // 5 · COMMERCIAL / CREATIVE  →  Commercial / Promotional Videos
+  // 5 · COMMERCIAL / CREATIVE  →  Social Media Content
   // ==========================================================================
   {
-    slug: "commercial-promotional-videos",
+    slug: "social-media-content",
     categorySlug: "commercial-creative",
     card: {
-      eyebrow: "Commercial & Promotional Videos",
-      title: "Commercial / Promotional Videos",
+      eyebrow: "Social Media Content",
+      title: "Social Media Content",
       description:
-        "Brand films, promotional videos, short-form reels and campaign content made for businesses that need a consistent visual presence online.",
-      cta: "Explore Promotional Videos",
+        "Photography, short-form videos, reels and campaign content created for businesses that need a consistent visual presence online.",
+      cta: "Explore Social Content",
       image: editorialHero,
     },
     seo: {
-      title: "Commercial & Promotional Video Production in Hyderabad",
+      title: "Social Media Content Creation Hyderabad | RAKZS Studio",
       description:
-        "Brand films, promotional videos, reels and campaign content for businesses in Hyderabad and Telangana — planned, shot and edited end to end.",
+        "Social media photography, reels and short-form video creation in Hyderabad by RAKZS Studio. Creative content for Instagram, Facebook and business promotions.",
     },
     hero: {
-      kicker: "Commercial & Promotional Videos",
-      title: "Made for the screen your\ncustomers use every day.",
+      kicker: "Social Media Content",
+      title: "Your business has a story to share.\nMake every post worth someone's attention.",
       description:
-        "A short, well-made video can explain what you do faster than a page of text. We plan, shoot and edit videos that help your business show up clearly and confidently.",
-      cta: "Plan Your Video",
+        "Behind every product, service and business are moments people may find interesting, useful or inspiring. Social media gives you a place to share them. We create photographs, reels and short videos that help businesses present their work with clarity and personality. Content that feels connected to your brand, not just another post on the feed.",
+      cta: "Discuss Your Content",
       location: "Hyderabad & Telangana",
       image: editorialHero,
+      compact: true,
     },
     blocks: [
       {
         kicker: "The Story",
-        title: "Customers watch before\nthey read.",
+        title: "People scroll past hundreds of posts.\nGive them something meaningful to notice.",
         paragraphs: [
-          "People scroll quickly. A video that shows your product in use, your team at work or your customer's story holds attention in a way static posts can't.",
-          "But a good video isn't only about equipment. It's about knowing what to say, who it's for and how long it should be.",
-          "**We help you decide what to make, then we make it well.**",
+          "Your business may have excellent products, thoughtful services or people doing remarkable work. But customers won't always discover those things on their own.",
+          "Sometimes a short video showing your process explains more than a long description. A photograph of your team makes your business feel more approachable. A product reel helps someone notice a detail they might have missed.",
+          "Social media content works best when it gives people a clearer reason to understand or remember your business.",
+          "**Because the goal isn't simply to post more. It's to show more of what makes your business worth following.**",
         ],
       },
       {
-        kicker: "Brand & Promotional Films",
-        title: "Tell your story in\nthe time people will give you.",
+        kicker: "Social Media Photography",
+        title: "Every photograph is an opportunity\nto show another side of your business.",
         paragraphs: [
-          "Brand films, product promos, service explainers, testimonials and campaign videos — planned with a clear idea, shot with proper lighting and sound, and edited to suit where they'll be watched.",
+          "We create brand, product, workplace and promotional photographs suitable for social media content.",
+          "The approach can be planned around your services, products, announcements or other business communication needs.",
         ],
-        cta: { label: "View Promotional Films", to: "gallery" },
+        cta: { label: "View Content Photography", to: "gallery" },
       },
       {
-        kicker: "Reels & Social Content",
-        title: "A steady stream of content,\nmade easier.",
+        kicker: "Reels & Short-Form Videos",
+        title: "A few seconds can introduce\nthe work behind an entire business.",
         paragraphs: [
-          "Short vertical videos, reels and campaign cut-downs for Instagram, YouTube and other platforms. Shoot a month's worth of content in one session, and keep your brand's look consistent.",
+          "A product in use. A process being completed. A before-and-after reveal where appropriate. A short look behind the scenes.",
+          "We create reels and short-form videos designed around your message, audience and selected platforms. The creative direction and deliverables are finalized before production.",
         ],
-        cta: { label: "See Social Content", to: "gallery" },
+        cta: { label: "Watch Our Reels", to: "gallery" },
       },
     ],
     sidebar: {
-      kicker: "Your Video, Your Way",
-      title: "Tell us the goal.\nWe'll shape the video.",
+      kicker: "Your Content, Your Brand",
+      title: "The right content begins with understanding\nwhat you want people to notice.",
       paragraphs: [
-        "A video project can be a single product promo or an ongoing series of reels across the month.",
-        "Share your business, your audience and where the video will be seen. We'll recommend the format and length that works.",
+        "Some businesses need product reels. Others want service videos, behind-the-scenes content or photographs for regular posting.",
+        "Tell us about your business, platforms and content priorities. We'll help plan the visuals around your requirements.",
       ],
-      listTitle: "Available when you need them",
+      listTitle: "Content can include",
       services: [
-        { icon: "clapperboard", label: "Brand Films" },
-        { icon: "video", label: "Promotional & Product Videos" },
-        { icon: "reels", label: "Reels & Short-Form Content" },
-        { icon: "mic", label: "Testimonial & Interview Videos" },
-        { icon: "drone", label: "Drone Footage" },
-        { icon: "light", label: "Lighting & Sound Setup" },
-        { icon: "music", label: "Music, Voice-Over & Sound Design" },
-        { icon: "phone", label: "Platform-Ready Exports" },
-        { icon: "palette", label: "Editing & Colour Grading" },
+        { icon: "camera", label: "Social Media Photography" },
+        { icon: "reels", label: "Instagram & Facebook Reels" },
+        { icon: "package", label: "Product Showcase Videos" },
+        { icon: "briefcase", label: "Service & Process Videos" },
+        { icon: "clapperboard", label: "Behind-the-Scenes Content" },
+        { icon: "video", label: "Promotional Short Videos" },
+        { icon: "phone", label: "Business Announcements" },
+        { icon: "palette", label: "Short-Form Video Editing" },
       ],
-      note: "Choose them individually, start with a package, or create your own combination.",
-      primaryCta: "Build Your Coverage",
-      secondaryCta: "Explore Packages",
+      note: "Content planning and production are based on the agreed scope. Daily posting, account management and guaranteed reach are not automatically included.",
+      primaryCta: "Build Your Content Plan",
     },
     process: {
-      kicker: "From Hello to Delivery",
-      title: "Simple behind the scenes.\nSo you can run your business.",
+      kicker: "From Idea to Final Content",
+      title: "Every useful post\nstarts with a clear purpose.",
       steps: [
-        {
-          title: "Enquire",
-          text: "Tell us about your business, your goal and where the video will be used.",
-        },
-        {
-          title: "Understand",
-          text: "We discuss your audience, message, style references and timeline.",
-        },
+        { title: "Enquire", text: "Share your business and content requirements." },
+        { title: "Understand", text: "We discuss your audience, platforms and goals." },
         {
           title: "Plan",
-          text: "We prepare the concept, script or outline, locations and shoot schedule.",
+          text: "We agree on the content ideas, formats and shoot requirements.",
         },
-        { title: "Capture", text: "A planned shoot with the right crew, lighting and sound." },
-        {
-          title: "Refine & Deliver",
-          text: "Videos are edited, graded and exported for your platforms. A clear delivery timeline is confirmed according to your final requirements.",
-        },
+        { title: "Create", text: "We capture the agreed photographs and videos." },
+        { title: "Edit & Deliver", text: "We prepare the selected content in agreed formats." },
       ],
+      note: "Delivery timelines are confirmed according to the project scope.",
     },
     gallery: {
-      kicker: "Real Projects",
-      title: "Frames from real commercial projects.",
-      description: "Every brand has its own story. Here's a glimpse into a few we've worked on.",
-      cta: "View Our Work",
+      kicker: "Content with Purpose",
+      title: "Different businesses. Different stories worth sharing.",
+      description:
+        "A glimpse into genuine social media photography and video projects created by RAKZS Studio.",
       images: [editorialHero, productHero, brandingHero],
     },
+    // Quotation section (no package cards for this page)
     packages: {
-      kicker: "Your Coverage, Your Way",
-      title: "A starting point. Not a restriction.",
+      kicker: "Find Your Coverage",
+      title: "Let's create something worth sharing.",
       description:
-        "Every video project has a different goal and size. Our packages give you an easy place to start, and coverage can be adjusted around your needs.",
-      items: [
-        {
-          title: "The Essentials",
-          tagline: "One clear, well-made video.",
-          description: "A single promotional video planned, shot and edited for one platform.",
-          cta: "View Package",
-        },
-        {
-          title: "The Brand Standard",
-          tagline: "A video plus social cut-downs.",
-          description: "A main video along with short-form versions for reels and other platforms.",
-          cta: "View Package",
-        },
-        {
-          title: "The Full Campaign",
-          tagline: "A complete content series.",
-          description:
-            "Multiple videos, reels and photographs planned together for a campaign or product launch.",
-          cta: "View Package",
-        },
-      ],
+        "Tell us what your business does and what you'd like people to notice. Whether you need a few promotional reels, product photographs or a planned content shoot, we'll discuss a suitable approach.",
+      items: [],
+      cta: "Request Content Quote",
     },
     faqs: {
-      kicker: "Commercial Video FAQs",
+      kicker: "Social Media Content FAQs",
       title: "Questions businesses ask us.",
       items: [
         {
-          question: "What kinds of videos do you make for businesses?",
+          question: "What kind of social media content does RAKZS Studio create?",
           answer:
-            "Brand films, product promotional videos, service explainers, testimonials, event recaps, reels and campaign content.",
+            "We create business photographs, promotional reels, product showcase videos, service demonstrations, behind-the-scenes content and other short-form visuals according to the project brief.",
         },
         {
-          question: "Do you help with the concept or script?",
+          question: "Can you create reels for Instagram and Facebook?",
           answer:
-            "Yes. We can help shape the idea, outline or script. If you already have one, we'll work from it.",
+            "Yes. Reels and short videos can be planned for Instagram, Facebook and other agreed platforms, with the appropriate aspect ratios and export formats discussed before delivery.",
         },
         {
-          question: "How long should a promotional video be?",
+          question: "Do you provide content ideas or do we need to supply the concepts?",
           answer:
-            "It depends on the platform. Reels are usually short, while brand films and explainers can run longer. We'll recommend a length based on where it will be watched.",
+            "We can discuss creative ideas and help shape the visual direction. The level of concept development, scripting and production planning depends on the agreed scope.",
         },
         {
-          question: "Can you produce a month of reels in one shoot?",
+          question: "Can we create several reels and photographs during one shoot?",
           answer:
-            "Yes. Batch shooting is an efficient way to produce multiple reels while keeping a consistent look.",
+            "Yes, where the schedule and production requirements allow. Share the number of reels, photographs, products or services you want to feature so the shoot can be planned appropriately.",
         },
         {
-          question: "Do you provide music, voice-over and subtitles?",
+          question: "Do you also manage social media accounts or guarantee views and followers?",
           answer:
-            "Yes. We can arrange licensed music, voice-over and subtitles as part of the edit.",
-        },
-        {
-          question: "How do we book?",
-          answer:
-            "Send us your business, goal and timeline through the enquiry form. We'll discuss the idea and share a proposal.",
+            "This service focuses on creating photography and video content. Account management or posting services, if required, must be discussed separately. Views, followers and engagement cannot be guaranteed.",
         },
       ],
     },
