@@ -165,7 +165,8 @@ export const events: EventItem[] = [
         items: [
           {
             title: "Traditional & Candid Photography",
-            description: "Coverage for planned rituals, family formals, and spontaneous expressions.",
+            description:
+              "Coverage for planned rituals, family formals, and spontaneous expressions.",
           },
           {
             title: "Traditional Videography & Cinematography",
@@ -286,8 +287,7 @@ export const events: EventItem[] = [
     year: "2026",
     summary:
       "Soft, intimate portraits celebrating anticipation, family connection, and gentle light.",
-    story:
-      "A quiet maternity session built around warmth, comfort, and natural family affection.",
+    story: "A quiet maternity session built around warmth, comfort, and natural family affection.",
     vision:
       "The vision is airy yet luxurious: cream styling, floral details, and portraits that feel calm, intimate, and heirloom-worthy.",
     approach:
@@ -726,7 +726,8 @@ export const events: EventItem[] = [
     sections: [
       {
         title: "The Celebrations We Cover",
-        content: "Every family celebrates differently. Your traditions don't need to fit fixed labels.",
+        content:
+          "Every family celebrates differently. Your traditions don't need to fit fixed labels.",
         items: [
           {
             title: "Haldi",
@@ -1099,15 +1100,18 @@ export const events: EventItem[] = [
         items: [
           {
             title: "The Birthday Star",
-            description: "Expressions, excitement, portraits and personality at the centre of the celebration.",
+            description:
+              "Expressions, excitement, portraits and personality at the centre of the celebration.",
           },
           {
             title: "The Parents",
-            description: "Especially on a first birthday, some of the strongest photographs are the parents watching their child.",
+            description:
+              "Especially on a first birthday, some of the strongest photographs are the parents watching their child.",
           },
           {
             title: "The Grandparents",
-            description: "Generational photographs that grow more valuable with every passing year.",
+            description:
+              "Generational photographs that grow more valuable with every passing year.",
           },
           {
             title: "The Family & Friends",
@@ -1115,7 +1119,8 @@ export const events: EventItem[] = [
           },
           {
             title: "The Unplanned",
-            description: "A child reaching for cake early, a parent fixing an outfit, and friends laughing away from the stage.",
+            description:
+              "A child reaching for cake early, a parent fixing an outfit, and friends laughing away from the stage.",
           },
         ],
       },
@@ -1130,11 +1135,13 @@ export const events: EventItem[] = [
         items: [
           {
             title: "Photography",
-            description: "Birthday portraits, family photographs, cake cutting, guests and important moments.",
+            description:
+              "Birthday portraits, family photographs, cake cutting, guests and important moments.",
           },
           {
             title: "Candid Photography",
-            description: "Natural expressions, interactions and everything happening away from the posed photographs.",
+            description:
+              "Natural expressions, interactions and everything happening away from the posed photographs.",
           },
           {
             title: "Videography",
@@ -1146,7 +1153,8 @@ export const events: EventItem[] = [
           },
           {
             title: "Albums",
-            description: "Selected birthday or anniversary photographs brought together as a physical keepsake.",
+            description:
+              "Selected birthday or anniversary photographs brought together as a physical keepsake.",
           },
         ],
       },
@@ -1306,23 +1314,28 @@ export const events: EventItem[] = [
         items: [
           {
             title: "The Little Expressions",
-            description: "The sleepy look, the unexpected smile, the curiosity that changes faster than anyone expects.",
+            description:
+              "The sleepy look, the unexpected smile, the curiosity that changes faster than anyone expects.",
           },
           {
             title: "The Parents",
-            description: "Some of the strongest photographs aren't of parents looking at the camera. They're of parents looking at their child.",
+            description:
+              "Some of the strongest photographs aren't of parents looking at the camera. They're of parents looking at their child.",
           },
           {
             title: "The Grandparents",
-            description: "A photograph of a baby in a grandparent's arms may become far more important to the family with time.",
+            description:
+              "A photograph of a baby in a grandparent's arms may become far more important to the family with time.",
           },
           {
             title: "The Generations",
-            description: "One frame can hold a new beginning and decades of family history together.",
+            description:
+              "One frame can hold a new beginning and decades of family history together.",
           },
           {
             title: "The Unplanned",
-            description: "A baby doesn't care about the photography schedule. Some moments are better because nobody could plan them.",
+            description:
+              "A baby doesn't care about the photography schedule. Some moments are better because nobody could plan them.",
           },
         ],
       },
@@ -1605,10 +1618,13 @@ export type ServiceCategory = {
   heroEyebrow: string;
   heroTitle: string;
   heroDescription: string;
+  /** Browser tab title + meta description (developer-only SEO) */
+  seoTitle?: string;
+  seoDescription?: string;
   /** Child sections shown on the parent page */
   children: CategoryChild[];
   /** Optional SEO / context section (under the child cards) */
-  seo?: { title: string; paragraphs: string[]; note?: string; cta: string };
+  seo?: { eyebrow?: string; title: string; paragraphs: string[]; note?: string; cta: string };
   /** Optional bottom CTA */
   bottomCta?: { title: string; description: string; primary: string; secondary: string };
 };
@@ -1627,7 +1643,10 @@ export const serviceCategories: ServiceCategory[] = [
     heroEyebrow: "The Big Day",
     heroTitle: "Every celebration has its moments. We make sure they stay.",
     heroDescription:
-      "From the excitement before the wedding to the emotions of the big day, RAKZS Studio captures the traditions, people and unscripted moments that turn your celebration into a story worth remembering.",
+      "From meaningful wedding rituals to joyful celebrations with loved ones, we capture the people, traditions and emotions that make your story unforgettable.",
+    seoTitle: "Wedding Photography & Videography Hyderabad | RAKZS Studio",
+    seoDescription:
+      "Wedding photography and cinematic films in Hyderabad by RAKZS Studio. Explore wedding, engagement, reception, Haldi, Mehendi and Sangeet coverage.",
     children: [
       {
         eyebrow: "Event Type · 01",
@@ -1658,13 +1677,13 @@ export const serviceCategories: ServiceCategory[] = [
       },
     ],
     seo: {
-      title: "Every celebration deserves to be remembered its own way.",
+      eyebrow: "Wedding Photography & Films",
+      title: "One wedding. Many moments worth keeping.",
       paragraphs: [
-        "No two weddings unfold the same way. Some are intimate and quiet; others bring entire families together across days of traditions and celebrations.",
-        "From wedding photography and candid moments to traditional video and cinematic films, RAKZS Studio creates coverage around the way your celebration happens.",
+        "From the excitement of your engagement to the traditions of your wedding and celebrations with loved ones, every moment has its place in your story.",
+        "RAKZS Studio offers wedding photography and cinematic films in Hyderabad and Telangana, with coverage planned around your functions and requirements.",
       ],
-      note: "Wedding & engagement coverage available in Hyderabad and across Telangana.",
-      cta: "Explore Packages",
+      cta: "Explore All Services",
     },
     bottomCta: {
       title: "Your date. Your people. Your story.",
@@ -1685,9 +1704,12 @@ export const serviceCategories: ServiceCategory[] = [
     description: "Before the wedding day arrives, create something that's completely yours.",
     cardCta: "Explore Shoots",
     heroEyebrow: "Before Forever",
-    heroTitle: "Before the vows, there's your story.",
+    heroTitle: "Before the wedding begins, there's a story that belongs to just the two of you.",
     heroDescription:
-      "Away from the wedding schedule, rituals and crowds, this is time for just the two of you — captured through photographs and films that feel personal, relaxed and true to your relationship.",
+      "Before the ceremonies, the celebrations and the busy days ahead, take a moment to remember this chapter of your relationship.",
+    seoTitle: "Pre-Wedding & Couple Photography Hyderabad | RAKZS Studio",
+    seoDescription:
+      "Pre-wedding photography, cinematic couple shoots and save-the-date videos in Hyderabad by RAKZS Studio. Capture your relationship before the big day.",
     children: [
       {
         eyebrow: "Pre-Wedding",
@@ -1708,6 +1730,15 @@ export const serviceCategories: ServiceCategory[] = [
         eventSlug: "heritage-fort-couple-shoot",
       },
     ],
+    seo: {
+      eyebrow: "Pre-Wedding Photography & Films",
+      title: "Some of your most beautiful memories begin before the wedding day.",
+      paragraphs: [
+        "Before your wedding becomes a celebration for everyone, there's a quieter story about the two people at its heart.",
+        "RAKZS Studio creates pre-wedding photography, couple portraits and save-the-date films in Hyderabad and Telangana. From simple, natural moments to thoughtfully planned creative shoots, we help you capture this chapter in a way that feels personal.",
+      ],
+      cta: "Explore All Services",
+    },
   },
   {
     slug: "family-function",
@@ -1719,9 +1750,12 @@ export const serviceCategories: ServiceCategory[] = [
     description: "The traditions, celebrations and people that become part of your family's story.",
     cardCta: "Explore Events",
     heroEyebrow: "Family Milestones",
-    heroTitle: "Every family celebrates differently. Every memory deserves its own story.",
+    heroTitle: "Life gives us reasons to celebrate. Family makes them unforgettable.",
     heroDescription:
-      "From meaningful traditions to joyful celebrations, we capture the people, emotions and little moments that make every family occasion worth remembering across Hyderabad and Telangana.",
+      "A birthday, a family tradition or a new beginning — some moments become even more precious with time. We capture the people, love and memories behind every celebration.",
+    seoTitle: "Family Event Photography in Hyderabad | RAKZS Studio",
+    seoDescription:
+      "Family event photography and videography in Hyderabad by RAKZS Studio. Capture birthdays, anniversaries, traditional ceremonies, baby showers and family celebrations.",
     children: [
       {
         eyebrow: "Event Type · 01",
@@ -1752,14 +1786,13 @@ export const serviceCategories: ServiceCategory[] = [
       },
     ],
     seo: {
-      title: "Every family celebrates differently. Every memory deserves its own story.",
+      eyebrow: "Family Photography & Films",
+      title: "The moments we celebrate today become the stories we share tomorrow.",
       paragraphs: [
-        "Some celebrations are built around traditions. Others are simply about bringing everyone you love into one place.",
-        "Whatever the occasion, the photographs that matter later are often more than the planned ones — a grandparent's expression, a child being themselves, parents watching from across the room, or generations together in one frame.",
-        "From family function photography in Hyderabad and candid moments to professional videography and cinematic highlights, RAKZS Studio creates coverage around the way your celebration happens.",
+        "Families change, children grow and familiar gatherings become cherished memories. Photographs give us a way to return to the people and moments that made those occasions special.",
+        "RAKZS Studio provides photography and videography for family functions and celebrations in Hyderabad and Telangana, with coverage tailored to your traditions, occasion and requirements.",
       ],
-      note: "We photograph traditional ceremonies, birthdays, anniversaries, baby celebrations and family events across Hyderabad and Telangana, with coverage planned around the occasion and the moments that matter to your family.",
-      cta: "Explore Packages",
+      cta: "Explore All Services",
     },
     bottomCta: {
       title: "Your family. Your moments. Your story.",
@@ -1780,9 +1813,12 @@ export const serviceCategories: ServiceCategory[] = [
       "Professional coverage for the moments, people and events that represent your business.",
     cardCta: "Explore Business Events",
     heroEyebrow: "The Professional Frame",
-    heroTitle: "Your business has important moments too.",
+    heroTitle: "The event brings people together. The photographs carry its story forward.",
     heroDescription:
-      "From conferences and meetings to launches, celebrations and professional gatherings, RAKZS creates polished photo and video coverage designed around your event and your brand.",
+      "Behind every professional gathering are people, ideas and achievements worth remembering. We capture the moments that represent your organisation and the purpose behind the event.",
+    seoTitle: "Corporate Event Photography in Hyderabad | RAKZS Studio",
+    seoDescription:
+      "Corporate event photography and videography in Hyderabad by RAKZS Studio. Coverage for company celebrations, conferences, seminars and professional gatherings.",
     children: [
       {
         eyebrow: "Corporate Events",
@@ -1803,6 +1839,16 @@ export const serviceCategories: ServiceCategory[] = [
         eventSlug: "corporate-headshots",
       },
     ],
+    seo: {
+      eyebrow: "Corporate Photography & Videography",
+      title: "An event may end in a day. Its story can continue much longer.",
+      paragraphs: [
+        "A speaker addressing the room. A team celebrating an achievement. A conversation that brings new ideas together.",
+        "These moments can become meaningful records of your organisation and useful content for future communication.",
+        "RAKZS Studio provides corporate event photography and videography in Hyderabad and Telangana, with coverage planned around your schedule, important people, branding and content requirements.",
+      ],
+      cta: "Explore All Services",
+    },
   },
   {
     slug: "commercial-creative",
@@ -1814,9 +1860,12 @@ export const serviceCategories: ServiceCategory[] = [
     description: "Photography and films created to show people what your brand is all about.",
     cardCta: "Explore Creative Work",
     heroEyebrow: "Brand in Focus",
-    heroTitle: "Make your business worth looking at.",
+    heroTitle: "Behind every business is a story worth showing to the world.",
     heroDescription:
-      "From people and products to spaces, services and campaigns, we create photographs and films that help businesses present themselves clearly, professionally and creatively.",
+      "An idea brought to life. A product made with care. People working behind the scenes. We create photography and films that help your customers see the work and purpose behind your brand.",
+    seoTitle: "Brand Photography & Business Videos Hyderabad | RAKZS Studio",
+    seoDescription:
+      "Brand and business photography, product photography, promotional videos and social media content creation in Hyderabad by RAKZS Studio.",
     children: [
       {
         eyebrow: "Brand & Business",
@@ -1846,6 +1895,15 @@ export const serviceCategories: ServiceCategory[] = [
         eventSlug: "fashion-editorial",
       },
     ],
+    seo: {
+      eyebrow: "Brand Photography & Creative Films",
+      title: "The work behind your business deserves to be seen.",
+      paragraphs: [
+        "Customers often discover a business through its photographs, videos and online presence. Each visual is an opportunity to help them understand what you offer.",
+        "RAKZS Studio provides brand photography, product visuals and promotional video creation in Hyderabad and Telangana. We plan content around your products, services and intended use, helping you present your work with clarity and character.",
+      ],
+      cta: "Explore All Services",
+    },
   },
 ];
 

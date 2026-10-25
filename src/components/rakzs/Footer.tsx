@@ -48,7 +48,7 @@ export function Footer() {
                 RAKZS STUDIO
               </span>
               <span className="mt-1.5 block text-[0.62rem] uppercase tracking-[0.32em] text-primary">
-                Cinema & Still Life
+                We Capture Memories
               </span>
             </span>
           </Link>

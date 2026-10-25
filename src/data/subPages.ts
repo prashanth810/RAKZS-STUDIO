@@ -152,7 +152,7 @@ export const subPages: SubPage[] = [
       eyebrow: "Event Type · 01",
       title: "Wedding",
       description:
-        "One day filled with a lifetime of emotions. From the quiet moments before the ceremony to the rituals, laughter, tears and celebrations around you — we preserve your wedding as it truly felt.",
+        "The meaningful rituals, genuine emotions and unforgettable moments that make your wedding yours.",
       cta: "Explore Wedding",
       image: weddingHero,
     },
@@ -308,8 +308,7 @@ export const subPages: SubPage[] = [
     card: {
       eyebrow: "Event Type · 02",
       title: "Engagement & Reception",
-      description:
-        "The beginning. The celebration. Everything in between. From exchanging rings to celebrating with everyone you love, we capture the people, emotions and energy that make these occasions unforgettable.",
+      description: "From the promise of a new beginning to celebrating with everyone you love.",
       cta: "Explore Events",
       image: preWeddingHero,
     },
@@ -463,8 +462,7 @@ export const subPages: SubPage[] = [
     card: {
       eyebrow: "Event Type · 03",
       title: "Wedding Celebrations",
-      description:
-        "Different traditions. One unforgettable story. Haldi, Mehendi, Sangeet and the celebrations surrounding your wedding — captured with all their colour, laughter, movement and emotion.",
+      description: "Haldi, Mehendi, Sangeet and the joyful moments that bring everyone together.",
       cta: "Explore Celebrations",
       image: familyPortrait,
     },
@@ -615,9 +613,9 @@ export const subPages: SubPage[] = [
     categorySlug: "pre-wedding-couple",
     card: {
       eyebrow: "Pre-Wedding",
-      title: "Pre-Wedding Shoot",
+      title: "Pre-Wedding",
       description:
-        "A thoughtfully planned photo and film experience built around the two of you — your personalities, your connection and the way you want your story to feel.",
+        "A little time away from wedding preparations to capture your connection, your personalities and the moments that feel like you.",
       cta: "Explore Pre-Wedding",
       image: preWeddingHero,
     },
@@ -789,9 +787,9 @@ export const subPages: SubPage[] = [
     categorySlug: "pre-wedding-couple",
     card: {
       eyebrow: "Couple & Save-the-Date",
-      title: "Couple Shoot / Save-the-Date",
+      title: "Couple & Save-the-Date",
       description:
-        "From relaxed couple portraits to creative Save-the-Date photographs and films, create something personal to share before your celebration begins.",
+        "Celebrate your relationship with meaningful photographs, couple films or a beautiful way to announce your special date.",
       cta: "Explore Couple Shoots",
       image: weddingHero,
     },
@@ -962,7 +960,7 @@ export const subPages: SubPage[] = [
       eyebrow: "Event Type · 01",
       title: "Traditional Ceremonies",
       description:
-        "Traditions that connect generations. From Half Saree and Dhoti ceremonies to Housewarmings, Naming Ceremonies and other family traditions — we preserve the rituals, people and emotions that make them meaningful.",
+        "Meaningful traditions, proud families and the beautiful moments that connect generations.",
       cta: "Explore Ceremonies",
       image: familyPortrait,
     },
@@ -1135,7 +1133,7 @@ export const subPages: SubPage[] = [
       eyebrow: "Event Type · 02",
       title: "Birthdays & Anniversaries",
       description:
-        "Another year. Another chapter worth keeping. From a child's first birthday to milestone celebrations and anniversaries, we capture the laughter, family and little moments happening around the occasion.",
+        "Every year brings new memories, familiar faces and another reason to celebrate together.",
       cta: "Explore Celebrations",
       image: birthdayHero,
     },
@@ -1307,8 +1305,8 @@ export const subPages: SubPage[] = [
       eyebrow: "Event Type · 03",
       title: "Baby & Family Celebrations",
       description:
-        "Little beginnings. Big memories. From Baby Showers and Cradle Ceremonies to celebrations welcoming a new member of the family — captured through the details, emotions and people surrounding them.",
-      cta: "Explore Family Celebrations",
+        "From baby showers to naming ceremonies, preserve the little beginnings your family will treasure.",
+      cta: "Explore Family Moments",
       image: newbornHero,
     },
     seo: {
@@ -1479,7 +1477,7 @@ export const subPages: SubPage[] = [
       eyebrow: "Corporate Events",
       title: "Corporate Events",
       description:
-        "Professional photography and video coverage for office events, award ceremonies, launches, team celebrations and other corporate occasions.",
+        "From company celebrations and award ceremonies to launches and team gatherings, we capture the people, achievements and atmosphere that matter.",
       cta: "Explore Corporate Events",
       image: corporateHero,
     },
@@ -1627,8 +1625,8 @@ export const subPages: SubPage[] = [
       eyebrow: "Conferences & Business Events",
       title: "Conferences & Business Events",
       description:
-        "From speakers and presentations to audience interactions, networking and key moments, we document conferences, seminars and professional gatherings with clean, purposeful coverage.",
-      cta: "Explore Business Events",
+        "Speakers, presentations, panel discussions and professional connections — thoughtfully documented from the agenda to the moments between sessions.",
+      cta: "Explore Conferences",
       image: brandingHero,
     },
     seo: {
@@ -1782,8 +1780,8 @@ export const subPages: SubPage[] = [
       eyebrow: "Brand & Business",
       title: "Brand & Business",
       description:
-        "Brand portraits, team photographs, workplaces, services and business-focused visual content created around how you want customers to see your brand.",
-      cta: "Explore Brand Content",
+        "Show the people, spaces and everyday work behind your business through thoughtful photography and films.",
+      cta: "Explore Brand Photography",
       image: brandingHero,
     },
     seo: {
@@ -1927,8 +1925,8 @@ export const subPages: SubPage[] = [
       eyebrow: "Product & Promotional",
       title: "Product & Promotional",
       description:
-        "Clean product photography and promotional visual content designed to present what you sell with clarity, detail and personality.",
-      cta: "Explore Product Work",
+        "Bring attention to the design, details and purpose of your products with carefully planned photographs and promotional videos.",
+      cta: "Explore Product Visuals",
       image: productHero,
     },
     seo: {
@@ -2069,7 +2067,7 @@ export const subPages: SubPage[] = [
       eyebrow: "Social Media Content",
       title: "Social Media Content",
       description:
-        "Photography, short-form videos, reels and campaign content created for businesses that need a consistent visual presence online.",
+        "Creative photographs, reels and short videos that help your business share its story across social platforms.",
       cta: "Explore Social Content",
       image: editorialHero,
     },
