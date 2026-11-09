@@ -1,10 +1,12 @@
 import { useMemo, useState } from "react";
 import { MessageCircle, Minus, Plus } from "lucide-react";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Toaster } from "@/components/ui/sonner";
 import { SectionHeader } from "@/components/rakzs/SectionHeader";
 import { studioContact } from "@/data/site";
 import { addOnItems, crewItems, type AddOnItem, type CrewItem } from "@/data/Packages";
@@ -123,7 +125,12 @@ export function PackageBuilder() {
     if (eventType === "") nextErrors.eventType = "Please select your event or service.";
     if (eventDate === "") nextErrors.eventDate = "Please select your event date.";
     if (eventLocation.trim() === "") nextErrors.eventLocation = "Please enter your event location.";
-    if (!hasSelection) nextErrors.selection = "Please select at least one service or add-on.";
+    if (!hasSelection) {
+      nextErrors.selection = "Please select at least one service or add-on.";
+      toast.error("Please select your coverage first", {
+        description: "Choose at least one service or add-on, then send your enquiry.",
+      });
+    }
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
@@ -165,6 +172,7 @@ export function PackageBuilder() {
 
   return (
     <section className="pb-10 bg-card">
+      <Toaster position="top-center" richColors closeButton />
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8">
         <SectionHeader
           eyebrow="Make Your Own"
