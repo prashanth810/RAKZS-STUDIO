@@ -9,17 +9,20 @@ import { PackagesCTA } from "@/components/ui/Packagescta";
 export const Route = createFileRoute("/packages")({
   head: () => ({
     meta: [
-      { title: "Packages & Pricing — RAKZS STUDIO" },
+      { title: "Wedding Photography Packages in Hyderabad | RAKZS Studio" },
       {
         name: "description",
         content:
-          "Explore fixed photography packages or build your own custom coverage — team, drone, LED screen, live streaming and albums — and send your enquiry directly on WhatsApp.",
+          "Explore wedding and event photography packages in Hyderabad by RAKZS Studio. Compare coverage options or build your own photography and video package.",
       },
-      { property: "og:title", content: "Packages & Pricing — RAKZS STUDIO" },
+      {
+        property: "og:title",
+        content: "Wedding Photography Packages in Hyderabad | RAKZS Studio",
+      },
       {
         property: "og:description",
         content:
-          "Fixed packages and a fully custom coverage builder for your photography and film needs.",
+          "Explore wedding and event photography packages in Hyderabad by RAKZS Studio. Compare coverage options or build your own photography and video package.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -32,9 +35,9 @@ function PackagesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Packages"
-        title="Coverage built around your story, priced with clarity."
-        description="Choose a ready-made package, or build your own team, add-ons, and coverage — then send it straight to us on WhatsApp."
+        eyebrow="Photography & Film Packages"
+        title="Your Story. Your Coverage. Your Choice."
+        description="Choose a package or build your own coverage. Share your requirements with us directly on WhatsApp."
         image={weddingHero}
       />
       <PricingTiers />

@@ -17,12 +17,32 @@ import {
 } from "@/components/ui/select";
 
 const typeOptions = [
-  "Wedding & Engagement",
-  "Pre-Wedding / Couple",
-  "Family Function",
-  "Corporate / Business",
-  "Commercial / Creative",
+  "Wedding",
+  "Engagement / Reception",
+  "Pre-Wedding / Couple Shoot",
+  "Birthday / Family Celebration",
+  "Traditional Ceremony",
+  "Corporate / Business Event",
+  "Brand / Product Photography",
+  "Social Media / Promotional Video",
+  "Other Enquiry",
 ];
+
+// Accepts a valid Indian mobile number with or without +91 / 91 / 0 prefix.
+function normalizeIndianMobile(value: string) {
+  const digits = value.replace(/[\s\-()]/g, "");
+  const match = digits.match(/^(?:\+91|91|0)?([6-9]\d{9})$/);
+  return match ? match[1] : null;
+}
+
+type FormErrors = {
+  name?: string;
+  phone?: string;
+  eventType?: string;
+  eventDate?: string;
+  eventLocation?: string;
+  selection?: string;
+};
 
 const formatINR = (value: number) => `₹${value.toLocaleString("en-IN")}`;
 
@@ -40,8 +60,15 @@ export function PackageBuilder() {
   const [eventDate, setEventDate] = useState("");
   const [eventLocation, setEventLocation] = useState("");
   const [additionalMessage, setAdditionalMessage] = useState("");
+  const [errors, setErrors] = useState<FormErrors>({});
 
-  const increase = (id: string) => setCounts((prev) => ({ ...prev, [id]: (prev[id] ?? 0) + 1 }));
+  const clearError = (key: keyof FormErrors) =>
+    setErrors((prev) => (prev[key] ? { ...prev, [key]: undefined } : prev));
+
+  const increase = (id: string) => {
+    clearError("selection");
+    setCounts((prev) => ({ ...prev, [id]: (prev[id] ?? 0) + 1 }));
+  };
 
   const decrease = (id: string) =>
     setCounts((prev) => {
@@ -55,7 +82,10 @@ export function PackageBuilder() {
       return updated;
     });
 
-  const toggleAddOn = (id: string) => setChecked((prev) => ({ ...prev, [id]: !prev[id] }));
+  const toggleAddOn = (id: string) => {
+    clearError("selection");
+    setChecked((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   const selectedCrew = useMemo(
     () =>
@@ -72,79 +102,64 @@ export function PackageBuilder() {
   const selectedAddOns = useMemo(() => addOnItems.filter((item) => checked[item.id]), [checked]);
 
   const totalMembers = selectedCrew.reduce((sum, item) => sum + item.quantity, 0);
-  const grandTotal =
-    selectedCrew.reduce((sum, item) => sum + item.total, 0) +
-    selectedAddOns.reduce((sum, item) => sum + item.price, 0);
-
   const hasSelection = selectedCrew.length > 0 || selectedAddOns.length > 0;
 
+  // Only selected items are ever counted. If any selected item has no listed rate
+  // (e.g. Photo Album), a reliable total cannot be shown, so pricing is "On Request".
+  const priceOnRequest = hasSelection && selectedAddOns.some((item) => item.price === null);
+  const grandTotal =
+    selectedCrew.reduce((sum, item) => sum + item.total, 0) +
+    selectedAddOns.reduce((sum, item) => sum + (item.price ?? 0), 0);
+  const canCalculate = hasSelection && !priceOnRequest && grandTotal > 0;
+  const estimateLabel = canCalculate ? formatINR(grandTotal) : "On Request";
+
   const sendToWhatsApp = () => {
-    if (customerName.trim() === "") {
-      alert("Please enter your name.");
-      return;
-    }
-    if (customerPhone.trim() === "") {
-      alert("Please enter your mobile number.");
-      return;
-    }
+    const nextErrors: FormErrors = {};
+    const mobile = normalizeIndianMobile(customerPhone);
 
-    if (customerPhone.length !== 10) {
-      alert("Please Enter Valid phone number.");
-    }
+    if (customerName.trim() === "") nextErrors.name = "Please enter your full name.";
+    if (customerPhone.trim() === "") nextErrors.phone = "Please enter your mobile number.";
+    else if (!mobile) nextErrors.phone = "Enter a valid 10-digit Indian mobile number.";
+    if (eventType === "") nextErrors.eventType = "Please select your event or service.";
+    if (eventDate === "") nextErrors.eventDate = "Please select your event date.";
+    if (eventLocation.trim() === "") nextErrors.eventLocation = "Please enter your event location.";
+    if (!hasSelection) nextErrors.selection = "Please select at least one service or add-on.";
 
-    if (eventType === "") {
-      alert("Please select an event / service type.");
-    }
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
 
-    if (!hasSelection) {
-      alert("Please select at least one item for your package.");
-      return;
-    }
+    const coverageLines = selectedCrew.map(
+      (item) => `${item.name} × ${item.quantity}`,
+    );
+    const addOnLines = selectedAddOns.map((item) => item.name);
 
-    let message = "";
-    message += `\u{1F4F8} *PHOTOGRAPHY PACKAGE ENQUIRY*\n\n`;
-    message += `Hello RAKZS STUDIO,\n\n`;
-    message += `I would like to enquire about booking a custom photography package.\n\n`;
+    const lines: string[] = [
+      "Hello RAKZS Studio,",
+      "",
+      "I'd like a quotation for photography and video coverage.",
+      "",
+      `Name: ${customerName.trim()}`,
+      `Mobile: ${mobile}`,
+      `Event Type: ${eventType}`,
+      `Event Date: ${eventDate}`,
+      `Location: ${eventLocation.trim()}`,
+      "",
+      "Selected Team & Coverage:",
+      ...(coverageLines.length ? coverageLines : ["None selected"]),
+      "",
+      "Selected Add-ons:",
+      ...(addOnLines.length ? addOnLines : ["None selected"]),
+      "",
+      `Estimated Starting Amount: ${estimateLabel}`,
+      "",
+      "Additional Requirements:",
+      additionalMessage.trim() || "None",
+      "",
+      "Please review my requirements and share your availability and best possible quotation.",
+      "Thank you.",
+    ];
 
-    message += `━━━━━━━━━━━━━━━━━━\n`;
-    message += `\u{1F464} *CUSTOMER DETAILS*\n`;
-    message += `━━━━━━━━━━━━━━━━━━\n\n`;
-    message += `Name: ${customerName}\n`;
-    message += `Phone: ${customerPhone}\n`;
-    message += `Event: ${eventType}\n`;
-    if (eventDate) message += `Date: ${eventDate}\n`;
-    if (eventLocation) message += `Location: ${eventLocation}\n`;
-    message += `\n`;
-
-    message += `━━━━━━━━━━━━━━━━━━\n`;
-    message += `\u{1F4CB} *SELECTED COVERAGE*\n`;
-    message += `━━━━━━━━━━━━━━━━━━\n\n`;
-
-    selectedCrew.forEach((item) => {
-      message += `${item.emoji} *${item.name}*\n`;
-      message += `   Quantity: ${item.quantity}\n`;
-      message += `   Price: ${formatINR(item.price)} / person\n`;
-      message += `   Total: ${formatINR(item.total)}\n\n`;
-    });
-
-    selectedAddOns.forEach((item) => {
-      message += `${item.emoji} *${item.name}*\n`;
-      if (item.id !== "album") message += `   Total: ${formatINR(item.price)}\n`;
-      message += "\n";
-    });
-
-    message += `━━━━━━━━━━━━━━━━━━\n`;
-    if (totalMembers > 0) message += `\u{1F465} *TOTAL TEAM MEMBERS:* ${totalMembers}\n`;
-    if (grandTotal > 0) message += `\u{1F4B0} *ESTIMATED TOTAL: ${formatINR(grandTotal)}*\n`;
-    message += `━━━━━━━━━━━━━━━━━━\n\n`;
-
-    if (additionalMessage.trim()) {
-      message += `\u{1F4DD} *ADDITIONAL REQUIREMENTS*\n${additionalMessage.trim()}\n\n`;
-    }
-
-    message += `Please contact me regarding availability and final quotation.\n\nThank you. \u{1F4F8}`;
-
-    const whatsappURL = `https://api.whatsapp.com/send?phone=${toWhatsAppNumber(studioContact.whatsappPhone)}&text=${encodeURIComponent(message)}`;
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${toWhatsAppNumber(studioContact.whatsappPhone)}&text=${encodeURIComponent(lines.join("\n"))}`;
     window.open(whatsappURL, "_blank");
   };
 
@@ -154,7 +169,7 @@ export function PackageBuilder() {
         <SectionHeader
           eyebrow="Make Your Own"
           title="Build Your Coverage."
-          description="Select the coverage you need. Multiple photographers and videographers can be added."
+          description="Choose your photography team and add-ons based on your event requirements."
         />
 
         <div className="grid gap-5 lg:grid-cols-[1.5fr_1fr] lg:gap-7">
@@ -163,6 +178,15 @@ export function PackageBuilder() {
             <h3 className="font-display text-xl font-semibold text-foreground sm:text-2xl">
               Team & Coverage
             </h3>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              Choose the services you need. You can select more than one photographer or
+              videographer.
+            </p>
+            {errors.selection ? (
+              <p role="alert" className="mt-3 text-sm text-destructive">
+                {errors.selection}
+              </p>
+            ) : null}
 
             <div className="mt-2 divide-y divide-border">
               {crewItems.map((item: CrewItem) => {
@@ -180,9 +204,17 @@ export function PackageBuilder() {
                         <p className="break-words text-[13px] font-semibold text-foreground sm:text-sm md:text-base">
                           {item.name}
                         </p>
-                        <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
-                          {formatINR(item.price)} / person
+                        <p className="mt-1 text-xs leading-5 text-muted-foreground sm:text-sm">
+                          {item.description}
                         </p>
+                        <p className="mt-1 text-xs font-medium text-foreground/80 sm:text-sm">
+                          Starts at {formatINR(item.price)} · {item.unit}
+                        </p>
+                        {"condition" in item ? (
+                          <p className="mt-1 text-xs italic text-muted-foreground">
+                            {item.condition}
+                          </p>
+                        ) : null}
                       </div>
                     </div>
 
@@ -230,11 +262,15 @@ export function PackageBuilder() {
                       <p className="break-words text-[13px] font-semibold text-foreground sm:text-sm md:text-base">
                         {item.name}
                       </p>
-                      {item.id !== "album" ? (
+                      {item.price !== null ? (
                         <p className="mt-1 text-xs text-muted-foreground md:text-sm">
-                          {formatINR(item.price)}
+                          Starts at {formatINR(item.price)} · {item.unit}
                         </p>
-                      ) : null}
+                      ) : (
+                        <p className="mt-1 text-xs text-muted-foreground md:text-sm">
+                          Pricing on request
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -248,20 +284,29 @@ export function PackageBuilder() {
                 </label>
               ))}
             </div>
+
+            <p className="mt-6 rounded-r-md border-l-2 border-primary bg-secondary/70 px-3 py-2.5 text-sm leading-6 text-muted-foreground">
+              Displayed amounts are starting estimates for planning purposes. Actual pricing may
+              vary based on event duration, location, team requirements and selected deliverables.
+            </p>
           </div>
 
           {/* SUMMARY / CUSTOM REQUEST */}
           <div className="reveal h-fit rounded-lg border border-border bg-background p-4 shadow-cinematic sm:p-6 lg:sticky lg:top-28 lg:p-7">
             <span className="section-kicker">Custom Request</span>
             <h3 className="mt-3 font-display text-2xl font-semibold text-foreground sm:text-3xl">
-              Your Package
+              Your Coverage Request
             </h3>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              Fill in your details below and send your selected coverage directly on WhatsApp.
+              Choose your preferred services and share your event details. Our team will review
+              your requirements and provide a personalized quotation.
             </p>
 
+            <h4 className="mt-6 font-display text-lg font-semibold text-foreground">
+              Your Selected Coverage
+            </h4>
             {hasSelection ? (
-              <div className="mt-6 space-y-2">
+              <div className="mt-3 space-y-2">
                 {selectedCrew.map((item) => (
                   <div key={item.id} className="flex justify-between gap-3 text-sm">
                     <span className="flex min-w-0 flex-1 items-center gap-2 break-words font-semibold text-muted-foreground">
@@ -277,64 +322,107 @@ export function PackageBuilder() {
                     <span className="flex min-w-0 flex-1 items-center gap-2 break-words font-semibold text-muted-foreground">
                       <item.icon /> {item.name}
                     </span>
-                    {item.id !== "album" ? (
+                    {item.price !== null ? (
                       <span className="shrink-0 whitespace-nowrap font-semibold text-foreground">
                         {formatINR(item.price)}
                       </span>
-                    ) : null}
+                    ) : (
+                      <span className="shrink-0 whitespace-nowrap text-xs font-semibold text-muted-foreground">
+                        On request
+                      </span>
+                    )}
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="mt-6 rounded-md bg-secondary px-4 py-3 text-sm text-muted-foreground">
-                No coverage selected yet. Pre-wedding starts from ₹50K — candid, cinematic, drone
-                and combinations can be customized. Final quotation is confirmed after event
-                details.
+              <p className="mt-3 rounded-md bg-secondary px-4 py-3 text-sm text-muted-foreground">
+                No coverage selected yet. Choose your preferred services to begin.
               </p>
             )}
 
-            {grandTotal > 0 ? (
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-dashed border-foreground pt-4">
-                <span className="font-display text-xl font-semibold text-foreground">
-                  Estimated Total
-                </span>
-                <span className="shrink-0 whitespace-nowrap font-display text-2xl font-bold text-primary">
-                  {formatINR(grandTotal)}
-                </span>
+            {hasSelection ? (
+              <div className="mt-5 border-t border-dashed border-foreground pt-4">
+                {canCalculate ? (
+                  <>
+                    <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+                      <span className="font-display text-lg font-semibold text-foreground">
+                        Estimated Starting Amount
+                      </span>
+                      <span className="shrink-0 whitespace-nowrap font-display text-2xl font-bold text-primary">
+                        {formatINR(grandTotal)}
+                      </span>
+                    </div>
+                    <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                      This is an estimate, not a final quotation. Pricing may change based on your
+                      event details, duration, location and requirements.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+                      <span className="font-display text-lg font-semibold text-foreground">
+                        Final Pricing
+                      </span>
+                      <span className="shrink-0 whitespace-nowrap font-display text-2xl font-bold text-primary">
+                        On Request
+                      </span>
+                    </div>
+                    <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                      We&apos;ll review your selected coverage and share a personalized quotation.
+                    </p>
+                  </>
+                )}
               </div>
             ) : null}
 
             <div className="mt-7 space-y-4">
               <div>
-                <Label htmlFor="customerName">Your Name</Label>
+                <Label htmlFor="customerName">Your Name*</Label>
                 <Input
                   id="customerName"
                   className="mt-2"
-                  placeholder="Enter your name"
+                  placeholder="Enter your full name"
+                  autoComplete="name"
+                  aria-invalid={Boolean(errors.name)}
                   value={customerName}
-                  onChange={(event) => setCustomerName(event.target.value)}
+                  onChange={(event) => {
+                    setCustomerName(event.target.value);
+                    clearError("name");
+                  }}
                 />
+                {errors.name ? <p className="mt-1 text-sm text-destructive">{errors.name}</p> : null}
               </div>
 
               <div>
-                <Label htmlFor="customerPhone">Mobile Number</Label>
+                <Label htmlFor="customerPhone">Mobile Number*</Label>
                 <Input
                   id="customerPhone"
                   type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
                   className="mt-2"
-                  minLength={10}
-                  maxLength={10}
-                  placeholder="Enter mobile number"
+                  placeholder="Enter your working mobile number"
+                  aria-invalid={Boolean(errors.phone)}
                   value={customerPhone}
-                  onChange={(event) => setCustomerPhone(event.target.value)}
+                  onChange={(event) => {
+                    setCustomerPhone(event.target.value);
+                    clearError("phone");
+                  }}
                 />
+                {errors.phone ? <p className="mt-1 text-sm text-destructive">{errors.phone}</p> : null}
               </div>
 
               <div>
-                <Label htmlFor="eventType">Event / Service Type *</Label>
-                <Select value={eventType} onValueChange={setEventType}>
-                  <SelectTrigger id="eventType" className="mt-2">
-                    <SelectValue placeholder="Select a type" />
+                <Label htmlFor="eventType">Event / Service Type*</Label>
+                <Select
+                  value={eventType}
+                  onValueChange={(value) => {
+                    setEventType(value);
+                    clearError("eventType");
+                  }}
+                >
+                  <SelectTrigger id="eventType" className="mt-2" aria-invalid={Boolean(errors.eventType)}>
+                    <SelectValue placeholder="Select your event or service" />
                   </SelectTrigger>
                   <SelectContent>
                     {typeOptions.map((option) => (
@@ -344,28 +432,46 @@ export function PackageBuilder() {
                     ))}
                   </SelectContent>
                 </Select>
+                {errors.eventType ? (
+                  <p className="mt-1 text-sm text-destructive">{errors.eventType}</p>
+                ) : null}
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <Label htmlFor="eventDate">Event Date</Label>
+                  <Label htmlFor="eventDate">Event Date*</Label>
                   <Input
                     id="eventDate"
                     type="date"
                     className="mt-2"
+                    aria-label="Select your event date"
+                    aria-invalid={Boolean(errors.eventDate)}
                     value={eventDate}
-                    onChange={(event) => setEventDate(event.target.value)}
+                    onChange={(event) => {
+                      setEventDate(event.target.value);
+                      clearError("eventDate");
+                    }}
                   />
+                  {errors.eventDate ? (
+                    <p className="mt-1 text-sm text-destructive">{errors.eventDate}</p>
+                  ) : null}
                 </div>
                 <div>
-                  <Label htmlFor="eventLocation">Location</Label>
+                  <Label htmlFor="eventLocation">Event Location*</Label>
                   <Input
                     id="eventLocation"
                     className="mt-2"
-                    placeholder="Event location"
+                    placeholder="Enter your event location"
+                    aria-invalid={Boolean(errors.eventLocation)}
                     value={eventLocation}
-                    onChange={(event) => setEventLocation(event.target.value)}
+                    onChange={(event) => {
+                      setEventLocation(event.target.value);
+                      clearError("eventLocation");
+                    }}
                   />
+                  {errors.eventLocation ? (
+                    <p className="mt-1 text-sm text-destructive">{errors.eventLocation}</p>
+                  ) : null}
                 </div>
               </div>
 
@@ -374,7 +480,7 @@ export function PackageBuilder() {
                 <Textarea
                   id="additionalMessage"
                   className="mt-2"
-                  placeholder="Any additional requirements..."
+                  placeholder="Mention your event timings, functions, number of days or special requests."
                   value={additionalMessage}
                   onChange={(event) => setAdditionalMessage(event.target.value)}
                 />
@@ -386,8 +492,12 @@ export function PackageBuilder() {
               className="mt-7 min-h-12 w-full whitespace-normal border border-[#9E7232] bg-transparent px-3 py-3 text-center text-sm leading-tight text-primary transition-colors duration-300 hover:border-primary hover:bg-primary hover:text-white sm:text-base"
             >
               <MessageCircle className="size-4" />
-              Send Requirements on WhatsApp
+              Send Enquiry on WhatsApp →
             </Button>
+            <p className="mt-3 text-center text-xs leading-5 text-muted-foreground">
+              Sending an enquiry does not confirm a booking. Our team will contact you to discuss
+              availability and final pricing.
+            </p>
           </div>
         </div>
       </div>
