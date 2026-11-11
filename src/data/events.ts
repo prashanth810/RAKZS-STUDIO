@@ -1696,7 +1696,7 @@ export const serviceCategories: ServiceCategory[] = [
 
   {
     slug: "pre-wedding-couple",
-    label: "Pre-Wedding / Couple",
+    label: "Pre-Wedding & Couple",
     eventCategories: ["Pre-Weddings"],
     image: preWeddingHero,
     kicker: "Before Forever",
@@ -1804,7 +1804,7 @@ export const serviceCategories: ServiceCategory[] = [
   },
   {
     slug: "corporate-business",
-    label: "Corporate / Business",
+    label: "Corporate & Business",
     eventCategories: ["Corporate", "Events & Celebrations"],
     image: corporateHero,
     kicker: "The Professional Frame",
@@ -1852,7 +1852,7 @@ export const serviceCategories: ServiceCategory[] = [
   },
   {
     slug: "commercial-creative",
-    label: "Commercial / Creative",
+    label: "Commercial & Creative",
     eventCategories: ["Products", "Fashion", "Personal Branding"],
     image: brandingHero,
     kicker: "Brand in Focus",

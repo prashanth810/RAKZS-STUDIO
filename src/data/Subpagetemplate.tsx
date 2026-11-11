@@ -351,7 +351,13 @@ const processColumns: Record<number, string> = {
   5: "md:grid-cols-5",
 };
 
-function ProcessTimeline({ process }: { process: SubPage["process"] }) {
+export function ProcessTimeline({
+  process,
+  images = processImages,
+}: {
+  process: SubPage["process"];
+  images?: string[];
+}) {
   const { kicker, title, steps, note } = process;
   // First line is normal text, remaining line(s) get the gold accent
   const [firstLine, ...restLines] = title.split("\n");
@@ -396,7 +402,7 @@ function ProcessTimeline({ process }: { process: SubPage["process"] }) {
             ) : null}
 
             {steps.map((step, index) => {
-              const image = processImages[index];
+              const image = images[index];
               const isLow = index % 2 === 1; // 02 & 04 sit lower; 01 / 03 / 05 sit higher
               const isLast = index === total - 1;
 

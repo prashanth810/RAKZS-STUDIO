@@ -107,7 +107,7 @@ function AboutPage() {
               We begin by listening, understanding what matters and planning the coverage around
               your story.
             </p>
-            <p>Because the most meaningful memories are the ones that still feel like yours.</p>
+            <p className="font-bold text-[#E25B00]">Because the most meaningful memories are the ones that still feel like yours.</p>
           </div>
         </div>
       </section>

@@ -66,7 +66,7 @@ export function PricingTiers() {
                 {tier.name}
               </h3>
               <div className="mt-2">
-                <span className="block whitespace-nowrap font-mono text-xl font-semibold tracking-tight text-foreground md:text-lg lg:text-xl xl:text-3xl">
+                <span className="block whitespace-nowrap font-mono text-xl font-medium tracking-tight text-foreground md:text-lg lg:text-xl xl:text-3xl">
                   {tier.price}
                 </span>
               </div>

@@ -42,10 +42,10 @@ const contactMethods = ["Phone", "Email", "WhatsApp", "Instagram"];
 
 const typeOptions = [
   "Wedding & Engagement",
-  "Pre-Wedding / Couple",
+  "Pre-Wedding & Couple",
   "Family Function",
-  "Corporate / Business",
-  "Commercial / Creative",
+  "Corporate & Business",
+  "Commercial & Creative",
 ];
 
 function initialState(prefillType: string): FormState {

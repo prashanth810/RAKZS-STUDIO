@@ -12,6 +12,11 @@ import { VideoModal } from "@/components/rakzs/VideoModal";
 import { events, getEventsByServiceCategory, serviceCategories } from "@/data/events";
 import { services } from "@/data/site";
 import { CategoryCard } from "@/components/ui/Categorycard";
+import { ProcessTimeline } from "@/data/Subpagetemplate";
+import enquireImg from "@/assets/enquire.png";
+import planImg from "@/assets/plan.png";
+import captureImg from "@/assets/capture.png";
+import refineDeliverImg from "@/assets/refine_deliver.png";
 
 const heroSlides = [
   {
@@ -74,13 +79,20 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const process = [
-  ["01", "Enquire", "Tell us about your event, date and requirements."],
-  ["02", "Plan", "We discuss your ideas and plan the coverage."],
-  ["03", "Capture", "We photograph and film the moments that matter."],
-  ["04", "Refine", "We carefully select and edit your photographs and films."],
-  ["05", "Deliver", "Your memories are prepared in the agreed formats."],
-];
+const homeProcess = {
+  kicker: "Our Process",
+  title: "From the first conversation\nto the memories you keep.",
+  steps: [
+    { title: "Enquire", text: "Tell us about your event, date and requirements." },
+    { title: "Plan", text: "We discuss your ideas and plan the coverage." },
+    { title: "Capture", text: "We photograph and film the moments that matter." },
+    { title: "Refine", text: "We carefully select and edit your photographs and films." },
+    { title: "Deliver", text: "Your memories are prepared in the agreed formats." },
+  ],
+};
+
+// one image per step (same illustrations used on the event pages)
+const homeProcessImages = [enquireImg, planImg, captureImg, refineDeliverImg, refineDeliverImg];
 
 /** Home-page service cards (approved copy). Images/links come from serviceCategories by slug. */
 const serviceCards: Record<
@@ -325,23 +337,7 @@ function HomePage() {
         </div>
       </section> */}
 
-      <section className="section-band bg-card">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeader
-            eyebrow="Our Process"
-            title="From the first conversation to the memories you keep."
-          />
-          <div className="grid gap-8 md:grid-cols-5">
-            {process.map(([number, title, text]) => (
-              <div key={number} className="reveal border-t border-primary/45 pt-5">
-                <span className="font-display text-3xl text-primary">{number}</span>
-                <h3 className="mt-5 font-display text-2xl">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground">{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProcessTimeline process={homeProcess} images={homeProcessImages} />
       <VideoModal />
 
       {clientStories.length > 0 ? (
